@@ -8,6 +8,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 <style>
+/* CSS remains exactly as you provided */
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{min-height:100%;background:linear-gradient(135deg,#0d0d1a,#101028,#0d0d1e);color:#fff;font-family:'Poppins',sans-serif}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:99px}
@@ -172,7 +173,9 @@ const db = firebase.database();
 
 // ══ STATE & STORAGE ══════════════════════════════════════════
 const LS = {
-  get: k => JSON.parse(localStorage.getItem(k)),
+  get: k => {
+    try { return JSON.parse(localStorage.getItem(k)); } catch(e) { return null; }
+  },
   set: (k, v) => localStorage.setItem(k, JSON.stringify(v))
 };
 let STATE = { role: null, quiz: null };
@@ -181,18 +184,21 @@ function show(id) {
   document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
   const el = document.getElementById(id);
   if(el) el.classList.add("active");
+  window.scrollTo(0,0);
 }
 
 function showErr(id, msg) {
   const el = document.getElementById(id);
+  if(!el) return;
   el.style.display = "block";
   el.textContent = "⚠️ " + msg;
 }
 
-// ══ GEMINI LOGIC (1.5 FLASH) ══════════════════════════════════
+// ══ GEMINI LOGIC (UPDATED TO 2.5 FLASH) ════════════════════════
 async function callGemini(prompt, imageData = null) {
   const apiKey = LS.get("qb_apikey");
-  const MODEL = "gemini-1.5-flash";
+  // Updated model to 2.5 Flash for 2026 compatibility
+  const MODEL = "gemini-2.5-flash"; 
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${apiKey}`;
 
   const payload = {
@@ -202,13 +208,30 @@ async function callGemini(prompt, imageData = null) {
         ...(imageData ? [{ inline_data: { mime_type: "image/jpeg", data: imageData } }] : [])
       ]
     }],
-    generationConfig: { response_mime_type: "application/json" }
+    generationConfig: { 
+      response_mime_type: "application/json",
+      temperature: 0.7
+    }
   };
 
-  const res = await fetch(url, { method: "POST", body: JSON.stringify(payload) });
-  const data = await res.json();
-  if (data.error) throw new Error(data.error.message);
-  return JSON.parse(data.candidates[0].content.parts[0].text);
+  try {
+    const res = await fetch(url, { 
+      method: "POST", 
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload) 
+    });
+    
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+    
+    // Safety check for empty candidates
+    if (!data.candidates || !data.candidates[0]) throw new Error("No response from AI.");
+    
+    return JSON.parse(data.candidates[0].content.parts[0].text);
+  } catch (err) {
+    console.error("Gemini Error:", err);
+    throw err;
+  }
 }
 
 async function runAI() {
@@ -216,23 +239,23 @@ async function runAI() {
   const count = document.getElementById("ai-count").value;
   const diff = document.getElementById("ai-diff").value;
   
-  if (!topic) return showErr("ai-err", "Enter a topic");
+  if (!topic) return showErr("ai-err", "Please enter a topic");
   
   show("s-loading");
-  const prompt = `Create a ${diff} difficulty quiz about "${topic}" with ${count} MCQs. Return ONLY JSON: {"title": "Title", "questions": [{"q": "Question?", "o": ["A","B","C","D"], "a": 0}]}`;
+  const prompt = `Create a ${diff} difficulty quiz about "${topic}" with ${count} multiple choice questions. Return ONLY a JSON object in this format: {"title": "Quiz Title", "questions": [{"q": "Question Text", "o": ["Option 1", "Option 2", "Option 3", "Option 4"], "a": 0}]}. The "a" field is the index of the correct option (0-3).`;
   
   try {
     const quiz = await callGemini(prompt);
     saveQuiz(quiz);
     show("s-teacher-dash");
-    alert("Quiz Created!");
+    alert("Quiz generated successfully!");
   } catch (e) {
     show("s-create-ai");
-    showErr("ai-err", e.message);
+    showErr("ai-err", "AI Error: " + e.message);
   }
 }
 
-// ══ UI LOGIC ══════════════════════════════════════════════════
+// ══ UI HELPERS ════════════════════════════════════════════════
 function saveQuiz(q) {
   const saved = LS.get("qb_saved") || [];
   saved.unshift(q);
@@ -246,16 +269,21 @@ function renderSaved() {
   if(!container) return;
   container.innerHTML = list.length ? list.map(q => `
     <div class="card" style="margin-bottom:10px">
-      <h3>${q.title}</h3>
+      <h3 class="h3 accent">${q.title}</h3>
       <p class="muted">${q.questions.length} Questions</p>
     </div>
-  `).join("") : '<p class="muted center">No quizzes yet.</p>';
+  `).join("") : '<p class="muted center">No quizzes yet. Create your first one!</p>';
 }
 
 function saveSetup() {
   const p1 = document.getElementById("setup-pass").value;
+  const p2 = document.getElementById("setup-pass2").value;
   const key = document.getElementById("setup-apikey").value;
-  if(p1.length < 4) return showErr("setup-err", "Password too short");
+  
+  if(p1 !== p2) return showErr("setup-err", "Passwords do not match");
+  if(p1.length < 4) return showErr("setup-err", "Password must be at least 4 chars");
+  if(!key) return showErr("setup-err", "API Key is required");
+  
   LS.set("qb_pass", p1);
   LS.set("qb_apikey", key);
   LS.set("qb_init", true);
@@ -269,7 +297,7 @@ function teacherLogin() {
     renderSaved();
     show("s-teacher-dash");
   } else {
-    showErr("t-login-err", "Wrong password");
+    showErr("t-login-err", "Incorrect password");
   }
 }
 
