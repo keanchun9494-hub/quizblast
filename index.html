@@ -33,6 +33,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 .btn-blue{background:linear-gradient(135deg,#0891b2,#0e7490);box-shadow:0 4px 16px rgba(8,145,178,.3)}
 .btn-orange{background:linear-gradient(135deg,#ea580c,#c2410c);box-shadow:0 4px 20px rgba(234,88,12,.3)}
 .btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8)}
+.btn-csv{background:linear-gradient(135deg,#059669,#047857);box-shadow:0 4px 20px rgba(5,150,105,.35)}
 .h1{font-family:'Fredoka One',cursive;font-size:clamp(2.2rem,7vw,3.5rem)}
 .h2{font-family:'Fredoka One',cursive;font-size:clamp(1.6rem,4vw,2.2rem)}
 .h3{font-family:'Fredoka One',cursive;font-size:1.3rem}
@@ -67,8 +68,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 .badge-teacher{background:rgba(124,58,237,.18);color:#c4b5fd;border:1px solid rgba(124,58,237,.35)}
 .badge-student{background:rgba(8,145,178,.18);color:#7dd3fc;border:1px solid rgba(8,145,178,.35)}
 .setup-hint{background:rgba(255,224,102,.08);border:1px solid rgba(255,224,102,.25);border-radius:12px;padding:12px 16px;margin-bottom:16px;color:#fde68a;font-size:.85rem;line-height:1.5}
-/* Google branding */
-.google-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(66,133,244,.1);border:1px solid rgba(66,133,244,.3);border-radius:10px;padding:6px 14px;font-size:.8rem;color:#93c5fd;margin-bottom:16px}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
@@ -78,28 +77,22 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 </style>
 </head>
 <body>
-
 <nav>
   <span class="logo" onclick="goHome()">🎯 QuizBlast</span>
   <div id="nav-right"></div>
 </nav>
-
 <div id="app">
 
 <!-- HOME -->
 <div id="s-home" class="screen center" style="padding-top:36px">
   <div style="font-size:72px;margin-bottom:10px">🎯</div>
   <h1 class="h1" style="background:linear-gradient(135deg,#fff 30%,#ffe066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px">QuizBlast!</h1>
-  <p class="muted" style="margin-bottom:8px">Live quiz platform for online tuition</p>
-  <div class="google-badge" style="justify-content:center;margin:0 auto 36px">
-    <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-    Powered by Google Gemini AI + Google Search
-  </div>
+  <p class="muted" style="margin-bottom:44px">Live quiz platform for online tuition ✨</p>
   <div style="max-width:360px;margin:0 auto">
     <div class="role-card fade-in" style="background:rgba(124,58,237,.13);border-color:rgba(124,58,237,.4)" onclick="show('s-teacher-login')">
       <div style="font-size:38px;margin-bottom:8px">👨‍🏫</div>
       <div class="h3">I'm a Teacher</div>
-      <div class="muted" style="font-size:.8rem;margin-top:4px">Login to create quizzes · control live game · see all results</div>
+      <div class="muted" style="font-size:.8rem;margin-top:4px">Login to create quizzes · control live game · download results</div>
     </div>
     <div class="role-card fade-in" style="background:rgba(8,145,178,.13);border-color:rgba(8,145,178,.4)" onclick="show('s-student-login')">
       <div style="font-size:38px;margin-bottom:8px">🎓</div>
@@ -129,11 +122,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
     <div class="form-group" style="margin-bottom:0">
       <label class="lbl">Google Gemini API Key *</label>
       <input type="password" id="setup-apikey" placeholder="AIzaSy..."/>
-      <p class="muted" style="font-size:.77rem;margin-top:6px">
-        Get your free key from 
-        <a href="https://aistudio.google.com/apikey" target="_blank" style="color:#ffe066">aistudio.google.com/apikey</a>
-        · Free tier is generous · Stored locally in your browser only.
-      </p>
+      <p class="muted" style="font-size:.77rem;margin-top:6px">Get free key from <a href="https://aistudio.google.com/apikey" target="_blank" style="color:#ffe066">aistudio.google.com/apikey</a> · stored locally in your browser only.</p>
     </div>
     <div class="errbox" id="setup-err"></div>
     <button class="btn btn-purple btn-full" style="margin-top:16px" onclick="saveSetup()">✓ Save & Continue</button>
@@ -241,7 +230,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 <div id="s-create-ai" class="screen" style="max-width:520px;margin:0 auto">
   <button class="back-btn" onclick="show('s-create-method')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:6px">🤖 AI Generator</h2>
-  <p class="muted" style="font-size:.85rem;margin-bottom:20px">Gemini searches Google to create accurate, up-to-date questions.</p>
+  <p class="muted" style="font-size:.85rem;margin-bottom:20px">Gemini 2.5 Flash Lite searches Google to create accurate questions.</p>
   <div class="card">
     <div class="form-group">
       <label class="lbl">Topic / What you want *</label>
@@ -366,8 +355,8 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
     <div id="ctrl-lb"></div>
   </div>
   <div class="errbox" id="ctrl-err"></div>
-  <button class="btn btn-orange btn-full" id="ctrl-reveal-btn" onclick="teacherReveal()">👁 Reveal Answer & Scores</button>
-  <button class="btn btn-purple btn-full" id="ctrl-next-btn" onclick="teacherNext()" style="display:none">→ Next Question</button>
+  <button class="btn btn-orange btn-full" id="ctrl-reveal-btn" onclick="teacherReveal()" style="margin-bottom:10px">👁 Reveal Answer & Scores</button>
+  <button class="btn btn-purple btn-full" id="ctrl-next-btn" onclick="teacherNext()" style="display:none;margin-bottom:10px">→ Next Question</button>
 </div>
 
 <!-- TEACHER RESULTS -->
@@ -375,11 +364,15 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <div style="font-size:64px;margin-bottom:8px">🏁</div>
   <h2 class="h2 accent" style="margin-bottom:4px">Quiz Complete!</h2>
   <p class="muted" style="margin-bottom:24px" id="t-results-meta"></p>
-  <div id="t-results-lb"></div>
-  <button class="btn btn-purple btn-full" style="margin-top:24px" onclick="goHome()">← Back to Home</button>
+  <div id="t-results-lb" style="margin-bottom:20px"></div>
+  <!-- CSV DOWNLOAD BUTTON -->
+  <button class="btn btn-csv btn-full" style="margin-bottom:12px;font-size:1.05rem" onclick="downloadCSV()">
+    📥 Download Results as CSV
+  </button>
+  <button class="btn btn-purple btn-full" onclick="goHome()">← Back to Home</button>
 </div>
 
-<!-- STUDENT WAITING LOBBY -->
+<!-- STUDENT LOBBY -->
 <div id="s-s-lobby" class="screen center" style="max-width:400px;margin:0 auto;padding-top:44px">
   <div style="font-size:60px;margin-bottom:10px" class="pulse">⏳</div>
   <h2 class="h2" style="margin-bottom:6px">You're In!</h2>
@@ -423,7 +416,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 </div>
 
 </div>
-
 <div id="toast" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#1e1e40;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 22px;font-weight:600;font-size:.9rem;transition:transform .3s;z-index:999;white-space:nowrap"></div>
 
 <script>
@@ -449,9 +441,10 @@ const LS={
 };
 
 // ══ STATE ═════════════════════════════════════════════════════
-let STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null};
+let STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null,lastRoom:null};
 const COLORS=[{bg:"#e63946",shadow:"#7f1d1d",icon:"▲"},{bg:"#2563eb",shadow:"#1e3a8a",icon:"●"},{bg:"#ea580c",shadow:"#7c2d12",icon:"■"},{bg:"#16a34a",shadow:"#14532d",icon:"◆"}];
 const TIME_PER_Q=25;
+const GEMINI_MODEL="gemini-2.5-flash-lite";
 
 // ══ UTILS ═════════════════════════════════════════════════════
 function genCode(){return Math.random().toString(36).slice(2,8).toUpperCase();}
@@ -484,58 +477,41 @@ function updateNav(){
 
 function goHome(){
   stopPoll();
-  STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null};
+  STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null,lastRoom:null};
   updateNav();
   const code=new URLSearchParams(window.location.search).get("join");
   if(code){document.getElementById("s-code").value=code;show("s-student-login");}
   else show("s-home");
 }
 
-// ══ GOOGLE GEMINI API ═════════════════════════════════════════
-async function callGemini(prompt, useSearch, imageData){
+// ══ GEMINI AI ═════════════════════════════════════════════════
+async function callGemini(prompt,useSearch,imageData){
   const apiKey=LS.get("qb_apikey");
   if(!apiKey)throw new Error("No Google API key set. Please go to ⚙️ Settings.");
-
-  const MODEL = useSearch
-    ? "gemini-2.5-flash-lite"        // supports Google Search grounding
-    : "gemini-2.5-flash-lite";
-
-  const url=`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${apiKey}`;
-
-  // Build content parts
+  const url=`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
   const parts=[];
-  if(imageData){
-    parts.push({inlineData:{mimeType:imageData.mime,data:imageData.b64}});
-  }
+  if(imageData)parts.push({inlineData:{mimeType:imageData.mime,data:imageData.b64}});
   parts.push({text:prompt});
-
   const body={
     contents:[{role:"user",parts}],
     generationConfig:{temperature:0.4,maxOutputTokens:4096}
   };
-
-  // Add Google Search grounding tool when needed
-  if(useSearch){
-    body.tools=[{googleSearch:{}}];
-  }
-
+  if(useSearch)body.tools=[{googleSearch:{}}];
   const r=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
   if(!r.ok){
     const e=await r.json().catch(()=>({}));
     const msg=e?.error?.message||`Gemini API error ${r.status}`;
-    if(r.status===400)throw new Error(msg+" — Check your API key is correct.");
-    if(r.status===403)throw new Error("API key not authorised. Make sure Generative Language API is enabled in your Google Cloud project.");
+    if(r.status===400)throw new Error(msg+" — Check your API key.");
+    if(r.status===403)throw new Error("API key not authorised. Enable Generative Language API in Google Cloud.");
+    if(r.status===404)throw new Error("Model not found. Check that your API key has access to Gemini 2.5 Flash Lite.");
     throw new Error(msg);
   }
-
   const d=await r.json();
   const text=(d.candidates?.[0]?.content?.parts||[]).filter(p=>p.text).map(p=>p.text).join("");
   if(!text)throw new Error("Gemini returned an empty response. Try again.");
-
-  // Extract JSON array from response
   const clean=text.replace(/```json\s*/g,"").replace(/```\s*/g,"").trim();
   const s=clean.indexOf("["),e=clean.lastIndexOf("]");
-  if(s===-1||e===-1)throw new Error("Could not parse questions from AI response. Try a more specific topic.");
+  if(s===-1||e===-1)throw new Error("Could not parse questions from AI. Try a more specific topic.");
   return JSON.parse(clean.slice(s,e+1));
 }
 
@@ -566,7 +542,7 @@ function enterTeacherDash(){STATE.role="teacher";updateNav();loadSaved();show("s
 
 function teacherLogout(){
   stopPoll();
-  STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null};
+  STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null,lastRoom:null};
   updateNav();show("s-home");
 }
 
@@ -614,7 +590,7 @@ async function runAI(){
   const diff=document.getElementById("ai-diff").value;
   hideErr("ai-err");
   if(!topic){showErr("ai-err","Please describe the topic first.");return;}
-  setLoading("🤖 Gemini is searching Google and creating questions... (15–30 sec)");
+  setLoading("🤖 Gemini 2.5 Flash Lite is generating questions... (may take 15–30 sec)");
   try{
     const prompt=`You are a quiz creator for Malaysian school students (primary and secondary level).
 Use Google Search to find accurate, curriculum-aligned information, then create exactly ${count} multiple-choice questions about: "${topic}".
@@ -622,7 +598,6 @@ Difficulty level: ${diff}.
 For Bahasa Malaysia topics, write questions in Bahasa Malaysia.
 
 IMPORTANT: Return ONLY a raw JSON array. No markdown, no explanation, no text before or after the array.
-Format:
 [{"question":"...","options":["Option A","Option B","Option C","Option D"],"correct":0,"explanation":"Brief reason why this is correct."}]
 "correct" = 0-based index (0, 1, 2, or 3) of the correct option.`;
     const qs=await callGemini(prompt,true,null);
@@ -750,7 +725,7 @@ function startLobbyPoll(){
   },1500);
 }
 function copyCode(){navigator.clipboard?.writeText(STATE.roomCode);toast("✅ Code copied!");}
-function copyLink(){const url=window.location.href.split("?")[0]+"?join="+STATE.roomCode;navigator.clipboard?.writeText(url);toast("🔗 Join link copied! Students paste it in browser.");}
+function copyLink(){const url=window.location.href.split("?")[0]+"?join="+STATE.roomCode;navigator.clipboard?.writeText(url);toast("🔗 Join link copied!");}
 
 async function startQuiz(){
   hideErr("lobby-err");
@@ -768,11 +743,12 @@ function startControlPoll(){
     try{
       const room=await fbGet(`rooms/${STATE.roomCode}`);
       if(!room)return;
-      if(room.status==="finished"){stopPoll();showTeacherResults(room);return;}
+      if(room.status==="finished"){stopPoll();STATE.lastRoom=room;showTeacherResults(room);return;}
       renderControl(room);
     }catch(e){}
   },900);
 }
+
 function renderControl(room){
   const players=room.players||{};const pList=Object.values(players);
   const qi=room.currentQ||0;const q=STATE.quiz.questions[qi];
@@ -806,18 +782,115 @@ function renderControl(room){
     nextBtn.textContent=qi+1>=STATE.quiz.questions.length?"🏁 End Quiz & Show Results":"→ Next Question";
   }else{expl.style.display="none";lbWrap.style.display="none";revBtn.style.display="block";nextBtn.style.display="none";}
 }
+
 async function teacherReveal(){hideErr("ctrl-err");try{await fbUpdate(`rooms/${STATE.roomCode}`,{status:"reveal"});}catch(e){showErr("ctrl-err",e.message);}}
 async function teacherNext(){
   hideErr("ctrl-err");
   try{
     const qi=(await fbGet(`rooms/${STATE.roomCode}/currentQ`))||0;const next=qi+1;
-    if(next>=STATE.quiz.questions.length)await fbUpdate(`rooms/${STATE.roomCode}`,{status:"finished"});
-    else await fbUpdate(`rooms/${STATE.roomCode}`,{status:"question",currentQ:next,questionStartTime:Date.now()});
+    if(next>=STATE.quiz.questions.length){
+      const room=await fbGet(`rooms/${STATE.roomCode}`);
+      STATE.lastRoom=room;
+      await fbUpdate(`rooms/${STATE.roomCode}`,{status:"finished"});
+    }else{
+      await fbUpdate(`rooms/${STATE.roomCode}`,{status:"question",currentQ:next,questionStartTime:Date.now()});
+    }
   }catch(e){showErr("ctrl-err",e.message);}
 }
+
 function showTeacherResults(room){
+  STATE.lastRoom=room;
   document.getElementById("t-results-meta").textContent=`${STATE.quiz.title} · ${Object.keys(room.players||{}).length} players`;
-  document.getElementById("t-results-lb").innerHTML=renderLB(room.players||{},null);show("s-t-results");
+  document.getElementById("t-results-lb").innerHTML=renderLB(room.players||{},null);
+  show("s-t-results");
+}
+
+// ══ CSV DOWNLOAD ══════════════════════════════════════════════
+function downloadCSV(){
+  const room=STATE.lastRoom;
+  const quiz=STATE.quiz;
+  if(!room||!quiz){toast("⚠️ No results to download.");return;}
+
+  const players=room.players||{};
+  const sorted=Object.entries(players).sort((a,b)=>(b[1].score||0)-(a[1].score||0));
+  const now=new Date();
+  const dateStr=now.toLocaleDateString("en-MY",{day:"2-digit",month:"2-digit",year:"numeric"});
+  const timeStr=now.toLocaleTimeString("en-MY",{hour:"2-digit",minute:"2-digit"});
+
+  // Build CSV rows
+  const rows=[];
+
+  // Header info
+  rows.push(["QuizBlast - Quiz Results"]);
+  rows.push(["Quiz Title",quiz.title]);
+  rows.push(["Date",dateStr]);
+  rows.push(["Time",timeStr]);
+  rows.push(["Room Code",STATE.roomCode||"-"]);
+  rows.push(["Total Questions",quiz.questions.length]);
+  rows.push(["Total Players",sorted.length]);
+  rows.push([]); // empty row
+
+  // Leaderboard section
+  rows.push(["=== LEADERBOARD ==="]);
+  rows.push(["Rank","Student Name","Score","Correct Answers","Wrong Answers","Accuracy %"]);
+
+  sorted.forEach(([uid,p],i)=>{
+    const answers=p.answers||{};
+    let correct=0,wrong=0;
+    quiz.questions.forEach((q,qi)=>{
+      if(answers[qi]!==undefined){
+        if(answers[qi].choice===q.correct)correct++;
+        else wrong++;
+      }
+    });
+    const unanswered=quiz.questions.length-correct-wrong;
+    const accuracy=quiz.questions.length>0?Math.round(correct/quiz.questions.length*100):0;
+    rows.push([i+1,p.name,p.score||0,correct,wrong,accuracy+"%"]);
+  });
+
+  rows.push([]); // empty row
+
+  // Question breakdown section
+  rows.push(["=== QUESTION BREAKDOWN ==="]);
+  const qHeader=["Question No.","Question","Correct Answer"];
+  sorted.forEach(([uid,p])=>qHeader.push(p.name));
+  rows.push(qHeader);
+
+  quiz.questions.forEach((q,qi)=>{
+    const row=[`Q${qi+1}`,q.question,q.options[q.correct]];
+    sorted.forEach(([uid,p])=>{
+      const ans=p.answers?.[qi];
+      if(ans===undefined){row.push("No Answer");}
+      else if(ans.choice===q.correct){row.push("✓ Correct");}
+      else{row.push("✗ "+q.options[ans.choice]);}
+    });
+    rows.push(row);
+  });
+
+  // Convert to CSV string
+  const csvContent=rows.map(row=>
+    row.map(cell=>{
+      const s=String(cell||"");
+      // Wrap in quotes if contains comma, quote or newline
+      if(s.includes(",")||s.includes('"')||s.includes("\n")){
+        return '"'+s.replace(/"/g,'""')+'"';
+      }
+      return s;
+    }).join(",")
+  ).join("\n");
+
+  // Add BOM for Excel UTF-8 compatibility
+  const BOM="\uFEFF";
+  const blob=new Blob([BOM+csvContent],{type:"text/csv;charset=utf-8;"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download=`QuizBlast_${quiz.title.replace(/[^a-zA-Z0-9]/g,"_")}_${dateStr.replace(/\//g,"-")}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  toast("📥 CSV downloaded!");
 }
 
 // ══ STUDENT JOIN ══════════════════════════════════════════════
@@ -849,6 +922,7 @@ function startStudentListener(){
   ref.on("value",snap=>{const room=snap.val();if(room)handleStudentUpdate(room);});
   STATE.roomListener=()=>ref.off();
 }
+
 function handleStudentUpdate(room){
   const players=room.players||{};
   if(room.status==="lobby"){
@@ -915,6 +989,7 @@ function handleStudentUpdate(room){
     fb.innerHTML=`<div style="font-family:'Fredoka One',cursive;font-size:1.1rem;margin-bottom:4px">${noAns?"⏰ Time's up!":correct?"🎉 Correct!":"❌ Wrong!"}</div>${q.explanation?`<div class="muted" style="font-size:.85rem">${esc(q.explanation)}</div>`:""}<div class="muted" style="font-size:.8rem;margin-top:6px">Waiting for next question...</div>`;
   }else{fb.style.display="none";}
 }
+
 async function studentAnswer(choice){
   const qi=(await fbGet(`rooms/${STATE.roomCode}/currentQ`))||0;
   if(STATE.answered[qi]!==undefined)return;
