@@ -20,7 +20,6 @@ nav{position:sticky;top:0;z-index:99;display:flex;align-items:center;justify-con
 input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.07);color:#fff;font-family:'Poppins',sans-serif;font-size:1rem;outline:none;box-sizing:border-box;transition:border-color .2s}
 input:focus,select:focus,textarea:focus{border-color:#7c3aed}
 select option{background:#161630}
-textarea{resize:vertical;line-height:1.6}
 label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,0.4);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
 .form-group{margin-bottom:16px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border:none;border-radius:14px;font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .15s,box-shadow .15s,opacity .15s;color:#fff}
@@ -41,39 +40,22 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 .errbox{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);border-radius:12px;padding:12px 16px;margin-bottom:14px;color:#fca5a5;font-size:.87rem;line-height:1.5;display:none}
 .successbox{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:12px;padding:12px 16px;margin-bottom:14px;color:#86efac;font-size:.87rem;display:none}
 .role-card{border-radius:22px;padding:26px 22px;cursor:pointer;transition:all .2s;margin-bottom:14px;text-align:left;border:2px solid transparent}
-.role-card:hover{transform:translateY(-3px)}
 .method-card{display:flex;align-items:center;gap:16px;padding:18px 20px;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:18px;cursor:pointer;margin-bottom:12px;transition:all .18s}
-.method-card:hover{background:rgba(255,255,255,.09);transform:translateY(-1px)}
 .ans-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.ans-btn{display:flex;align-items:center;gap:10px;padding:16px 12px;border:none;border-radius:16px;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;text-align:left;transition:background .3s,opacity .3s,transform .1s}
-.ans-btn:hover:not(:disabled){transform:translateY(-2px)}
-.ans-btn:disabled{cursor:default}
-.ans-icon{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.95rem}
+.ans-btn{display:flex;align-items:center;gap:10px;padding:16px 12px;border:none;border-radius:16px;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:background .3s,transform .1s}
 .lb-row{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);margin-bottom:8px}
 .lb-row.me{background:rgba(255,224,102,.1);border-color:rgba(255,224,102,.35)}
 .pbar{height:8px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}
 .pbar-fill{height:100%;border-radius:99px;transition:width .5s}
 .chip{background:rgba(255,255,255,.09);border-radius:10px;padding:7px 14px;font-weight:600;font-size:.88rem}
-.chip.me{background:rgba(255,224,102,.14);border:1px solid rgba(255,224,102,.35)}
 .room-code{font-family:'Fredoka One',cursive;font-size:clamp(2.5rem,10vw,4.2rem);color:#ffe066;letter-spacing:10px;text-align:center;line-height:1}
 .back-btn{background:transparent;border:1.5px solid rgba(255,255,255,.13);border-radius:10px;padding:7px 16px;color:rgba(255,255,255,.8);cursor:pointer;font-size:.85rem;margin-bottom:16px;font-family:'Poppins',sans-serif}
-.back-btn:hover{border-color:rgba(255,255,255,.3)}
-.prev-opt{padding:8px 12px;border-radius:10px;font-size:.82rem;font-weight:600}
-.opt-bar{border-radius:14px;padding:12px 14px;transition:background .4s}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.flex-row{display:flex;gap:10px;align-items:center}
-.role-badge{padding:4px 14px;border-radius:99px;font-size:.78rem;font-weight:700}
-.badge-teacher{background:rgba(124,58,237,.18);color:#c4b5fd;border:1px solid rgba(124,58,237,.35)}
-.badge-student{background:rgba(8,145,178,.18);color:#7dd3fc;border:1px solid rgba(8,145,178,.35)}
-.setup-hint{background:rgba(255,224,102,.08);border:1px solid rgba(255,224,102,.25);border-radius:12px;padding:12px 16px;margin-bottom:16px;color:#fde68a;font-size:.85rem;line-height:1.5}
-/* Google branding */
-.google-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(66,133,244,.1);border:1px solid rgba(66,133,244,.3);border-radius:10px;padding:6px 14px;font-size:.8rem;color:#93c5fd;margin-bottom:16px}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 .fade-in{animation:fadeUp .35s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .pulse{animation:pulse 2s ease infinite}
-@media(max-width:480px){.ans-grid,.grid2{grid-template-columns:1fr}}
+@media(max-width:480px){.ans-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -85,780 +67,95 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 
 <div id="app">
 
+<!-- HOME SCREEN -->
 <div id="s-home" class="screen center" style="padding-top:36px">
   <div style="font-size:72px;margin-bottom:10px">🎯</div>
   <h1 class="h1" style="background:linear-gradient(135deg,#fff 30%,#ffe066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px">QuizBlast!</h1>
-  <p class="muted" style="margin-bottom:8px">Live quiz platform for online tuition</p>
-  <div class="google-badge" style="justify-content:center;margin:0 auto 36px">
-    <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-    Powered by Google Gemini AI + Google Search
-  </div>
+  <p class="muted" style="margin-bottom:36px">Live quiz platform for online tuition</p>
   <div style="max-width:360px;margin:0 auto">
-    <div class="role-card fade-in" style="background:rgba(124,58,237,.13);border-color:rgba(124,58,237,.4)" onclick="show('s-teacher-login')">
+    <div class="role-card fade-in" style="background:rgba(124,58,237,.13);border-color:rgba(124,58,237,.4)" onclick="startTeacherFlow()">
       <div style="font-size:38px;margin-bottom:8px">👨‍🏫</div>
       <div class="h3">I'm a Teacher</div>
-      <div class="muted" style="font-size:.8rem;margin-top:4px">Login to create quizzes · control live game · see all results</div>
+      <div class="muted" style="font-size:.8rem;margin-top:4px">Control the game · Create quizzes</div>
     </div>
     <div class="role-card fade-in" style="background:rgba(8,145,178,.13);border-color:rgba(8,145,178,.4)" onclick="show('s-student-login')">
       <div style="font-size:38px;margin-bottom:8px">🎓</div>
       <div class="h3">I'm a Student</div>
-      <div class="muted" style="font-size:.8rem;margin-top:4px">Enter name + room code · join the quiz</div>
+      <div class="muted" style="font-size:.8rem;margin-top:4px">Enter room code to join</div>
     </div>
   </div>
 </div>
 
+<!-- SETUP SCREEN -->
 <div id="s-setup" class="screen" style="max-width:480px;margin:0 auto;padding-top:24px">
   <div style="text-align:center;margin-bottom:28px">
     <div style="font-size:48px;margin-bottom:8px">⚙️</div>
-    <h2 class="h2 accent">First-Time Setup</h2>
-    <p class="muted" style="font-size:.85rem;margin-top:6px">This runs once. You can update these in Settings later.</p>
+    <h2 class="h2 accent">Admin Setup</h2>
+    <p class="muted">Set this once for your database.</p>
   </div>
   <div class="card fade-in">
-    <div class="setup-hint">💡 Students will <strong>never</strong> see this screen. Only you (the teacher) set this up once.</div>
     <div class="form-group">
-      <label class="lbl">Teacher Password *</label>
-      <input type="password" id="setup-pass" placeholder="Choose a secure password (min 4 chars)"/>
+      <label class="lbl">Choose Teacher Password</label>
+      <input type="password" id="setup-pass" placeholder="Min 4 chars"/>
     </div>
     <div class="form-group">
-      <label class="lbl">Confirm Password *</label>
-      <input type="password" id="setup-pass2" placeholder="Re-enter password"/>
-    </div>
-    <div class="form-group" style="margin-bottom:0">
-      <label class="lbl">Google Gemini API Key *</label>
+      <label class="lbl">Google Gemini API Key</label>
       <input type="password" id="setup-apikey" placeholder="AIzaSy..."/>
-      <p class="muted" style="font-size:.77rem;margin-top:6px">
-        Get your free key from 
-        <a href="https://aistudio.google.com/apikey" target="_blank" style="color:#ffe066">aistudio.google.com/apikey</a>
-        · Free tier is generous · Stored locally in your browser only.
-      </p>
     </div>
     <div class="errbox" id="setup-err"></div>
-    <button class="btn btn-purple btn-full" style="margin-top:16px" onclick="saveSetup()">✓ Save & Continue</button>
+    <button class="btn btn-purple btn-full" onclick="saveSetup()">Save & Finish Setup</button>
   </div>
 </div>
 
+<!-- TEACHER LOGIN -->
 <div id="s-teacher-login" class="screen" style="max-width:400px;margin:0 auto;padding-top:30px">
   <button class="back-btn" onclick="show('s-home')">← Back</button>
   <div style="text-align:center;margin-bottom:28px">
-    <div style="font-size:52px;margin-bottom:8px">👨‍🏫</div>
     <h2 class="h2">Teacher Login</h2>
   </div>
   <div class="card fade-in">
     <div class="form-group">
       <label class="lbl">Password</label>
-      <input type="password" id="t-login-pass" placeholder="Enter teacher password" onkeydown="if(event.key==='Enter')teacherLogin()"/>
+      <input type="password" id="t-login-pass" placeholder="Enter password" onkeydown="if(event.key==='Enter')teacherLogin()"/>
     </div>
     <div class="errbox" id="t-login-err"></div>
     <button class="btn btn-purple btn-full" onclick="teacherLogin()">Login →</button>
-    <hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin:18px 0"/>
-    <p class="muted" style="font-size:.78rem;text-align:center">Students log in via the <strong>Student</strong> button on the home screen.</p>
   </div>
 </div>
 
+<!-- STUDENT LOGIN -->
 <div id="s-student-login" class="screen" style="max-width:400px;margin:0 auto;padding-top:30px;text-align:center">
   <button class="back-btn" onclick="show('s-home')">← Back</button>
-  <div style="font-size:56px;margin-bottom:8px">🎓</div>
-  <h2 class="h2" style="margin-bottom:24px">Student Login</h2>
+  <h2 class="h2" style="margin-bottom:24px">Join Quiz</h2>
   <div class="card fade-in" style="text-align:left">
     <div class="form-group">
-      <label class="lbl">Your Name *</label>
-      <input type="text" id="s-name" placeholder="Enter your name" onkeydown="if(event.key==='Enter')document.getElementById('s-code').focus()"/>
+      <label class="lbl">Your Name</label>
+      <input type="text" id="s-name" placeholder="Name"/>
     </div>
-    <div class="form-group" style="margin-bottom:8px">
-      <label class="lbl">Room Code *</label>
-      <input type="text" id="s-code" placeholder="ABC123" maxlength="6"
-        style="text-align:center;font-family:'Fredoka One',cursive;font-size:2rem;letter-spacing:8px"
-        oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'')"
-        onkeydown="if(event.key==='Enter')studentJoin()"/>
+    <div class="form-group">
+      <label class="lbl">Room Code</label>
+      <input type="text" id="s-code" placeholder="ABC123" maxlength="6" style="text-align:center;font-family:'Fredoka One',cursive;font-size:2rem;letter-spacing:8px"/>
     </div>
     <div class="errbox" id="join-err"></div>
     <button class="btn btn-blue btn-full" onclick="studentJoin()">Join Quiz!</button>
-    <p class="muted" style="font-size:.77rem;text-align:center;margin-top:14px">Get the room code from your teacher.</p>
   </div>
 </div>
 
+<!-- TEACHER DASHBOARD -->
 <div id="s-teacher-dash" class="screen" style="max-width:540px;margin:0 auto;padding-top:20px">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:10px">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
     <h2 class="h2 accent">Dashboard</h2>
-    <div style="display:flex;gap:8px">
-      <button class="btn btn-ghost" style="font-size:.82rem;padding:8px 14px" onclick="show('s-settings')">⚙️ Settings</button>
-      <button class="btn btn-ghost" style="font-size:.82rem;padding:8px 14px;color:#fca5a5;border-color:rgba(239,68,68,.3)" onclick="teacherLogout()">Logout</button>
-    </div>
+    <button class="btn btn-ghost" onclick="teacherLogout()">Logout</button>
   </div>
-  <button class="btn btn-purple btn-full" style="margin-bottom:28px;font-size:1.1rem" onclick="show('s-create-method')">＋ Create New Quiz</button>
-  <h3 class="h3" style="margin-bottom:14px">📚 Saved Quizzes</h3>
-  <div id="saved-list"><p class="muted" style="text-align:center;padding:20px 0">No quizzes yet. Create your first one!</p></div>
+  <button class="btn btn-purple btn-full" style="margin-bottom:28px" onclick="show('s-create-method')">＋ Create New Quiz</button>
+  <h3 class="h3" style="margin-bottom:14px">Saved Quizzes</h3>
+  <div id="saved-list"></div>
 </div>
 
-<div id="s-settings" class="screen" style="max-width:460px;margin:0 auto;padding-top:20px">
-  <button class="back-btn" onclick="show('s-teacher-dash')">← Back</button>
-  <h2 class="h2 accent" style="margin-bottom:20px">⚙️ Settings</h2>
-  <div class="card fade-in" style="margin-bottom:16px">
-    <h3 class="h3" style="margin-bottom:16px">Change Password</h3>
-    <div class="form-group"><label class="lbl">Current Password</label><input type="password" id="set-old-pass" placeholder="Current password"/></div>
-    <div class="form-group"><label class="lbl">New Password</label><input type="password" id="set-new-pass" placeholder="New password"/></div>
-    <div class="form-group"><label class="lbl">Confirm New Password</label><input type="password" id="set-new-pass2" placeholder="Confirm new password"/></div>
-    <div class="errbox" id="set-pass-err"></div>
-    <div class="successbox" id="set-pass-ok">✅ Password updated!</div>
-    <button class="btn btn-purple btn-full" onclick="changePassword()">Update Password</button>
-  </div>
-  <div class="card fade-in">
-    <h3 class="h3" style="margin-bottom:6px">Google Gemini API Key</h3>
-    <p class="muted" style="font-size:.8rem;margin-bottom:14px">Get free key from <a href="https://aistudio.google.com/apikey" target="_blank" style="color:#ffe066">aistudio.google.com/apikey</a></p>
-    <div class="form-group"><label class="lbl">New API Key</label><input type="password" id="set-apikey" placeholder="AIzaSy..."/></div>
-    <div class="errbox" id="set-key-err"></div>
-    <div class="successbox" id="set-key-ok">✅ API key updated!</div>
-    <button class="btn btn-blue btn-full" onclick="changeApiKey()">Update API Key</button>
-  </div>
-</div>
-
+<!-- CREATE METHOD -->
 <div id="s-create-method" class="screen">
   <button class="back-btn" onclick="show('s-teacher-dash')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:20px">Create Quiz</h2>
   <div class="method-card" onclick="show('s-create-ai')">
-    <span style="font-size:2.2rem;flex-shrink:0">🤖</span>
-    <div><div class="h3">AI — Type your topic</div><div class="muted" style="font-size:.8rem">Describe topic → Gemini searches Google → instant questions</div></div>
-  </div>
-  <div class="method-card" onclick="show('s-create-photo')">
-    <span style="font-size:2.2rem;flex-shrink:0">📸</span>
-    <div><div class="h3">Upload Photo / Image</div><div class="muted" style="font-size:.8rem">Photo of textbook page → AI extracts the questions</div></div>
-  </div>
-  <div class="method-card" onclick="show('s-create-manual');initManual()">
-    <span style="font-size:2.2rem;flex-shrink:0">✏️</span>
-    <div><div class="h3">Manual Entry</div><div class="muted" style="font-size:.8rem">Type your own questions and answers</div></div>
-  </div>
-</div>
-
-<div id="s-create-ai" class="screen" style="max-width:520px;margin:0 auto">
-  <button class="back-btn" onclick="show('s-create-method')">← Back</button>
-  <h2 class="h2 accent" style="margin-bottom:6px">🤖 AI Generator</h2>
-  <p class="muted" style="font-size:.85rem;margin-bottom:20px">Gemini searches Google to create accurate, up-to-date questions.</p>
-  <div class="card">
-    <div class="form-group">
-      <label class="lbl">Topic / What you want *</label>
-      <textarea id="ai-topic" rows="4" placeholder="Examples:&#10;• Form 4 Biology — Cell Division, 10 medium questions&#10;• SPM Add Maths quadratic equations, hard&#10;• UPSR Bahasa Melayu pemahaman, 5 soalan mudah&#10;• Malaysia History — Road to Independence"></textarea>
-    </div>
-    <div class="grid2 form-group">
-      <div><label class="lbl">Questions</label>
-        <select id="ai-count"><option>5</option><option selected>8</option><option>10</option><option>15</option><option>20</option></select>
-      </div>
-      <div><label class="lbl">Difficulty</label>
-        <select id="ai-diff"><option>Easy</option><option selected>Medium</option><option>Hard</option><option>Mixed</option></select>
-      </div>
-    </div>
-    <div class="errbox" id="ai-err"></div>
-    <button class="btn btn-purple btn-full" onclick="runAI()">✨ Generate Questions!</button>
-  </div>
-</div>
-
-<div id="s-create-photo" class="screen" style="max-width:500px;margin:0 auto">
-  <button class="back-btn" onclick="show('s-create-method')">← Back</button>
-  <h2 class="h2 accent" style="margin-bottom:20px">📸 From Photo</h2>
-  <div class="card">
-    <div class="form-group">
-      <label class="lbl">Quiz Title (optional)</label>
-      <input type="text" id="photo-title" placeholder="e.g. Chapter 5 Exercise"/>
-    </div>
-    <label style="display:block;border:2px dashed rgba(255,255,255,.14);border-radius:16px;padding:8px;text-align:center;cursor:pointer;color:rgba(255,255,255,.4);margin-bottom:14px;transition:border-color .2s" onmouseenter="this.style.borderColor='#7c3aed'" onmouseleave="this.style.borderColor='rgba(255,255,255,.14)'">
-      <div id="photo-placeholder" style="padding:36px 0">
-        <div style="font-size:40px;margin-bottom:8px">📷</div>
-        <div style="font-weight:600">Tap to upload photo</div>
-        <div style="font-size:.8rem;margin-top:4px">JPG · PNG · WEBP</div>
-      </div>
-      <img id="photo-preview" style="display:none;max-width:100%;max-height:260px;border-radius:10px;object-fit:contain"/>
-      <input type="file" id="photo-file" accept="image/*" style="display:none" onchange="handlePhoto(event)"/>
-    </label>
-    <div class="errbox" id="photo-err"></div>
-    <button class="btn btn-blue btn-full" id="photo-btn" onclick="runPhoto()" disabled>🔍 Extract Questions</button>
-  </div>
-</div>
-
-<div id="s-create-manual" class="screen" style="max-width:560px;margin:0 auto">
-  <button class="back-btn" onclick="show('s-create-method')">← Back</button>
-  <h2 class="h2 accent" style="margin-bottom:20px">✏️ Manual Entry</h2>
-  <div class="card" style="margin-bottom:14px">
-    <div class="form-group"><label class="lbl">Quiz Title *</label><input type="text" id="manual-title" placeholder="e.g. Chapter 3 Science Quiz"/></div>
-    <div><label class="lbl">Difficulty</label><select id="manual-diff"><option>Easy</option><option selected>Medium</option><option>Hard</option></select></div>
-  </div>
-  <div id="manual-qs"></div>
-  <div class="errbox" id="manual-err"></div>
-  <div style="display:flex;gap:10px;margin-top:4px">
-    <button class="btn btn-ghost" style="flex:1" onclick="addManualQ()">＋ Add Question</button>
-    <button class="btn btn-green" style="flex:2" onclick="saveManual()">✓ Save Quiz</button>
-  </div>
-</div>
-
-<div id="s-loading" class="screen center">
-  <div class="spinner-wrap">
-    <div class="spinner"></div>
-    <p id="loading-text" class="muted" style="max-width:280px">Loading...</p>
-  </div>
-</div>
-
-<div id="s-preview" class="screen" style="max-width:600px;margin:0 auto">
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:20px">
-    <div>
-      <button class="back-btn" onclick="show('s-create-method')">← Back</button>
-      <h2 class="h2 accent" id="preview-title" style="margin:0"></h2>
-      <p class="muted" style="font-size:.85rem;margin-top:4px" id="preview-meta"></p>
-    </div>
-    <button class="btn btn-green" onclick="openRoom()" style="padding:14px 28px;font-size:1.05rem">▶ Open Room</button>
-  </div>
-  <div class="errbox" id="preview-err"></div>
-  <div id="preview-list"></div>
-</div>
-
-<div id="s-lobby" class="screen" style="max-width:500px;margin:0 auto;text-align:center">
-  <div class="card fade-in" style="border-color:rgba(255,224,102,.25);margin-bottom:20px">
-    <p class="muted" style="font-size:.85rem;margin-bottom:8px">📢 Share this code with your students</p>
-    <div class="room-code" id="lobby-code">------</div>
-    <div style="display:flex;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap">
-      <button class="btn btn-ghost" style="font-size:.85rem;padding:8px 18px" onclick="copyCode()">📋 Copy Code</button>
-      <button class="btn btn-ghost" style="font-size:.85rem;padding:8px 18px" onclick="copyLink()">🔗 Copy Join Link</button>
-      <button class="btn btn-purple btn-full" onclick="downloadResultsCSV()" style="margin-top:10px">📊 Download Results (CSV)</button>
-    </div>
-    <p class="muted" style="font-size:.8rem;margin-top:10px" id="lobby-meta"></p>
-  </div>
-  <div style="text-align:left;margin-bottom:20px">
-    <h3 class="h3 accent" style="margin-bottom:12px">👥 Students Joined (<span id="lobby-count">0</span>)</h3>
-    <div class="card" id="lobby-players" style="min-height:72px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start">
-      <p class="muted" id="lobby-empty" style="width:100%;text-align:center;padding:10px 0;font-size:.85rem">Waiting for students to join...</p>
-    </div>
-  </div>
-  <div class="errbox" id="lobby-err"></div>
-  <button class="btn btn-green btn-full" id="start-btn" onclick="startQuiz()" disabled style="font-size:1.15rem">Waiting for students...</button>
-</div>
-
-<div id="s-control" class="screen" style="max-width:680px;margin:0 auto">
-  <div class="card flex-row" style="margin-bottom:14px;justify-content:space-between">
-    <div>
-      <div class="h3 accent" id="ctrl-qnum">Q 1/1</div>
-      <div class="muted" style="font-size:.75rem" id="ctrl-room">Room</div>
-    </div>
-    <div id="ctrl-badge"></div>
-    <div style="text-align:right">
-      <div style="font-family:'Fredoka One',cursive;color:#22c55e;font-size:1.1rem" id="ctrl-answered">0/0</div>
-      <div class="muted" style="font-size:.75rem">answered</div>
-    </div>
-  </div>
-  <div class="pbar" style="margin-bottom:14px"><div class="pbar-fill" id="ctrl-ans-bar" style="width:0%;background:#22c55e"></div></div>
-  <div style="background:#1a1850;border:2px solid rgba(255,255,255,.07);border-radius:18px;padding:22px 24px;text-align:center;margin-bottom:14px">
-    <p style="font-size:clamp(1rem,3vw,1.2rem);font-weight:700;margin:0;line-height:1.4" id="ctrl-question">Loading...</p>
-  </div>
-  <div class="ans-grid" id="ctrl-options" style="margin-bottom:14px"></div>
-  <div id="ctrl-expl" style="background:rgba(34,197,94,.09);border:1px solid rgba(34,197,94,.22);border-radius:14px;padding:12px 16px;margin-bottom:14px;font-size:.88rem;color:#bbf7d0;display:none"></div>
-  <div id="ctrl-lb-wrap" style="display:none;margin-bottom:14px">
-    <h3 class="h3 accent" style="margin-bottom:12px">🏆 Standings</h3>
-    <div id="ctrl-lb"></div>
-  </div>
-  <div class="errbox" id="ctrl-err"></div>
-  <button class="btn btn-orange btn-full" id="ctrl-reveal-btn" onclick="teacherReveal()">👁 Reveal Answer & Scores</button>
-  <button class="btn btn-purple btn-full" id="ctrl-next-btn" onclick="teacherNext()" style="display:none">→ Next Question</button>
-</div>
-
-<div id="s-t-results" class="screen center" style="max-width:500px;margin:0 auto;padding-top:20px">
-  <div style="font-size:64px;margin-bottom:8px">🏁</div>
-  <h2 class="h2 accent" style="margin-bottom:4px">Quiz Complete!</h2>
-  <p class="muted" style="margin-bottom:24px" id="t-results-meta"></p>
-  <div id="t-results-lb"></div>
-  <button class="btn btn-green btn-full" onclick="downloadResultsCSV()" style="margin-top:20px">📥 Save Final Results (Excel/CSV)</button>
-  <button class="btn btn-purple btn-full" style="margin-top:14px" onclick="goHome()">← Back to Home</button>
-</div>
-
-<div id="s-s-lobby" class="screen center" style="max-width:400px;margin:0 auto;padding-top:44px">
-  <div style="font-size:60px;margin-bottom:10px" class="pulse">⏳</div>
-  <h2 class="h2" style="margin-bottom:6px">You're In!</h2>
-  <p style="color:#22c55e;font-weight:700;margin-bottom:20px" id="s-lobby-name"></p>
-  <div class="card" style="text-align:left">
-    <p class="muted" style="font-size:.82rem;margin-bottom:10px">Players in room (<span id="s-lobby-count">1</span>)</p>
-    <div id="s-lobby-players" style="display:flex;flex-wrap:wrap;gap:8px"></div>
-  </div>
-  <p class="muted" style="margin-top:20px;font-size:.82rem">Waiting for teacher to start the quiz...</p>
-</div>
-
-<div id="s-game" class="screen" style="max-width:580px;margin:0 auto">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-    <div>
-      <div style="font-family:'Fredoka One',cursive;color:#ffe066" id="g-qnum">Q 1/1</div>
-      <div class="muted" style="font-size:.75rem" id="g-name"></div>
-    </div>
-    <div id="g-timer" style="width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:1.5rem;background:#22c55e;box-shadow:0 0 18px rgba(34,197,94,.5);transition:background .3s,box-shadow .3s">25</div>
-    <div style="text-align:right">
-      <div style="font-family:'Fredoka One',cursive;color:#ffe066" id="g-score">0 pts</div>
-      <div class="muted" style="font-size:.75rem" id="g-rank">Rank #1</div>
-    </div>
-  </div>
-  <div class="pbar" style="margin-bottom:12px"><div class="pbar-fill" id="g-timer-bar" style="width:100%;background:#22c55e"></div></div>
-  <div style="background:#1a1850;border:2px solid rgba(255,255,255,.07);border-radius:18px;padding:22px;text-align:center;margin-bottom:14px;min-height:90px;display:flex;align-items:center;justify-content:center">
-    <p style="font-size:clamp(1rem,3.5vw,1.2rem);font-weight:700;margin:0;line-height:1.4" id="g-question">Loading...</p>
-  </div>
-  <div class="ans-grid" id="g-options"></div>
-  <div id="g-feedback" style="display:none;margin-top:12px;padding:16px 18px;border-radius:16px"></div>
-</div>
-
-<div id="s-s-results" class="screen center" style="max-width:480px;margin:0 auto;padding-top:24px">
-  <div style="font-size:72px;margin-bottom:8px" id="s-result-emoji">🎉</div>
-  <h2 class="h2 accent" id="s-result-grade" style="margin-bottom:4px">Good job!</h2>
-  <p class="muted" style="margin-bottom:4px" id="s-result-score"></p>
-  <p class="muted" style="margin-bottom:24px" id="s-result-rank"></p>
-  <div id="s-result-lb"></div>
-  <button class="btn btn-blue btn-full" style="margin-top:24px" onclick="goHome()">← Play Again</button>
-</div>
-
-</div>
-
-<div id="toast" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#1e1e40;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 22px;font-weight:600;font-size:.9rem;transition:transform .3s;z-index:999;white-space:nowrap"></div>
-
-<script>
-// ══ FIREBASE ══════════════════════════════════════════════════
-firebase.initializeApp({
-  apiKey:"AIzaSyCEmZSSqNHBzhALLMpKS-uaECi5iddG_Bo",
-  authDomain:"quizblast-1e778.firebaseapp.com",
-  databaseURL:"https://quizblast-1e778-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId:"quizblast-1e778",
-  storageBucket:"quizblast-1e778.firebasestorage.app",
-  messagingSenderId:"86331098759",
-  appId:"1:86331098759:web:1f127d6574fb8f69be1a22"
-});
-const db=firebase.database();
-async function fbGet(p){const s=await db.ref(p).get();return s.val();}
-async function fbSet(p,v){await db.ref(p).set(v);}
-async function fbUpdate(p,v){await db.ref(p).update(v);}
-
-// ══ LOCAL STORAGE ═════════════════════════════════════════════
-const LS={
-  get:k=>{try{return JSON.parse(localStorage.getItem(k));}catch{return null;}},
-  set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))
-};
-
-// ══ STATE ═════════════════════════════════════════════════════
-let STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null};
-const COLORS=[{bg:"#e63946",shadow:"#7f1d1d",icon:"▲"},{bg:"#2563eb",shadow:"#1e3a8a",icon:"●"},{bg:"#ea580c",shadow:"#7c2d12",icon:"■"},{bg:"#16a34a",shadow:"#14532d",icon:"◆"}];
-const TIME_PER_Q=25;
-
-// ══ UTILS ═════════════════════════════════════════════════════
-function genCode(){return Math.random().toString(36).slice(2,8).toUpperCase();}
-function genUid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
-function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
-function toast(msg,dur=2500){const t=document.getElementById("toast");t.textContent=msg;t.style.transform="translateX(-50%) translateY(0)";setTimeout(()=>t.style.transform="translateX(-50%) translateY(80px)",dur);}
-function showErr(id,msg){const el=document.getElementById(id);if(el){el.innerHTML="⚠️ "+esc(msg);el.style.display="block";}}
-function hideErr(id){const el=document.getElementById(id);if(el)el.style.display="none";}
-function showOk(id,msg){const el=document.getElementById(id);if(el){el.textContent=msg;el.style.display="block";setTimeout(()=>el.style.display="none",3000);}}
-function setLoading(text){show("s-loading");document.getElementById("loading-text").textContent=text;}
-function stopPoll(){if(STATE.pollIv){clearInterval(STATE.pollIv);STATE.pollIv=null;}if(STATE.roomListener){STATE.roomListener();STATE.roomListener=null;}}
-
-function show(id){
-  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-  const el=document.getElementById(id);if(el)el.classList.add("active");
-  window.scrollTo(0,0);
-}
-
-// ══ EXPORT CSV ════════════════════════════════════════════════
-function downloadResultsCSV() {
-  if(!STATE.roomCode) return alert("No active room found.");
-  db.ref(`rooms/${STATE.roomCode}/players`).once('value', (s) => {
-    const players = s.val();
-    if(!players) return alert("No player data to export.");
-    let csv = "data:text/csv;charset=utf-8,Student Name,Score,Status\n";
-    Object.values(players).forEach(p => {
-      csv += `${p.name.replace(/,/g,"")},${p.score||0},${p.isDone?"Finished":"Playing"}\n`;
-    });
-    const link = document.createElement("a");
-    link.setAttribute("href", encodeURI(csv));
-    link.setAttribute("download", `QuizBlast_${STATE.roomCode}_Results.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  });
-}
-
-// ══ GEMINI AI ════════════════════════════════════════════════
-async function callGemini(prompt,isImg=false,imgData=null){
-  const key=LS.get("qb_apikey");
-  if(!key)throw new Error("API Key missing. Go to Settings.");
-  
-  // Updated to stable 2.5-flash-lite for better free tier support
-  const MODEL = "gemini-2.5-flash-lite";
-  const url=`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${key}`;
-  
-  const body={
-    contents:[{parts:[{text:prompt}]}],
-    generationConfig:{temperature:0.7,response_mime_type:"application/json"}
-  };
-  if(isImg && imgData) body.contents[0].parts.push({inline_data:{mime_type:"image/jpeg",data:imgData}});
-  
-  const r=await fetch(url,{method:'POST',body:JSON.stringify(body)});
-  const res=await r.json();
-  if(res.error)throw new Error(res.error.message);
-  
-  const text=res.candidates[0].content.parts[0].text;
-  
-  // AUTO-SAVE BACKUP
-  try { LS.set(`last_ai_quiz_${Date.now()}`, JSON.parse(text)); } catch(e){}
-  
-  return JSON.parse(text);
-}
-
-// ══ NAVIGATION / AUTH ════════════════════════════════════════
-function goHome(){stopPoll();STATE={...STATE,quiz:null,roomCode:null,roomListener:null};show("s-home");updateNav();}
-
-function updateNav(){
-  const nr=document.getElementById("nav-right");
-  if(STATE.role==="teacher"){
-    let h=`<span class="role-badge badge-teacher">👨‍🏫 Teacher</span>`;
-    if(STATE.roomCode)h+=`<span style="background:rgba(255,224,102,.1);border:1px solid rgba(255,224,102,.25);border-radius:10px;padding:4px 14px;font-size:.8rem;font-weight:700;color:#ffe066">Room: ${STATE.roomCode}</span>`;
-    h+=`<button onclick="teacherLogout()" style="background:transparent;border:1px solid rgba(239,68,68,.25);border-radius:9px;padding:5px 12px;color:#fca5a5;cursor:pointer;font-size:.8rem;font-family:'Poppins',sans-serif">Logout</button>`;
-    nr.innerHTML=h;
-  }else if(STATE.role==="student"){
-    nr.innerHTML=`<span class="role-badge badge-student">🎓 Student</span>`;
-  }else{nr.innerHTML="";}
-}
-
-function saveSetup(){
-  const p1=document.getElementById("setup-pass").value,p2=document.getElementById("setup-pass2").value,k=document.getElementById("setup-apikey").value;
-  if(p1.length<4)return showErr("setup-err","Password too short.");
-  if(p1!==p2)return showErr("setup-err","Passwords do not match.");
-  if(!k.startsWith("AIza"))return showErr("setup-err","Invalid API Key format.");
-  LS.set("qb_pass",p1);LS.set("qb_apikey",k);LS.set("qb_setup",true);
-  show("s-teacher-login");toast("Setup complete!");
-}
-
-function teacherLogin(){
-  if(!LS.get("qb_setup"))return show("s-setup");
-  const p=document.getElementById("t-login-pass").value;
-  if(p===LS.get("qb_pass")){
-    STATE.role="teacher";show("s-teacher-dash");updateNav();refreshQuizzes();
-  }else{showErr("t-login-err","Incorrect password.");}
-}
-function teacherLogout(){STATE.role=null;show("s-home");updateNav();}
-
-// ══ QUIZ MANAGEMENT ══════════════════════════════════════════
-function refreshQuizzes(){
-  const list=LS.get("qb_quizzes")||[];
-  const container=document.getElementById("saved-list");
-  if(!list.length){container.innerHTML=`<p class="muted" style="text-align:center;padding:20px 0">No quizzes yet.</p>`;return;}
-  container.innerHTML=list.map((q,i)=>`
-    <div class="card fade-in" style="margin-bottom:12px;padding:16px;display:flex;justify-content:space-between;align-items:center">
-      <div><div class="h3">${esc(q.title)}</div><div class="muted" style="font-size:.8rem">${q.questions.length} Questions · ${q.difficulty}</div></div>
-      <div style="display:flex;gap:8px">
-        <button class="btn btn-blue" style="padding:8px 14px;font-size:.8rem" onclick="previewQuiz(${i})">View</button>
-        <button class="btn btn-ghost" style="padding:8px;border-color:rgba(239,68,68,.2)" onclick="deleteQuiz(${i})">🗑️</button>
-      </div>
-    </div>
-  `).join("");
-}
-function deleteQuiz(i){if(confirm("Delete this quiz?")){const l=LS.get("qb_quizzes");l.splice(i,1);LS.set("qb_quizzes",l);refreshQuizzes();}}
-function previewQuiz(i){const l=LS.get("qb_quizzes");STATE.quiz=l[i];showPreview();}
-function showPreview(){
-  show("s-preview");
-  document.getElementById("preview-title").textContent=STATE.quiz.title;
-  document.getElementById("preview-meta").textContent=`${STATE.quiz.difficulty} · ${STATE.quiz.questions.length} Questions`;
-  document.getElementById("preview-list").innerHTML=STATE.quiz.questions.map((q,i)=>`
-    <div class="card" style="margin-bottom:10px;padding:14px;background:rgba(255,255,255,.03)">
-      <div style="font-weight:700;margin-bottom:8px">${i+1}. ${esc(q.question)}</div>
-      <div class="grid2">${q.options.map((opt,oi)=>`<div style="font-size:.85rem;padding:6px 10px;border-radius:8px;background:${oi===q.correct?'rgba(34,197,94,.15)':'rgba(255,255,255,.05)'};border:1px solid ${oi===q.correct?'rgba(34,197,94,.3)':'transparent'}">${esc(opt)}</div>`).join("")}</div>
-    </div>
-  `).join("");
-}
-
-// ══ GENERATION ═══════════════════════════════════════════════
-async function runAI(){
-  const t=document.getElementById("ai-topic").value.trim(),c=document.getElementById("ai-count").value,d=document.getElementById("ai-diff").value;
-  if(!t)return showErr("ai-err","Enter a topic.");
-  setLoading("AI is searching Google and writing questions...");
-  const prompt=`Create a JSON quiz about "${t}". Difficulty: ${d}. Count: ${c}. Format: { "title": "${t}", "difficulty": "${d}", "questions": [ { "question": "...", "options": ["A","B","C","D"], "correct": 0, "explanation": "..." } ] }. Use correct index (0-3) for correct answer. Ensure high accuracy.`;
-  try{
-    const quiz=await callGemini(prompt);
-    const list=LS.get("qb_quizzes")||[];list.unshift(quiz);LS.set("qb_quizzes",list);
-    STATE.quiz=quiz;showPreview();toast("Quiz generated!");
-  }catch(e){show("s-create-ai");showErr("ai-err",e.message);}
-}
-
-function handlePhoto(e){
-  const f=e.target.files[0];if(!f)return;
-  const reader=new FileReader();
-  reader.onload=ev=>{
-    document.getElementById("photo-placeholder").style.display="none";
-    const img=document.getElementById("photo-preview");img.src=ev.target.result;img.style.display="block";
-    document.getElementById("photo-btn").disabled=false;
-  };
-  reader.readAsDataURL(f);
-}
-
-async function runPhoto(){
-  const img=document.getElementById("photo-preview").src.split(',')[1],title=document.getElementById("photo-title").value||"Photo Quiz";
-  setLoading("AI is reading the photo and extracting questions...");
-  const prompt=`Extract questions from this image into JSON format. Title: "${title}". Difficulty: Medium. Format: { "title": "${title}", "difficulty": "Medium", "questions": [ { "question": "...", "options": ["...","...","...","..."], "correct": 0, "explanation": "..." } ] }. Use correct index for correct answer.`;
-  try{
-    const quiz=await callGemini(prompt,true,img);
-    const list=LS.get("qb_quizzes")||[];list.unshift(quiz);LS.set("qb_quizzes",list);
-    STATE.quiz=quiz;showPreview();toast("Questions extracted!");
-  }catch(e){show("s-create-photo");showErr("photo-err",e.message);}
-}
-
-// ══ MANUAL ENTRY ═════════════════════════════════════════════
-function initManual(){
-  document.getElementById("manual-qs").innerHTML="";
-  document.getElementById("manual-title").value="";
-  addManualQ();
-}
-function addManualQ(){
-  const div=document.createElement("div");div.className="card fade-in manual-q-card";div.style="margin-bottom:12px";
-  div.innerHTML=`
-    <div class="form-group"><label class="lbl">Question</label><input type="text" class="mq-q" placeholder="The question..."/></div>
-    <div class="grid2">
-      <div class="form-group"><label class="lbl">Opt 1 (Correct)</label><input type="text" class="mq-o0" placeholder="Correct answer"/></div>
-      <div class="form-group"><label class="lbl">Opt 2</label><input type="text" class="mq-o1" placeholder="Wrong answer"/></div>
-      <div class="form-group"><label class="lbl">Opt 3</label><input type="text" class="mq-o2" placeholder="Wrong answer"/></div>
-      <div class="form-group"><label class="lbl">Opt 4</label><input type="text" class="mq-o3" placeholder="Wrong answer"/></div>
-    </div>
-  `;
-  document.getElementById("manual-qs").appendChild(div);
-}
-function saveManual(){
-  const title=document.getElementById("manual-title").value.trim(),diff=document.getElementById("manual-diff").value;
-  if(!title)return showErr("manual-err","Enter quiz title.");
-  const qs=[];
-  document.querySelectorAll(".manual-q-card").forEach(el=>{
-    const q=el.querySelector(".mq-q").value,o0=el.querySelector(".mq-o0").value,o1=el.querySelector(".mq-o1").value,o2=el.querySelector(".mq-o2").value,o3=el.querySelector(".mq-o3").value;
-    if(q&&o0&&o1){
-      const opts=[o0,o1,o2||"N/A",o3||"N/A"];
-      qs.push({question:q,options:opts,correct:0,explanation:""});
-    }
-  });
-  if(!qs.length)return showErr("manual-err","Add at least 1 question.");
-  const quiz={title,difficulty:diff,questions:qs};
-  const list=LS.get("qb_quizzes")||[];list.unshift(quiz);LS.set("qb_quizzes",list);
-  STATE.quiz=quiz;showPreview();toast("Quiz saved!");
-}
-
-// ══ GAME LOBBY ═══════════════════════════════════════════════
-async function openRoom(){
-  const code=genCode();STATE.roomCode=code;
-  await fbSet(`rooms/${code}`,{status:"lobby",quiz:STATE.quiz,createdAt:Date.now()});
-  show("s-lobby");updateNav();
-  document.getElementById("lobby-code").textContent=code;
-  document.getElementById("lobby-meta").textContent=`${STATE.quiz.title} · ${STATE.quiz.questions.length} Qs`;
-  
-  const ref=db.ref(`rooms/${code}/players`);
-  ref.on("value",s=>{
-    const players=s.val()||{};
-    const count=Object.keys(players).length;
-    document.getElementById("lobby-count").textContent=count;
-    document.getElementById("lobby-empty").style.display=count?"none":"block";
-    document.getElementById("lobby-players").innerHTML=Object.values(players).map(p=>`<div class="chip fade-in">${esc(p.name)}</div>`).join("");
-    const btn=document.getElementById("start-btn");
-    btn.disabled=count<1;btn.textContent=count<1?"Waiting for students...":"Start Quiz ▶";
-  });
-  STATE.roomListener=()=>ref.off();
-}
-
-function copyCode(){navigator.clipboard.writeText(STATE.roomCode);toast("Code copied!");}
-function copyLink(){const url=window.location.href.split('?')[0]+"?room="+STATE.roomCode;navigator.clipboard.writeText(url);toast("Join link copied!");}
-
-async function startQuiz(){
-  await fbUpdate(`rooms/${STATE.roomCode}`,{status:"question",qi:0,questionStartTime:Date.now()});
-  showControl();
-}
-
-// ══ TEACHER CONTROL ══════════════════════════════════════════
-function showControl(){
-  show("s-control");
-  const ref=db.ref(`rooms/${STATE.roomCode}`);
-  ref.on("value",s=>{
-    const room=s.val();if(!room)return;
-    if(room.status==="question"){
-      renderTeacherQ(room);
-      document.getElementById("ctrl-reveal-btn").style.display="block";
-      document.getElementById("ctrl-next-btn").style.display="none";
-      document.getElementById("ctrl-lb-wrap").style.display="none";
-      document.getElementById("ctrl-expl").style.display="none";
-    }else if(room.status==="reveal"){
-      document.getElementById("ctrl-reveal-btn").style.display="none";
-      document.getElementById("ctrl-next-btn").style.display="block";
-      document.getElementById("ctrl-lb-wrap").style.display="block";
-      const q=room.quiz.questions[room.qi];
-      if(q.explanation){const ex=document.getElementById("ctrl-expl");ex.textContent="💡 "+q.explanation;ex.style.display="block";}
-      renderTeacherLB(room.players||{});
-    }else if(room.status==="results"){
-      ref.off();showTeacherResults(room.players||{});
-    }
-  });
-  STATE.roomListener=()=>ref.off();
-}
-
-function renderTeacherQ(room){
-  const q=room.quiz.questions[room.qi];
-  document.getElementById("ctrl-qnum").textContent=`Q ${room.qi+1}/${room.quiz.questions.length}`;
-  document.getElementById("ctrl-room").textContent=`Room: ${STATE.roomCode}`;
-  document.getElementById("ctrl-question").textContent=q.question;
-  const players=Object.values(room.players||{});
-  const answered=players.filter(p=>p.answers && p.answers[room.qi]).length;
-  document.getElementById("ctrl-answered").textContent=`${answered}/${players.length}`;
-  document.getElementById("ctrl-ans-bar").style.width=(answered/players.length*100 || 0)+"%";
-  document.getElementById("ctrl-options").innerHTML=q.options.map((opt,i)=>`
-    <div class="opt-bar" style="background:${room.status==='reveal'?(i===q.correct?'rgba(34,197,94,.2)':'rgba(255,255,255,.05)'):'rgba(255,255,255,.05)'};border:1.5px solid ${room.status==='reveal'?(i===q.correct?'#22c55e':'transparent'):'transparent'}">
-      <span class="muted" style="margin-right:8px">${String.fromCharCode(65+i)}.</span> ${esc(opt)}
-    </div>
-  `).join("");
-}
-function renderTeacherLB(players){
-  document.getElementById("ctrl-lb").innerHTML=renderLB(players);
-}
-async function teacherReveal(){await fbUpdate(`rooms/${STATE.roomCode}`,{status:"reveal"});}
-async function teacherNext(){
-  const room=await fbGet(`rooms/${STATE.roomCode}`);
-  const next=room.qi+1;
-  if(next>=room.quiz.questions.length){
-    await fbUpdate(`rooms/${STATE.roomCode}`,{status: "results"});
-  }else{
-    await fbUpdate(`rooms/${STATE.roomCode}`,{status:"question",qi:next,questionStartTime:Date.now()});
-  }
-}
-
-function showTeacherResults(players){
-  show("s-t-results");
-  document.getElementById("t-results-meta").textContent=`Room: ${STATE.roomCode} · ${STATE.quiz.title}`;
-  document.getElementById("t-results-lb").innerHTML=renderLB(players);
-}
-
-// ══ STUDENT LOGIC ════════════════════════════════════════════
-async function studentJoin(){
-  const name=document.getElementById("s-name").value.trim(),code=document.getElementById("s-code").value.toUpperCase();
-  if(!name||!code)return showErr("join-err","Enter name and code.");
-  const room=await fbGet(`rooms/${code}`);
-  if(!room)return showErr("join-err","Room not found.");
-  if(room.status!=="lobby")return showErr("join-err","Quiz already started.");
-  STATE.role="student";STATE.roomCode=code;STATE.playerName=name;STATE.uid=genUid();
-  await fbSet(`rooms/${code}/players/${STATE.uid}`,{name,score:0,joinedAt:Date.now()});
-  show("s-s-lobby");updateNav();
-  document.getElementById("s-lobby-name").textContent=name;
-  const ref=db.ref(`rooms/${code}`);
-  ref.on("value",s=>{
-    const r=s.val();if(!r)return;
-    if(r.status==="lobby"){
-      const pc=Object.keys(r.players||{}).length;
-      document.getElementById("s-lobby-count").textContent=pc;
-      document.getElementById("s-lobby-players").innerHTML=Object.values(r.players||{}).map(p=>`<div class="chip me">${esc(p.name)}</div>`).join("");
-    }else if(r.status==="question" || r.status==="reveal"){
-      ref.off();startStudentGame();
-    }
-  });
-  STATE.roomListener=()=>ref.off();
-}
-
-function startStudentGame(){
-  show("s-game");
-  document.getElementById("g-name").textContent=STATE.playerName;
-  const ref=db.ref(`rooms/${STATE.roomCode}`);
-  ref.on("value",s=>{
-    const r=s.val();if(!r)return;
-    if(r.status==="question"){
-      if(STATE.pollIv)clearInterval(STATE.pollIv);
-      renderStudentQ(r);
-    }else if(r.status==="reveal"){
-      if(STATE.pollIv)clearInterval(STATE.pollIv);
-      showStudentReveal(r);
-    }else if(r.status==="results"){
-      ref.off();showStudentResults(r.players||{});
-    }
-  });
-  STATE.roomListener=()=>ref.off();
-}
-
-function renderStudentQ(room){
-  const q=room.quiz.questions[room.qi];
-  document.getElementById("g-qnum").textContent=`Q ${room.qi+1}/${room.quiz.questions.length}`;
-  document.getElementById("g-question").textContent=q.question;
-  document.getElementById("g-score").textContent=`${STATE.localScore} pts`;
-  document.getElementById("g-feedback").style.display="none";
-  
-  const hasAns=STATE.answered[room.qi]!==undefined;
-  document.getElementById("g-options").innerHTML=q.options.map((opt,i)=>`
-    <button class="ans-btn" style="background:${COLORS[i].bg};box-shadow:0 6px ${COLORS[i].shadow}" onclick="submitAnswer(${room.qi},${i})" ${hasAns?'disabled':''}>
-      <div class="ans-icon">${COLORS[i].icon}</div>
-      <span>${esc(opt)}</span>
-    </button>
-  `).join("");
-  
-  // TIMER
-  const start=room.questionStartTime;
-  if(STATE.pollIv)clearInterval(STATE.pollIv);
-  STATE.pollIv=setInterval(()=>{
-    const elapsed=(Date.now()-start)/1000;
-    const rem=Math.max(0,Math.ceil(TIME_PER_Q-elapsed));
-    const pct=Math.max(0,(TIME_PER_Q-elapsed)/TIME_PER_Q*100);
-    const timerEl=document.getElementById("g-timer");
-    timerEl.textContent=rem;
-    document.getElementById("g-timer-bar").style.width=pct+"%";
-    if(rem<=5){timerEl.style.background="#ef4444";timerEl.style.boxShadow="0 0 20px #ef4444";}
-    else{timerEl.style.background="#22c55e";timerEl.style.boxShadow="0 0 18px rgba(34,197,94,.5)";}
-    if(rem<=0)clearInterval(STATE.pollIv);
-  },100);
-}
-
-async function submitAnswer(qi,choice){
-  const room=await fbGet(`rooms/${STATE.roomCode}`);
-  if(!room||room.status!=="question")return;
-  STATE.answered[qi]=choice;
-  const q=room.quiz.questions[qi];
-  const elapsed=(Date.now()-room.questionStartTime)/1000;
-  const bonus=choice===q.correct?Math.round(Math.max(0,TIME_PER_Q-elapsed)*3):0;
-  const pts=choice===q.correct?100+bonus:0;
-  STATE.localScore+=pts;
-  try{
-    await fbSet(`rooms/${STATE.roomCode}/players/${STATE.uid}/answers/${qi}`,{choice,pts});
-    await fbSet(`rooms/${STATE.roomCode}/players/${STATE.uid}/score`,STATE.localScore);
-    document.querySelectorAll(".ans-btn").forEach(b=>b.disabled=true);
-    toast("Answer submitted!");
-  }catch(e){console.error("Save error",e);}
-}
-
-function showStudentReveal(room){
-  const q=room.quiz.questions[room.qi];
-  const myAns=room.players[STATE.uid].answers?.[room.qi];
-  const isCorrect=myAns && myAns.choice===q.correct;
-  const fb=document.getElementById("g-feedback");
-  fb.style.display="block";
-  fb.style.background=isCorrect?"rgba(34,197,94,.15)":"rgba(239,68,68,.15)";
-  fb.style.border=`1px solid ${isCorrect?'#22c55e':'#ef4444'}`;
-  fb.innerHTML=`
-    <div style="font-weight:700;font-size:1.1rem;color:${isCorrect?'#86efac':'#fca5a5'}">${isCorrect?'CORRECT! 🎉':(myAns?'WRONG ❌':'TIME UP ⏰')}</div>
-    <div style="font-size:.85rem;margin-top:4px">Correct Answer: <strong>${esc(q.options[q.correct])}</strong></div>
-    ${q.explanation?`<div style="font-size:.8rem;margin-top:8px;opacity:.8">💡 ${esc(q.explanation)}</div>`:''}
-  `;
-}
-
-function showStudentResults(players){
-  show("s-s-results");
-  const my=players[STATE.uid];
-  const sorted=Object.entries(players).sort((a,b)=>b[1].score-a[1].score);
-  const rank=sorted.findIndex(x=>x[0]===STATE.uid)+1;
-  document.getElementById("s-result-score").textContent=`Final Score: ${my.score} pts`;
-  document.getElementById("s-result-rank").textContent=`Ranked #${rank} out of ${sorted.length}`;
-  document.getElementById("s-result-lb").innerHTML=renderLB(players,STATE.uid);
-}
-
-// ══ LEADERBOARD ═══════════════════════════════════════════════
-function renderLB(players,myUid){
-  const sorted=Object.entries(players).sort((a,b)=>(b[1].score||0)-(a[1].score||0));
-  const medals=["🥇","🥈","🥉"];
-  return sorted.map(([uid,p],i)=>`
-    <div class="lb-row${uid===myUid?" me":""}">
-      <span style="font-size:1.3rem;width:32px;text-align:center">${medals[i]||`#${i+1}`}</span>
-      <span style="flex:1;font-weight:600">${esc(p.name)}${uid===myUid?" 👈":""}</span>
-      <span style="font-family:'Fredoka One',cursive;color:#ffe066">${p.score||0}</span>
-    </div>
-  `).join("");
-}
-
-// ══ AUTO JOIN FROM URL ════════════════════════════════════════
-window.onload=()=>{
-  const urlParams=new URLSearchParams(window.location.search);
-  const r=urlParams.get('room');
-  if(r){document.getElementById("s-code").value=r.toUpperCase();show("s-student-login");}
-  else{show("s-home");}
-};
-</script>
-</body>
-</html>
+    <span style="font-size:2.2rem">🤖</span>
+    <div><div class="h3">AI Generator</div><div class="muted">Type a topic
