@@ -312,6 +312,49 @@ window.onload = () => {
   if(!LS.get("qb_init")) show("s-setup");
   else show("s-home");
 };
-</script>
-</body>
-</html>
+// ══ GEMINI LOGIC (FALLBACK TO 2.0 FLASH) ════════════════════════
+async function callGemini(prompt, imageData = null) {
+  const apiKey = LS.get("qb_apikey");
+  
+  // Switching to 2.0 Flash to bypass the 2.5 "High Demand" spike
+  const MODEL = "gemini-2.0-flash-exp"; 
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${apiKey}`;
+
+  const payload = {
+    contents: [{
+      parts: [
+        { text: prompt },
+        ...(imageData ? [{ inline_data: { mime_type: "image/jpeg", data: imageData } }] : [])
+      ]
+    }],
+    generationConfig: { 
+      response_mime_type: "application/json",
+      temperature: 0.7
+    }
+  };
+
+  try {
+    const res = await fetch(url, { 
+      method: "POST", 
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload) 
+    });
+    
+    const data = await res.json();
+    
+    // If 2.0 also fails, we provide a clearer error message
+    if (data.error) {
+       if (data.error.code === 429 || data.error.status === "UNAVAILABLE") {
+         throw new Error("Google's servers are busy. Please wait 30 seconds and try again.");
+       }
+       throw new Error(data.error.message);
+    }
+    
+    if (!data.candidates || !data.candidates[0]) throw new Error("No response from AI.");
+    
+    return JSON.parse(data.candidates[0].content.parts[0].text);
+  } catch (err) {
+    console.error("Gemini Error:", err);
+    throw err;
+  }
+}
