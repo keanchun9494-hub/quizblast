@@ -503,7 +503,7 @@ async function callGemini(prompt,useSearch,imageData){
     const msg=e?.error?.message||`Gemini API error ${r.status}`;
     if(r.status===400)throw new Error(msg+" — Check your API key.");
     if(r.status===403)throw new Error("API key not authorised. Enable Generative Language API in Google Cloud.");
-    if(r.status===404)throw new Error("Model not found. Check that your API key has access to Gemini 2.5 Flash Lite.");
+    if(r.status===404)throw new Error("Model not found. Check that your API key has access to Gemini 1.5 Flash.");
     throw new Error(msg);
   }
   const d=await r.json();
@@ -590,7 +590,7 @@ async function runAI(){
   const diff=document.getElementById("ai-diff").value;
   hideErr("ai-err");
   if(!topic){showErr("ai-err","Please describe the topic first.");return;}
-  setLoading("🤖 Gemini 2.5 Flash Lite is generating questions... (may take 15–30 sec)");
+  setLoading("🤖 Gemini 1.5 Flash is generating questions... (may take 15–30 sec)");
   try{
     const prompt=`You are a quiz creator for Malaysian school students (primary and secondary level).
 Use Google Search to find accurate, curriculum-aligned information, then create exactly ${count} multiple-choice questions about: "${topic}".
