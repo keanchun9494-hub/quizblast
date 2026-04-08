@@ -496,8 +496,8 @@ async function callGemini(prompt, useSearch, imageData){
   if(!apiKey)throw new Error("No Google API key set. Please go to ⚙️ Settings.");
 
   const MODEL = useSearch
-    ? "gemini-2.5-flash"        // supports Google Search grounding
-    : "gemini-2.5-flash";
+    ? "gemini-3.1-flash-lite-preview"        // supports Google Search grounding
+    : "gemini-3.1-flash-lite-preview";
 
   const url=`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${apiKey}`;
 
