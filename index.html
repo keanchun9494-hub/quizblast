@@ -85,7 +85,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 
 <div id="app">
 
-<!-- HOME -->
 <div id="s-home" class="screen center" style="padding-top:36px">
   <div style="font-size:72px;margin-bottom:10px">🎯</div>
   <h1 class="h1" style="background:linear-gradient(135deg,#fff 30%,#ffe066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px">QuizBlast!</h1>
@@ -108,7 +107,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
-<!-- FIRST-TIME SETUP -->
 <div id="s-setup" class="screen" style="max-width:480px;margin:0 auto;padding-top:24px">
   <div style="text-align:center;margin-bottom:28px">
     <div style="font-size:48px;margin-bottom:8px">⚙️</div>
@@ -139,7 +137,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
-<!-- TEACHER LOGIN -->
 <div id="s-teacher-login" class="screen" style="max-width:400px;margin:0 auto;padding-top:30px">
   <button class="back-btn" onclick="show('s-home')">← Back</button>
   <div style="text-align:center;margin-bottom:28px">
@@ -158,7 +155,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
-<!-- STUDENT LOGIN -->
 <div id="s-student-login" class="screen" style="max-width:400px;margin:0 auto;padding-top:30px;text-align:center">
   <button class="back-btn" onclick="show('s-home')">← Back</button>
   <div style="font-size:56px;margin-bottom:8px">🎓</div>
@@ -181,7 +177,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
-<!-- TEACHER DASHBOARD -->
 <div id="s-teacher-dash" class="screen" style="max-width:540px;margin:0 auto;padding-top:20px">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:10px">
     <h2 class="h2 accent">Dashboard</h2>
@@ -195,7 +190,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <div id="saved-list"><p class="muted" style="text-align:center;padding:20px 0">No quizzes yet. Create your first one!</p></div>
 </div>
 
-<!-- SETTINGS -->
 <div id="s-settings" class="screen" style="max-width:460px;margin:0 auto;padding-top:20px">
   <button class="back-btn" onclick="show('s-teacher-dash')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:20px">⚙️ Settings</h2>
@@ -218,7 +212,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
-<!-- CREATE METHOD -->
 <div id="s-create-method" class="screen">
   <button class="back-btn" onclick="show('s-teacher-dash')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:20px">Create Quiz</h2>
@@ -236,7 +229,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
-<!-- CREATE AI -->
 <div id="s-create-ai" class="screen" style="max-width:520px;margin:0 auto">
   <button class="back-btn" onclick="show('s-create-method')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:6px">🤖 AI Generator</h2>
@@ -259,7 +251,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
-<!-- CREATE PHOTO -->
 <div id="s-create-photo" class="screen" style="max-width:500px;margin:0 auto">
   <button class="back-btn" onclick="show('s-create-method')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:20px">📸 From Photo</h2>
@@ -282,7 +273,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
-<!-- MANUAL CREATE -->
 <div id="s-create-manual" class="screen" style="max-width:560px;margin:0 auto">
   <button class="back-btn" onclick="show('s-create-method')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:20px">✏️ Manual Entry</h2>
@@ -298,7 +288,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
-<!-- LOADING -->
 <div id="s-loading" class="screen center">
   <div class="spinner-wrap">
     <div class="spinner"></div>
@@ -306,7 +295,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
-<!-- PREVIEW -->
 <div id="s-preview" class="screen" style="max-width:600px;margin:0 auto">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:20px">
     <div>
@@ -320,7 +308,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <div id="preview-list"></div>
 </div>
 
-<!-- TEACHER LOBBY -->
 <div id="s-lobby" class="screen" style="max-width:500px;margin:0 auto;text-align:center">
   <div class="card fade-in" style="border-color:rgba(255,224,102,.25);margin-bottom:20px">
     <p class="muted" style="font-size:.85rem;margin-bottom:8px">📢 Share this code with your students</p>
@@ -328,6 +315,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
     <div style="display:flex;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap">
       <button class="btn btn-ghost" style="font-size:.85rem;padding:8px 18px" onclick="copyCode()">📋 Copy Code</button>
       <button class="btn btn-ghost" style="font-size:.85rem;padding:8px 18px" onclick="copyLink()">🔗 Copy Join Link</button>
+      <button class="btn btn-purple btn-full" onclick="downloadResultsCSV()" style="margin-top:10px">📊 Download Results (CSV)</button>
     </div>
     <p class="muted" style="font-size:.8rem;margin-top:10px" id="lobby-meta"></p>
   </div>
@@ -341,7 +329,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <button class="btn btn-green btn-full" id="start-btn" onclick="startQuiz()" disabled style="font-size:1.15rem">Waiting for students...</button>
 </div>
 
-<!-- TEACHER CONTROL -->
 <div id="s-control" class="screen" style="max-width:680px;margin:0 auto">
   <div class="card flex-row" style="margin-bottom:14px;justify-content:space-between">
     <div>
@@ -369,16 +356,15 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <button class="btn btn-purple btn-full" id="ctrl-next-btn" onclick="teacherNext()" style="display:none">→ Next Question</button>
 </div>
 
-<!-- TEACHER RESULTS -->
 <div id="s-t-results" class="screen center" style="max-width:500px;margin:0 auto;padding-top:20px">
   <div style="font-size:64px;margin-bottom:8px">🏁</div>
   <h2 class="h2 accent" style="margin-bottom:4px">Quiz Complete!</h2>
   <p class="muted" style="margin-bottom:24px" id="t-results-meta"></p>
   <div id="t-results-lb"></div>
-  <button class="btn btn-purple btn-full" style="margin-top:24px" onclick="goHome()">← Back to Home</button>
+  <button class="btn btn-green btn-full" onclick="downloadResultsCSV()" style="margin-top:20px">📥 Save Final Results (Excel/CSV)</button>
+  <button class="btn btn-purple btn-full" style="margin-top:14px" onclick="goHome()">← Back to Home</button>
 </div>
 
-<!-- STUDENT WAITING LOBBY -->
 <div id="s-s-lobby" class="screen center" style="max-width:400px;margin:0 auto;padding-top:44px">
   <div style="font-size:60px;margin-bottom:10px" class="pulse">⏳</div>
   <h2 class="h2" style="margin-bottom:6px">You're In!</h2>
@@ -390,7 +376,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <p class="muted" style="margin-top:20px;font-size:.82rem">Waiting for teacher to start the quiz...</p>
 </div>
 
-<!-- STUDENT GAME -->
 <div id="s-game" class="screen" style="max-width:580px;margin:0 auto">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
     <div>
@@ -411,7 +396,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <div id="g-feedback" style="display:none;margin-top:12px;padding:16px 18px;border-radius:16px"></div>
 </div>
 
-<!-- STUDENT RESULTS -->
 <div id="s-s-results" class="screen center" style="max-width:480px;margin:0 auto;padding-top:24px">
   <div style="font-size:72px;margin-bottom:8px" id="s-result-emoji">🎉</div>
   <h2 class="h2 accent" id="s-result-grade" style="margin-bottom:4px">Good job!</h2>
@@ -469,6 +453,55 @@ function show(id){
   window.scrollTo(0,0);
 }
 
+// ══ EXPORT CSV ════════════════════════════════════════════════
+function downloadResultsCSV() {
+  if(!STATE.roomCode) return alert("No active room found.");
+  db.ref(`rooms/${STATE.roomCode}/players`).once('value', (s) => {
+    const players = s.val();
+    if(!players) return alert("No player data to export.");
+    let csv = "data:text/csv;charset=utf-8,Student Name,Score,Status\n";
+    Object.values(players).forEach(p => {
+      csv += `${p.name.replace(/,/g,"")},${p.score||0},${p.isDone?"Finished":"Playing"}\n`;
+    });
+    const link = document.createElement("a");
+    link.setAttribute("href", encodeURI(csv));
+    link.setAttribute("download", `QuizBlast_${STATE.roomCode}_Results.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+}
+
+// ══ GEMINI AI ════════════════════════════════════════════════
+async function callGemini(prompt,isImg=false,imgData=null){
+  const key=LS.get("qb_apikey");
+  if(!key)throw new Error("API Key missing. Go to Settings.");
+  
+  // Updated to stable 2.5-flash-lite for better free tier support
+  const MODEL = "gemini-2.5-flash-lite";
+  const url=`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${key}`;
+  
+  const body={
+    contents:[{parts:[{text:prompt}]}],
+    generationConfig:{temperature:0.7,response_mime_type:"application/json"}
+  };
+  if(isImg && imgData) body.contents[0].parts.push({inline_data:{mime_type:"image/jpeg",data:imgData}});
+  
+  const r=await fetch(url,{method:'POST',body:JSON.stringify(body)});
+  const res=await r.json();
+  if(res.error)throw new Error(res.error.message);
+  
+  const text=res.candidates[0].content.parts[0].text;
+  
+  // AUTO-SAVE BACKUP
+  try { LS.set(`last_ai_quiz_${Date.now()}`, JSON.parse(text)); } catch(e){}
+  
+  return JSON.parse(text);
+}
+
+// ══ NAVIGATION / AUTH ════════════════════════════════════════
+function goHome(){stopPoll();STATE={...STATE,quiz:null,roomCode:null,roomListener:null};show("s-home");updateNav();}
+
 function updateNav(){
   const nr=document.getElementById("nav-right");
   if(STATE.role==="teacher"){
@@ -477,446 +510,294 @@ function updateNav(){
     h+=`<button onclick="teacherLogout()" style="background:transparent;border:1px solid rgba(239,68,68,.25);border-radius:9px;padding:5px 12px;color:#fca5a5;cursor:pointer;font-size:.8rem;font-family:'Poppins',sans-serif">Logout</button>`;
     nr.innerHTML=h;
   }else if(STATE.role==="student"){
-    nr.innerHTML=`<span class="role-badge badge-student">🎓 ${esc(STATE.playerName||"Student")}</span>`;
+    nr.innerHTML=`<span class="role-badge badge-student">🎓 Student</span>`;
   }else{nr.innerHTML="";}
 }
 
-function goHome(){
-  stopPoll();
-  STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null};
-  updateNav();
-  const code=new URLSearchParams(window.location.search).get("join");
-  if(code){document.getElementById("s-code").value=code;show("s-student-login");}
-  else show("s-home");
-}
-
-// ══ GOOGLE GEMINI API ═════════════════════════════════════════
-async function callGemini(prompt, useSearch, imageData){
-  const apiKey=LS.get("qb_apikey");
-  if(!apiKey)throw new Error("No Google API key set. Please go to ⚙️ Settings.");
-
-  const MODEL = useSearch
-    ? "gemini-2.5-flash-lite"        // supports Google Search grounding
-    : "gemini-2.5-flash-lite";
-
-  const url=`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${apiKey}`;
-
-  // Build content parts
-  const parts=[];
-  if(imageData){
-    parts.push({inlineData:{mimeType:imageData.mime,data:imageData.b64}});
-  }
-  parts.push({text:prompt});
-
-  const body={
-    contents:[{role:"user",parts}],
-    generationConfig:{temperature:0.4,maxOutputTokens:4096}
-  };
-
-  // Add Google Search grounding tool when needed
-  if(useSearch){
-    body.tools=[{googleSearch:{}}];
-  }
-
-  const r=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
-  if(!r.ok){
-    const e=await r.json().catch(()=>({}));
-    const msg=e?.error?.message||`Gemini API error ${r.status}`;
-    if(r.status===400)throw new Error(msg+" — Check your API key is correct.");
-    if(r.status===403)throw new Error("API key not authorised. Make sure Generative Language API is enabled in your Google Cloud project.");
-    throw new Error(msg);
-  }
-
-  const d=await r.json();
-  const text=(d.candidates?.[0]?.content?.parts||[]).filter(p=>p.text).map(p=>p.text).join("");
-  if(!text)throw new Error("Gemini returned an empty response. Try again.");
-
-  // Extract JSON array from response
-  const clean=text.replace(/```json\s*/g,"").replace(/```\s*/g,"").trim();
-  const s=clean.indexOf("["),e=clean.lastIndexOf("]");
-  if(s===-1||e===-1)throw new Error("Could not parse questions from AI response. Try a more specific topic.");
-  return JSON.parse(clean.slice(s,e+1));
-}
-
-// ══ SETUP & AUTH ══════════════════════════════════════════════
 function saveSetup(){
-  const pass=document.getElementById("setup-pass").value;
-  const pass2=document.getElementById("setup-pass2").value;
-  const key=document.getElementById("setup-apikey").value.trim();
-  hideErr("setup-err");
-  if(pass.length<4){showErr("setup-err","Password must be at least 4 characters.");return;}
-  if(pass!==pass2){showErr("setup-err","Passwords do not match.");return;}
-  if(!key.startsWith("AIza")){showErr("setup-err","Google API key should start with AIza... Get it from aistudio.google.com/apikey");return;}
-  LS.set("qb_pass",pass);LS.set("qb_apikey",key);
-  toast("✅ Setup complete!");enterTeacherDash();
+  const p1=document.getElementById("setup-pass").value,p2=document.getElementById("setup-pass2").value,k=document.getElementById("setup-apikey").value;
+  if(p1.length<4)return showErr("setup-err","Password too short.");
+  if(p1!==p2)return showErr("setup-err","Passwords do not match.");
+  if(!k.startsWith("AIza"))return showErr("setup-err","Invalid API Key format.");
+  LS.set("qb_pass",p1);LS.set("qb_apikey",k);LS.set("qb_setup",true);
+  show("s-teacher-login");toast("Setup complete!");
 }
 
 function teacherLogin(){
-  const pass=document.getElementById("t-login-pass").value;
-  hideErr("t-login-err");
-  const stored=LS.get("qb_pass");
-  if(!stored){show("s-setup");return;}
-  if(pass!==stored){showErr("t-login-err","Wrong password. Try again.");return;}
-  document.getElementById("t-login-pass").value="";
-  enterTeacherDash();
+  if(!LS.get("qb_setup"))return show("s-setup");
+  const p=document.getElementById("t-login-pass").value;
+  if(p===LS.get("qb_pass")){
+    STATE.role="teacher";show("s-teacher-dash");updateNav();refreshQuizzes();
+  }else{showErr("t-login-err","Incorrect password.");}
+}
+function teacherLogout(){STATE.role=null;show("s-home");updateNav();}
+
+// ══ QUIZ MANAGEMENT ══════════════════════════════════════════
+function refreshQuizzes(){
+  const list=LS.get("qb_quizzes")||[];
+  const container=document.getElementById("saved-list");
+  if(!list.length){container.innerHTML=`<p class="muted" style="text-align:center;padding:20px 0">No quizzes yet.</p>`;return;}
+  container.innerHTML=list.map((q,i)=>`
+    <div class="card fade-in" style="margin-bottom:12px;padding:16px;display:flex;justify-content:space-between;align-items:center">
+      <div><div class="h3">${esc(q.title)}</div><div class="muted" style="font-size:.8rem">${q.questions.length} Questions · ${q.difficulty}</div></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-blue" style="padding:8px 14px;font-size:.8rem" onclick="previewQuiz(${i})">View</button>
+        <button class="btn btn-ghost" style="padding:8px;border-color:rgba(239,68,68,.2)" onclick="deleteQuiz(${i})">🗑️</button>
+      </div>
+    </div>
+  `).join("");
+}
+function deleteQuiz(i){if(confirm("Delete this quiz?")){const l=LS.get("qb_quizzes");l.splice(i,1);LS.set("qb_quizzes",l);refreshQuizzes();}}
+function previewQuiz(i){const l=LS.get("qb_quizzes");STATE.quiz=l[i];showPreview();}
+function showPreview(){
+  show("s-preview");
+  document.getElementById("preview-title").textContent=STATE.quiz.title;
+  document.getElementById("preview-meta").textContent=`${STATE.quiz.difficulty} · ${STATE.quiz.questions.length} Questions`;
+  document.getElementById("preview-list").innerHTML=STATE.quiz.questions.map((q,i)=>`
+    <div class="card" style="margin-bottom:10px;padding:14px;background:rgba(255,255,255,.03)">
+      <div style="font-weight:700;margin-bottom:8px">${i+1}. ${esc(q.question)}</div>
+      <div class="grid2">${q.options.map((opt,oi)=>`<div style="font-size:.85rem;padding:6px 10px;border-radius:8px;background:${oi===q.correct?'rgba(34,197,94,.15)':'rgba(255,255,255,.05)'};border:1px solid ${oi===q.correct?'rgba(34,197,94,.3)':'transparent'}">${esc(opt)}</div>`).join("")}</div>
+    </div>
+  `).join("");
 }
 
-function enterTeacherDash(){STATE.role="teacher";updateNav();loadSaved();show("s-teacher-dash");}
-
-function teacherLogout(){
-  stopPoll();
-  STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null};
-  updateNav();show("s-home");
-}
-
-// ══ SETTINGS ══════════════════════════════════════════════════
-function changePassword(){
-  const old=document.getElementById("set-old-pass").value;
-  const n=document.getElementById("set-new-pass").value;
-  const n2=document.getElementById("set-new-pass2").value;
-  hideErr("set-pass-err");
-  if(old!==LS.get("qb_pass")){showErr("set-pass-err","Current password is wrong.");return;}
-  if(n.length<4){showErr("set-pass-err","New password must be at least 4 characters.");return;}
-  if(n!==n2){showErr("set-pass-err","Passwords do not match.");return;}
-  LS.set("qb_pass",n);
-  ["set-old-pass","set-new-pass","set-new-pass2"].forEach(id=>document.getElementById(id).value="");
-  showOk("set-pass-ok","✅ Password updated!");
-}
-function changeApiKey(){
-  const key=document.getElementById("set-apikey").value.trim();
-  hideErr("set-key-err");
-  if(!key.startsWith("AIza")){showErr("set-key-err","Google API key should start with AIza...");return;}
-  LS.set("qb_apikey",key);document.getElementById("set-apikey").value="";
-  showOk("set-key-ok","✅ API key updated!");
-}
-
-// ══ SAVED QUIZZES ═════════════════════════════════════════════
-function loadSaved(){
-  const saved=LS.get("qb_quizzes")||[];
-  const list=document.getElementById("saved-list");
-  if(!saved.length){list.innerHTML='<p class="muted" style="text-align:center;padding:20px 0">No quizzes yet. Create your first one above!</p>';return;}
-  list.innerHTML=saved.map((q,i)=>`
-    <div class="fade-in" style="display:flex;align-items:center;gap:12px;background:#161630;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 16px;margin-bottom:10px">
-      <div style="flex:1"><div style="font-weight:700">${esc(q.title)}</div><div class="muted" style="font-size:.8rem">${q.questions.length} questions · ${q.difficulty}</div></div>
-      <button class="btn btn-green" style="padding:8px 16px;font-size:.85rem" onclick="playQuiz(${i})">▶ Play</button>
-      <button class="btn btn-ghost" style="padding:8px 12px;font-size:.85rem;color:#fca5a5;border-color:rgba(239,68,68,.25)" onclick="deleteQuiz(${i})">🗑</button>
-    </div>`).join("");
-}
-function deleteQuiz(i){const s=LS.get("qb_quizzes")||[];s.splice(i,1);LS.set("qb_quizzes",s);loadSaved();toast("🗑 Quiz deleted");}
-function playQuiz(i){const s=LS.get("qb_quizzes")||[];STATE.quiz=s[i];showPreview();}
-function saveQuizToStorage(quiz){const s=LS.get("qb_quizzes")||[];const i=s.findIndex(q=>q.title===quiz.title);if(i>=0)s[i]=quiz;else s.unshift(quiz);LS.set("qb_quizzes",s);}
-
-// ══ AI GENERATE ═══════════════════════════════════════════════
+// ══ GENERATION ═══════════════════════════════════════════════
 async function runAI(){
-  const topic=document.getElementById("ai-topic").value.trim();
-  const count=document.getElementById("ai-count").value;
-  const diff=document.getElementById("ai-diff").value;
-  hideErr("ai-err");
-  if(!topic){showErr("ai-err","Please describe the topic first.");return;}
-  setLoading("🤖 Gemini is searching Google and creating questions... (15–30 sec)");
+  const t=document.getElementById("ai-topic").value.trim(),c=document.getElementById("ai-count").value,d=document.getElementById("ai-diff").value;
+  if(!t)return showErr("ai-err","Enter a topic.");
+  setLoading("AI is searching Google and writing questions...");
+  const prompt=`Create a JSON quiz about "${t}". Difficulty: ${d}. Count: ${c}. Format: { "title": "${t}", "difficulty": "${d}", "questions": [ { "question": "...", "options": ["A","B","C","D"], "correct": 0, "explanation": "..." } ] }. Use correct index (0-3) for correct answer. Ensure high accuracy.`;
   try{
-    const prompt=`You are a quiz creator for Malaysian school students (primary and secondary level).
-Use Google Search to find accurate, curriculum-aligned information, then create exactly ${count} multiple-choice questions about: "${topic}".
-Difficulty level: ${diff}.
-For Bahasa Malaysia topics, write questions in Bahasa Malaysia.
-
-IMPORTANT: Return ONLY a raw JSON array. No markdown, no explanation, no text before or after the array.
-Format:
-[{"question":"...","options":["Option A","Option B","Option C","Option D"],"correct":0,"explanation":"Brief reason why this is correct."}]
-"correct" = 0-based index (0, 1, 2, or 3) of the correct option.`;
-    const qs=await callGemini(prompt,true,null);
-    STATE.quiz={title:topic.slice(0,60),difficulty:diff,questions:qs};
-    saveQuizToStorage(STATE.quiz);showPreview();
+    const quiz=await callGemini(prompt);
+    const list=LS.get("qb_quizzes")||[];list.unshift(quiz);LS.set("qb_quizzes",list);
+    STATE.quiz=quiz;showPreview();toast("Quiz generated!");
   }catch(e){show("s-create-ai");showErr("ai-err",e.message);}
 }
 
-// ══ PHOTO ═════════════════════════════════════════════════════
-let photoB64=null,photoMime=null;
 function handlePhoto(e){
   const f=e.target.files[0];if(!f)return;
-  photoMime=f.type;
-  const r=new FileReader();
-  r.onload=ev=>{
-    photoB64=ev.target.result.split(",")[1];
-    document.getElementById("photo-preview").src=ev.target.result;
-    document.getElementById("photo-preview").style.display="block";
+  const reader=new FileReader();
+  reader.onload=ev=>{
     document.getElementById("photo-placeholder").style.display="none";
+    const img=document.getElementById("photo-preview");img.src=ev.target.result;img.style.display="block";
     document.getElementById("photo-btn").disabled=false;
   };
-  r.readAsDataURL(f);
+  reader.readAsDataURL(f);
 }
+
 async function runPhoto(){
-  hideErr("photo-err");
-  setLoading("📸 Gemini is reading your photo and extracting questions...");
+  const img=document.getElementById("photo-preview").src.split(',')[1],title=document.getElementById("photo-title").value||"Photo Quiz";
+  setLoading("AI is reading the photo and extracting questions...");
+  const prompt=`Extract questions from this image into JSON format. Title: "${title}". Difficulty: Medium. Format: { "title": "${title}", "difficulty": "Medium", "questions": [ { "question": "...", "options": ["...","...","...","..."], "correct": 0, "explanation": "..." } ] }. Use correct index for correct answer.`;
   try{
-    const title=document.getElementById("photo-title").value.trim()||"Quiz from Photo";
-    const prompt=`Extract ALL questions from this image and convert them to multiple-choice quiz format.
-Return ONLY a raw JSON array (no markdown, no text before or after):
-[{"question":"...","options":["A","B","C","D"],"correct":0,"explanation":"..."}]
-"correct" = 0-based index of the correct answer. If the image already has options, use them. Otherwise create 4 sensible options.`;
-    const qs=await callGemini(prompt,false,{b64:photoB64,mime:photoMime});
-    STATE.quiz={title,difficulty:"Mixed",questions:qs};
-    saveQuizToStorage(STATE.quiz);showPreview();
+    const quiz=await callGemini(prompt,true,img);
+    const list=LS.get("qb_quizzes")||[];list.unshift(quiz);LS.set("qb_quizzes",list);
+    STATE.quiz=quiz;showPreview();toast("Questions extracted!");
   }catch(e){show("s-create-photo");showErr("photo-err",e.message);}
 }
 
-// ══ MANUAL ════════════════════════════════════════════════════
-let manualQs=[];
-function blankQ(){return{question:"",options:["","","",""],correct:0,explanation:""};}
-function initManual(){manualQs=[blankQ()];renderManualQs();}
-function addManualQ(){manualQs.push(blankQ());renderManualQs();}
-function removeManualQ(i){manualQs.splice(i,1);renderManualQs();}
-function updateMQ(i,f,v){manualQs[i][f]=v;}
-function updateMOpt(qi,oi,v){manualQs[qi].options[oi]=v;}
-function setCorrect(qi,oi){manualQs[qi].correct=oi;renderManualQs();}
-function renderManualQs(){
-  document.getElementById("manual-qs").innerHTML=manualQs.map((q,qi)=>`
-    <div class="card fade-in" style="margin-bottom:14px">
-      <div style="display:flex;justify-content:space-between;margin-bottom:10px">
-        <span class="h3 accent">Q${qi+1}</span>
-        ${manualQs.length>1?`<button onclick="removeManualQ(${qi})" style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:8px;color:#fca5a5;padding:4px 10px;cursor:pointer;font-size:.8rem;font-family:'Poppins',sans-serif">✕ Remove</button>`:""}
-      </div>
-      <input type="text" value="${esc(q.question)}" placeholder="Question..." oninput="updateMQ(${qi},'question',this.value)" style="margin-bottom:12px"/>
-      <div class="grid2" style="margin-bottom:10px">
-        ${q.options.map((opt,oi)=>`
-          <div style="display:flex;gap:6px;align-items:center">
-            <button onclick="setCorrect(${qi},${oi})" title="Mark correct" style="width:28px;height:28px;border-radius:50%;border:2px solid ${q.correct===oi?"#22c55e":"rgba(255,255,255,.18)"};background:${q.correct===oi?"#22c55e":"transparent"};cursor:pointer;color:#fff;font-size:11px;flex-shrink:0;font-family:'Poppins',sans-serif">✓</button>
-            <input type="text" value="${esc(opt)}" placeholder="Option ${oi+1}" oninput="updateMOpt(${qi},${oi},this.value)" style="padding:8px 10px;flex:1"/>
-          </div>`).join("")}
-      </div>
-      <input type="text" value="${esc(q.explanation)}" placeholder="Explanation (optional)" oninput="updateMQ(${qi},'explanation',this.value)" style="font-size:.85rem"/>
-    </div>`).join("");
+// ══ MANUAL ENTRY ═════════════════════════════════════════════
+function initManual(){
+  document.getElementById("manual-qs").innerHTML="";
+  document.getElementById("manual-title").value="";
+  addManualQ();
+}
+function addManualQ(){
+  const div=document.createElement("div");div.className="card fade-in manual-q-card";div.style="margin-bottom:12px";
+  div.innerHTML=`
+    <div class="form-group"><label class="lbl">Question</label><input type="text" class="mq-q" placeholder="The question..."/></div>
+    <div class="grid2">
+      <div class="form-group"><label class="lbl">Opt 1 (Correct)</label><input type="text" class="mq-o0" placeholder="Correct answer"/></div>
+      <div class="form-group"><label class="lbl">Opt 2</label><input type="text" class="mq-o1" placeholder="Wrong answer"/></div>
+      <div class="form-group"><label class="lbl">Opt 3</label><input type="text" class="mq-o2" placeholder="Wrong answer"/></div>
+      <div class="form-group"><label class="lbl">Opt 4</label><input type="text" class="mq-o3" placeholder="Wrong answer"/></div>
+    </div>
+  `;
+  document.getElementById("manual-qs").appendChild(div);
 }
 function saveManual(){
-  const title=document.getElementById("manual-title").value.trim();
-  const diff=document.getElementById("manual-diff").value;
-  hideErr("manual-err");
-  if(!title){showErr("manual-err","Please enter a quiz title.");return;}
-  if(!manualQs.every(q=>q.question.trim()&&q.options.every(o=>o.trim()))){showErr("manual-err","Please fill in all questions and all 4 options.");return;}
-  STATE.quiz={title,difficulty:diff,questions:manualQs};
-  saveQuizToStorage(STATE.quiz);showPreview();
+  const title=document.getElementById("manual-title").value.trim(),diff=document.getElementById("manual-diff").value;
+  if(!title)return showErr("manual-err","Enter quiz title.");
+  const qs=[];
+  document.querySelectorAll(".manual-q-card").forEach(el=>{
+    const q=el.querySelector(".mq-q").value,o0=el.querySelector(".mq-o0").value,o1=el.querySelector(".mq-o1").value,o2=el.querySelector(".mq-o2").value,o3=el.querySelector(".mq-o3").value;
+    if(q&&o0&&o1){
+      const opts=[o0,o1,o2||"N/A",o3||"N/A"];
+      qs.push({question:q,options:opts,correct:0,explanation:""});
+    }
+  });
+  if(!qs.length)return showErr("manual-err","Add at least 1 question.");
+  const quiz={title,difficulty:diff,questions:qs};
+  const list=LS.get("qb_quizzes")||[];list.unshift(quiz);LS.set("qb_quizzes",list);
+  STATE.quiz=quiz;showPreview();toast("Quiz saved!");
 }
 
-// ══ PREVIEW ═══════════════════════════════════════════════════
-function showPreview(){
-  const q=STATE.quiz;
-  document.getElementById("preview-title").textContent=q.title;
-  document.getElementById("preview-meta").textContent=`${q.questions.length} questions · ${q.difficulty}`;
-  document.getElementById("preview-list").innerHTML=q.questions.map((q,i)=>`
-    <div class="card fade-in" style="margin-bottom:12px">
-      <p style="font-weight:700;margin-bottom:10px;font-size:.95rem">Q${i+1}. ${esc(q.question)}</p>
-      <div class="grid2" style="margin-bottom:8px">
-        ${q.options.map((opt,oi)=>`
-          <div class="prev-opt" style="background:${oi===q.correct?COLORS[oi].bg+"33":"rgba(255,255,255,.04)"};border:1.5px solid ${oi===q.correct?COLORS[oi].bg:"rgba(255,255,255,.07)"};color:${oi===q.correct?"#fff":"rgba(255,255,255,.5)"}">
-            ${oi===q.correct?"✓ ":""}${esc(opt)}
-          </div>`).join("")}
-      </div>
-      ${q.explanation?`<p style="font-size:.78rem;color:rgba(255,255,255,.32);border-top:1px solid rgba(255,255,255,.07);padding-top:8px;margin:0">💡 ${esc(q.explanation)}</p>`:""}
-    </div>`).join("");
-  show("s-preview");
-}
-
+// ══ GAME LOBBY ═══════════════════════════════════════════════
 async function openRoom(){
-  hideErr("preview-err");
-  setLoading("Creating your room...");
-  try{
-    const code=genCode();
-    await fbSet(`rooms/${code}`,{status:"lobby",currentQ:0,questionStartTime:null,quiz:STATE.quiz,players:{},createdAt:Date.now()});
-    STATE.roomCode=code;
-    document.getElementById("lobby-code").textContent=code;
-    document.getElementById("lobby-meta").textContent=`${STATE.quiz.title} · ${STATE.quiz.questions.length} questions`;
-    updateNav();show("s-lobby");startLobbyPoll();
-  }catch(e){show("s-preview");showErr("preview-err","Could not create room: "+e.message);}
-}
-
-// ══ TEACHER LOBBY ═════════════════════════════════════════════
-function startLobbyPoll(){
-  stopPoll();
-  STATE.pollIv=setInterval(async()=>{
-    try{
-      const players=await fbGet(`rooms/${STATE.roomCode}/players`)||{};
-      const list=Object.values(players);
-      document.getElementById("lobby-count").textContent=list.length;
-      const wrap=document.getElementById("lobby-players");
-      const empty=document.getElementById("lobby-empty");
-      empty.style.display=list.length?"none":"";
-      const existing=new Set(Array.from(wrap.querySelectorAll(".chip")).map(c=>c.dataset.name));
-      list.forEach(p=>{if(!existing.has(p.name)){const d=document.createElement("div");d.className="chip";d.dataset.name=p.name;d.textContent=p.name;wrap.appendChild(d);}});
-      const btn=document.getElementById("start-btn");
-      btn.disabled=list.length===0;
-      btn.textContent=list.length===0?"Waiting for students...":`▶ Start Quiz! (${list.length} players)`;
-    }catch(e){}
-  },1500);
-}
-function copyCode(){navigator.clipboard?.writeText(STATE.roomCode);toast("✅ Code copied!");}
-function copyLink(){const url=window.location.href.split("?")[0]+"?join="+STATE.roomCode;navigator.clipboard?.writeText(url);toast("🔗 Join link copied! Students paste it in browser.");}
-
-async function startQuiz(){
-  hideErr("lobby-err");
-  try{
-    stopPoll();
-    await fbUpdate(`rooms/${STATE.roomCode}`,{status:"question",currentQ:0,questionStartTime:Date.now()});
-    show("s-control");startControlPoll();
-  }catch(e){showErr("lobby-err","Could not start: "+e.message);}
-}
-
-// ══ TEACHER CONTROL ═══════════════════════════════════════════
-function startControlPoll(){
-  stopPoll();
-  STATE.pollIv=setInterval(async()=>{
-    try{
-      const room=await fbGet(`rooms/${STATE.roomCode}`);
-      if(!room)return;
-      if(room.status==="finished"){stopPoll();showTeacherResults(room);return;}
-      renderControl(room);
-    }catch(e){}
-  },900);
-}
-function renderControl(room){
-  const players=room.players||{};const pList=Object.values(players);
-  const qi=room.currentQ||0;const q=STATE.quiz.questions[qi];
-  const answeredCount=pList.filter(p=>p.answers&&p.answers[qi]!==undefined).length;
-  document.getElementById("ctrl-qnum").textContent=`Q ${qi+1}/${STATE.quiz.questions.length}`;
-  document.getElementById("ctrl-room").textContent=`Room: ${STATE.roomCode}`;
-  document.getElementById("ctrl-answered").textContent=`${answeredCount}/${pList.length}`;
-  document.getElementById("ctrl-ans-bar").style.width=pList.length?(answeredCount/pList.length*100)+"%":"0%";
-  const badge=document.getElementById("ctrl-badge");
-  if(room.status==="question"){badge.style.cssText="padding:5px 14px;border-radius:99px;font-size:.78rem;font-weight:700;background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.3)";badge.textContent="● Live";}
-  else{badge.style.cssText="padding:5px 14px;border-radius:99px;font-size:.78rem;font-weight:700;background:rgba(255,224,102,.12);color:#ffe066;border:1px solid rgba(255,224,102,.3)";badge.textContent="👁 Revealed";}
-  document.getElementById("ctrl-question").textContent=q.question;
-  document.getElementById("ctrl-options").innerHTML=q.options.map((opt,i)=>{
-    const c=COLORS[i];const cnt=pList.filter(p=>p.answers?.[qi]?.choice===i).length;
-    const isCorrect=i===q.correct;
-    const bg=room.status==="reveal"?(isCorrect?"#22c55e":"rgba(255,255,255,.06)"):c.bg;
-    const pct=pList.length?cnt/pList.length*100:0;
-    return `<div class="opt-bar" style="background:${bg};${room.status==="reveal"&&isCorrect?"border:2px solid #4ade80;":""}">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-        <span>${c.icon}</span><span style="font-weight:700;font-size:.88rem;flex:1">${esc(opt)}${room.status==="reveal"&&isCorrect?" ✓":""}</span><span style="font-weight:700">${cnt}</span>
-      </div>
-      <div style="height:5px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden"><div style="height:100%;background:rgba(255,255,255,.65);width:${pct}%;border-radius:99px;transition:width .5s"></div></div>
-    </div>`;
-  }).join("");
-  const expl=document.getElementById("ctrl-expl");const lbWrap=document.getElementById("ctrl-lb-wrap");
-  const revBtn=document.getElementById("ctrl-reveal-btn");const nextBtn=document.getElementById("ctrl-next-btn");
-  if(room.status==="reveal"){
-    if(q.explanation){expl.textContent="💡 "+q.explanation;expl.style.display="block";}else{expl.style.display="none";}
-    lbWrap.style.display="block";document.getElementById("ctrl-lb").innerHTML=renderLB(players,null);
-    revBtn.style.display="none";nextBtn.style.display="block";
-    nextBtn.textContent=qi+1>=STATE.quiz.questions.length?"🏁 End Quiz & Show Results":"→ Next Question";
-  }else{expl.style.display="none";lbWrap.style.display="none";revBtn.style.display="block";nextBtn.style.display="none";}
-}
-async function teacherReveal(){hideErr("ctrl-err");try{await fbUpdate(`rooms/${STATE.roomCode}`,{status:"reveal"});}catch(e){showErr("ctrl-err",e.message);}}
-async function teacherNext(){
-  hideErr("ctrl-err");
-  try{
-    const qi=(await fbGet(`rooms/${STATE.roomCode}/currentQ`))||0;const next=qi+1;
-    if(next>=STATE.quiz.questions.length)await fbUpdate(`rooms/${STATE.roomCode}`,{status:"finished"});
-    else await fbUpdate(`rooms/${STATE.roomCode}`,{status:"question",currentQ:next,questionStartTime:Date.now()});
-  }catch(e){showErr("ctrl-err",e.message);}
-}
-function showTeacherResults(room){
-  document.getElementById("t-results-meta").textContent=`${STATE.quiz.title} · ${Object.keys(room.players||{}).length} players`;
-  document.getElementById("t-results-lb").innerHTML=renderLB(room.players||{},null);show("s-t-results");
-}
-
-// ══ STUDENT JOIN ══════════════════════════════════════════════
-async function studentJoin(){
-  const name=document.getElementById("s-name").value.trim();
-  const code=document.getElementById("s-code").value.trim().toUpperCase();
-  hideErr("join-err");
-  if(!name){showErr("join-err","Please enter your name.");return;}
-  if(code.length<6){showErr("join-err","Please enter the 6-character room code.");return;}
-  setLoading("Joining room...");
-  try{
-    const room=await fbGet(`rooms/${code}`);
-    if(!room){show("s-student-login");showErr("join-err","Room not found! Double-check the code.");return;}
-    if(room.status==="finished"){show("s-student-login");showErr("join-err","This quiz has already ended.");return;}
-    const uid=genUid();
-    STATE.uid=uid;STATE.playerName=name;STATE.roomCode=code;STATE.role="student";
-    STATE.answered={};STATE.localScore=0;
-    await fbSet(`rooms/${code}/players/${uid}`,{name,score:0,joinedAt:Date.now()});
-    document.getElementById("s-lobby-name").textContent=`Hi ${name}! 👋`;
-    updateNav();show("s-s-lobby");startStudentListener();
-  }catch(e){show("s-student-login");showErr("join-err","Could not join: "+e.message);}
-}
-
-// ══ STUDENT GAME ══════════════════════════════════════════════
-let timerIv=null;
-function startStudentListener(){
-  stopPoll();
-  const ref=db.ref(`rooms/${STATE.roomCode}`);
-  ref.on("value",snap=>{const room=snap.val();if(room)handleStudentUpdate(room);});
+  const code=genCode();STATE.roomCode=code;
+  await fbSet(`rooms/${code}`,{status:"lobby",quiz:STATE.quiz,createdAt:Date.now()});
+  show("s-lobby");updateNav();
+  document.getElementById("lobby-code").textContent=code;
+  document.getElementById("lobby-meta").textContent=`${STATE.quiz.title} · ${STATE.quiz.questions.length} Qs`;
+  
+  const ref=db.ref(`rooms/${code}/players`);
+  ref.on("value",s=>{
+    const players=s.val()||{};
+    const count=Object.keys(players).length;
+    document.getElementById("lobby-count").textContent=count;
+    document.getElementById("lobby-empty").style.display=count?"none":"block";
+    document.getElementById("lobby-players").innerHTML=Object.values(players).map(p=>`<div class="chip fade-in">${esc(p.name)}</div>`).join("");
+    const btn=document.getElementById("start-btn");
+    btn.disabled=count<1;btn.textContent=count<1?"Waiting for students...":"Start Quiz ▶";
+  });
   STATE.roomListener=()=>ref.off();
 }
-function handleStudentUpdate(room){
-  const players=room.players||{};
-  if(room.status==="lobby"){
-    const list=Object.values(players);
-    document.getElementById("s-lobby-count").textContent=list.length;
-    document.getElementById("s-lobby-players").innerHTML=list.map(p=>`<div class="chip${p.name===STATE.playerName?" me":""}">${esc(p.name)}</div>`).join("");
-    show("s-s-lobby");return;
-  }
-  if(room.status==="finished"){
-    clearInterval(timerIv);
-    const myScore=players[STATE.uid]?.score??STATE.localScore;
-    const sorted=Object.entries(players).sort((a,b)=>(b[1].score||0)-(a[1].score||0));
-    const myRank=sorted.findIndex(([u])=>u===STATE.uid)+1;
-    const pct=Math.round(myScore/(room.quiz.questions.length*(100+TIME_PER_Q*3))*100);
-    const emojis=["🏆","🥈","🥉","🎉"];
-    document.getElementById("s-result-emoji").textContent=emojis[Math.min(myRank-1,3)]||"🎉";
-    document.getElementById("s-result-grade").textContent=pct>=80?"Excellent! 🌟":pct>=60?"Good Job! 👍":pct>=40?"Keep Trying! 💪":"Study More! 📚";
-    document.getElementById("s-result-score").textContent=`You scored ${myScore} points`;
-    document.getElementById("s-result-rank").textContent=`Rank #${myRank} of ${Object.keys(players).length}`;
-    document.getElementById("s-result-lb").innerHTML=renderLB(players,STATE.uid);
-    show("s-s-results");return;
-  }
-  show("s-game");
-  const qi=room.currentQ||0;const q=room.quiz.questions[qi];
-  const sorted=Object.entries(players).sort((a,b)=>(b[1].score||0)-(a[1].score||0));
-  const myRank=sorted.findIndex(([u])=>u===STATE.uid)+1;
-  const myScore=players[STATE.uid]?.score??STATE.localScore;
-  const myAnswer=STATE.answered[qi];
-  document.getElementById("g-qnum").textContent=`Q ${qi+1}/${room.quiz.questions.length}`;
-  document.getElementById("g-name").textContent=STATE.playerName;
-  document.getElementById("g-score").textContent=`${myScore} pts`;
-  document.getElementById("g-rank").textContent=`Rank #${myRank}`;
-  document.getElementById("g-question").textContent=q.question;
-  clearInterval(timerIv);
-  if(room.status==="question"&&!myAnswer&&room.questionStartTime){
-    timerIv=setInterval(()=>{
-      const left=Math.max(0,TIME_PER_Q-(Date.now()-room.questionStartTime)/1000);
-      const t=Math.ceil(left);const pct2=left/TIME_PER_Q*100;
-      const col=left>10?"#22c55e":left>5?"#f97316":"#ef4444";
-      const el=document.getElementById("g-timer");
-      if(el){el.textContent=t;el.style.background=col;el.style.boxShadow=`0 0 18px ${col}88`;}
-      const bar=document.getElementById("g-timer-bar");
-      if(bar){bar.style.width=pct2+"%";bar.style.background=col;}
-      if(left<=0)clearInterval(timerIv);
-    },250);
-  }
-  document.getElementById("g-options").innerHTML=q.options.map((opt,i)=>{
-    const c=COLORS[i];let bg=c.bg,opacity=1,shadow=`0 4px 0 ${c.shadow}`,cursor="pointer";
-    if(room.status==="reveal"){bg=i===q.correct?"#22c55e":(i===myAnswer&&i!==q.correct?"#ef4444":"rgba(255,255,255,.07)");shadow="none";cursor="default";}
-    else if(myAnswer!==undefined){if(i!==myAnswer){bg="rgba(255,255,255,.07)";opacity=0.45;}shadow="none";cursor="default";}
-    const suffix=room.status==="reveal"?(i===q.correct?" ✓":(i===myAnswer&&i!==q.correct?" ✗":"")):"";
-    const disabled=myAnswer!==undefined||room.status==="reveal";
-    return `<button class="ans-btn" onclick="studentAnswer(${i})" ${disabled?"disabled":""} style="background:${bg};opacity:${opacity};box-shadow:${shadow};cursor:${cursor}">
-      <span class="ans-icon">${c.icon}</span><span style="flex:1">${esc(opt)}${suffix}</span>
-    </button>`;
-  }).join("");
-  const fb=document.getElementById("g-feedback");
-  if(myAnswer!==undefined&&room.status==="question"){
-    fb.style.cssText="display:block;margin-top:12px;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)";
-    fb.innerHTML=`<div style="font-family:'Fredoka One',cursive;color:#ffe066">✓ Submitted!</div><div class="muted" style="font-size:.82rem;margin-top:4px">Waiting for teacher to reveal the answer...</div>`;
-  }else if(room.status==="reveal"){
-    const correct=myAnswer===q.correct;const noAns=myAnswer===undefined;
-    fb.style.cssText=`display:block;margin-top:12px;padding:16px 18px;border-radius:16px;background:${correct?"rgba(34,197,94,.1)":"rgba(239,68,68,.1)"};border:1.5px solid ${correct?"rgba(34,197,94,.3)":"rgba(239,68,68,.3)"}`;
-    fb.innerHTML=`<div style="font-family:'Fredoka One',cursive;font-size:1.1rem;margin-bottom:4px">${noAns?"⏰ Time's up!":correct?"🎉 Correct!":"❌ Wrong!"}</div>${q.explanation?`<div class="muted" style="font-size:.85rem">${esc(q.explanation)}</div>`:""}<div class="muted" style="font-size:.8rem;margin-top:6px">Waiting for next question...</div>`;
-  }else{fb.style.display="none";}
+
+function copyCode(){navigator.clipboard.writeText(STATE.roomCode);toast("Code copied!");}
+function copyLink(){const url=window.location.href.split('?')[0]+"?room="+STATE.roomCode;navigator.clipboard.writeText(url);toast("Join link copied!");}
+
+async function startQuiz(){
+  await fbUpdate(`rooms/${STATE.roomCode}`,{status:"question",qi:0,questionStartTime:Date.now()});
+  showControl();
 }
-async function studentAnswer(choice){
-  const qi=(await fbGet(`rooms/${STATE.roomCode}/currentQ`))||0;
-  if(STATE.answered[qi]!==undefined)return;
+
+// ══ TEACHER CONTROL ══════════════════════════════════════════
+function showControl(){
+  show("s-control");
+  const ref=db.ref(`rooms/${STATE.roomCode}`);
+  ref.on("value",s=>{
+    const room=s.val();if(!room)return;
+    if(room.status==="question"){
+      renderTeacherQ(room);
+      document.getElementById("ctrl-reveal-btn").style.display="block";
+      document.getElementById("ctrl-next-btn").style.display="none";
+      document.getElementById("ctrl-lb-wrap").style.display="none";
+      document.getElementById("ctrl-expl").style.display="none";
+    }else if(room.status==="reveal"){
+      document.getElementById("ctrl-reveal-btn").style.display="none";
+      document.getElementById("ctrl-next-btn").style.display="block";
+      document.getElementById("ctrl-lb-wrap").style.display="block";
+      const q=room.quiz.questions[room.qi];
+      if(q.explanation){const ex=document.getElementById("ctrl-expl");ex.textContent="💡 "+q.explanation;ex.style.display="block";}
+      renderTeacherLB(room.players||{});
+    }else if(room.status==="results"){
+      ref.off();showTeacherResults(room.players||{});
+    }
+  });
+  STATE.roomListener=()=>ref.off();
+}
+
+function renderTeacherQ(room){
+  const q=room.quiz.questions[room.qi];
+  document.getElementById("ctrl-qnum").textContent=`Q ${room.qi+1}/${room.quiz.questions.length}`;
+  document.getElementById("ctrl-room").textContent=`Room: ${STATE.roomCode}`;
+  document.getElementById("ctrl-question").textContent=q.question;
+  const players=Object.values(room.players||{});
+  const answered=players.filter(p=>p.answers && p.answers[room.qi]).length;
+  document.getElementById("ctrl-answered").textContent=`${answered}/${players.length}`;
+  document.getElementById("ctrl-ans-bar").style.width=(answered/players.length*100 || 0)+"%";
+  document.getElementById("ctrl-options").innerHTML=q.options.map((opt,i)=>`
+    <div class="opt-bar" style="background:${room.status==='reveal'?(i===q.correct?'rgba(34,197,94,.2)':'rgba(255,255,255,.05)'):'rgba(255,255,255,.05)'};border:1.5px solid ${room.status==='reveal'?(i===q.correct?'#22c55e':'transparent'):'transparent'}">
+      <span class="muted" style="margin-right:8px">${String.fromCharCode(65+i)}.</span> ${esc(opt)}
+    </div>
+  `).join("");
+}
+function renderTeacherLB(players){
+  document.getElementById("ctrl-lb").innerHTML=renderLB(players);
+}
+async function teacherReveal(){await fbUpdate(`rooms/${STATE.roomCode}`,{status:"reveal"});}
+async function teacherNext(){
+  const room=await fbGet(`rooms/${STATE.roomCode}`);
+  const next=room.qi+1;
+  if(next>=room.quiz.questions.length){
+    await fbUpdate(`rooms/${STATE.roomCode}`,{status: "results"});
+  }else{
+    await fbUpdate(`rooms/${STATE.roomCode}`,{status:"question",qi:next,questionStartTime:Date.now()});
+  }
+}
+
+function showTeacherResults(players){
+  show("s-t-results");
+  document.getElementById("t-results-meta").textContent=`Room: ${STATE.roomCode} · ${STATE.quiz.title}`;
+  document.getElementById("t-results-lb").innerHTML=renderLB(players);
+}
+
+// ══ STUDENT LOGIC ════════════════════════════════════════════
+async function studentJoin(){
+  const name=document.getElementById("s-name").value.trim(),code=document.getElementById("s-code").value.toUpperCase();
+  if(!name||!code)return showErr("join-err","Enter name and code.");
+  const room=await fbGet(`rooms/${code}`);
+  if(!room)return showErr("join-err","Room not found.");
+  if(room.status!=="lobby")return showErr("join-err","Quiz already started.");
+  STATE.role="student";STATE.roomCode=code;STATE.playerName=name;STATE.uid=genUid();
+  await fbSet(`rooms/${code}/players/${STATE.uid}`,{name,score:0,joinedAt:Date.now()});
+  show("s-s-lobby");updateNav();
+  document.getElementById("s-lobby-name").textContent=name;
+  const ref=db.ref(`rooms/${code}`);
+  ref.on("value",s=>{
+    const r=s.val();if(!r)return;
+    if(r.status==="lobby"){
+      const pc=Object.keys(r.players||{}).length;
+      document.getElementById("s-lobby-count").textContent=pc;
+      document.getElementById("s-lobby-players").innerHTML=Object.values(r.players||{}).map(p=>`<div class="chip me">${esc(p.name)}</div>`).join("");
+    }else if(r.status==="question" || r.status==="reveal"){
+      ref.off();startStudentGame();
+    }
+  });
+  STATE.roomListener=()=>ref.off();
+}
+
+function startStudentGame(){
+  show("s-game");
+  document.getElementById("g-name").textContent=STATE.playerName;
+  const ref=db.ref(`rooms/${STATE.roomCode}`);
+  ref.on("value",s=>{
+    const r=s.val();if(!r)return;
+    if(r.status==="question"){
+      if(STATE.pollIv)clearInterval(STATE.pollIv);
+      renderStudentQ(r);
+    }else if(r.status==="reveal"){
+      if(STATE.pollIv)clearInterval(STATE.pollIv);
+      showStudentReveal(r);
+    }else if(r.status==="results"){
+      ref.off();showStudentResults(r.players||{});
+    }
+  });
+  STATE.roomListener=()=>ref.off();
+}
+
+function renderStudentQ(room){
+  const q=room.quiz.questions[room.qi];
+  document.getElementById("g-qnum").textContent=`Q ${room.qi+1}/${room.quiz.questions.length}`;
+  document.getElementById("g-question").textContent=q.question;
+  document.getElementById("g-score").textContent=`${STATE.localScore} pts`;
+  document.getElementById("g-feedback").style.display="none";
+  
+  const hasAns=STATE.answered[room.qi]!==undefined;
+  document.getElementById("g-options").innerHTML=q.options.map((opt,i)=>`
+    <button class="ans-btn" style="background:${COLORS[i].bg};box-shadow:0 6px ${COLORS[i].shadow}" onclick="submitAnswer(${room.qi},${i})" ${hasAns?'disabled':''}>
+      <div class="ans-icon">${COLORS[i].icon}</div>
+      <span>${esc(opt)}</span>
+    </button>
+  `).join("");
+  
+  // TIMER
+  const start=room.questionStartTime;
+  if(STATE.pollIv)clearInterval(STATE.pollIv);
+  STATE.pollIv=setInterval(()=>{
+    const elapsed=(Date.now()-start)/1000;
+    const rem=Math.max(0,Math.ceil(TIME_PER_Q-elapsed));
+    const pct=Math.max(0,(TIME_PER_Q-elapsed)/TIME_PER_Q*100);
+    const timerEl=document.getElementById("g-timer");
+    timerEl.textContent=rem;
+    document.getElementById("g-timer-bar").style.width=pct+"%";
+    if(rem<=5){timerEl.style.background="#ef4444";timerEl.style.boxShadow="0 0 20px #ef4444";}
+    else{timerEl.style.background="#22c55e";timerEl.style.boxShadow="0 0 18px rgba(34,197,94,.5)";}
+    if(rem<=0)clearInterval(STATE.pollIv);
+  },100);
+}
+
+async function submitAnswer(qi,choice){
   const room=await fbGet(`rooms/${STATE.roomCode}`);
   if(!room||room.status!=="question")return;
   STATE.answered[qi]=choice;
@@ -928,7 +809,34 @@ async function studentAnswer(choice){
   try{
     await fbSet(`rooms/${STATE.roomCode}/players/${STATE.uid}/answers/${qi}`,{choice,pts});
     await fbSet(`rooms/${STATE.roomCode}/players/${STATE.uid}/score`,STATE.localScore);
-  }catch(e){console.error("Answer save error",e);}
+    document.querySelectorAll(".ans-btn").forEach(b=>b.disabled=true);
+    toast("Answer submitted!");
+  }catch(e){console.error("Save error",e);}
+}
+
+function showStudentReveal(room){
+  const q=room.quiz.questions[room.qi];
+  const myAns=room.players[STATE.uid].answers?.[room.qi];
+  const isCorrect=myAns && myAns.choice===q.correct;
+  const fb=document.getElementById("g-feedback");
+  fb.style.display="block";
+  fb.style.background=isCorrect?"rgba(34,197,94,.15)":"rgba(239,68,68,.15)";
+  fb.style.border=`1px solid ${isCorrect?'#22c55e':'#ef4444'}`;
+  fb.innerHTML=`
+    <div style="font-weight:700;font-size:1.1rem;color:${isCorrect?'#86efac':'#fca5a5'}">${isCorrect?'CORRECT! 🎉':(myAns?'WRONG ❌':'TIME UP ⏰')}</div>
+    <div style="font-size:.85rem;margin-top:4px">Correct Answer: <strong>${esc(q.options[q.correct])}</strong></div>
+    ${q.explanation?`<div style="font-size:.8rem;margin-top:8px;opacity:.8">💡 ${esc(q.explanation)}</div>`:''}
+  `;
+}
+
+function showStudentResults(players){
+  show("s-s-results");
+  const my=players[STATE.uid];
+  const sorted=Object.entries(players).sort((a,b)=>b[1].score-a[1].score);
+  const rank=sorted.findIndex(x=>x[0]===STATE.uid)+1;
+  document.getElementById("s-result-score").textContent=`Final Score: ${my.score} pts`;
+  document.getElementById("s-result-rank").textContent=`Ranked #${rank} out of ${sorted.length}`;
+  document.getElementById("s-result-lb").innerHTML=renderLB(players,STATE.uid);
 }
 
 // ══ LEADERBOARD ═══════════════════════════════════════════════
@@ -939,16 +847,18 @@ function renderLB(players,myUid){
     <div class="lb-row${uid===myUid?" me":""}">
       <span style="font-size:1.3rem;width:32px;text-align:center">${medals[i]||`#${i+1}`}</span>
       <span style="flex:1;font-weight:600">${esc(p.name)}${uid===myUid?" 👈":""}</span>
-      <span style="font-family:'Fredoka One',cursive;color:#ffe066;font-size:1.1rem">${p.score||0}</span>
-    </div>`).join("");
+      <span style="font-family:'Fredoka One',cursive;color:#ffe066">${p.score||0}</span>
+    </div>
+  `).join("");
 }
 
-// ══ INIT ══════════════════════════════════════════════════════
-window.addEventListener("DOMContentLoaded",()=>{
-  const code=new URLSearchParams(window.location.search).get("join");
-  if(code){document.getElementById("s-code").value=code.toUpperCase();show("s-student-login");}
-  else show("s-home");
-});
+// ══ AUTO JOIN FROM URL ════════════════════════════════════════
+window.onload=()=>{
+  const urlParams=new URLSearchParams(window.location.search);
+  const r=urlParams.get('room');
+  if(r){document.getElementById("s-code").value=r.toUpperCase();show("s-student-login");}
+  else{show("s-home");}
+};
 </script>
 </body>
 </html>
