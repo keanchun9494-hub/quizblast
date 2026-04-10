@@ -119,10 +119,15 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
       <label class="lbl">Confirm Password *</label>
       <input type="password" id="setup-pass2" placeholder="Re-enter password"/>
     </div>
+    <div class="form-group">
+      <label class="lbl">OpenRouter API Key *</label>
+      <input type="password" id="setup-apikey" placeholder="sk-or-..."/>
+      <p class="muted" style="font-size:.77rem;margin-top:6px">Get free key from <a href="https://openrouter.ai/keys" target="_blank" style="color:#ffe066">openrouter.ai/keys</a> · stored locally in your browser only.</p>
+    </div>
     <div class="form-group" style="margin-bottom:0">
-      <label class="lbl">Google Gemini API Key *</label>
-      <input type="password" id="setup-apikey" placeholder="AIzaSy..."/>
-      <p class="muted" style="font-size:.77rem;margin-top:6px">Get free key from <a href="https://aistudio.google.com/apikey" target="_blank" style="color:#ffe066">aistudio.google.com/apikey</a> · stored locally in your browser only.</p>
+      <label class="lbl">AI Model (optional)</label>
+      <input type="text" id="setup-model" placeholder="google/gemini-2.0-flash-exp:free"/>
+      <p class="muted" style="font-size:.77rem;margin-top:6px">Leave blank to use the default free model. Browse models at <a href="https://openrouter.ai/models" target="_blank" style="color:#ffe066">openrouter.ai/models</a></p>
     </div>
     <div class="errbox" id="setup-err"></div>
     <button class="btn btn-purple btn-full" style="margin-top:16px" onclick="saveSetup()">✓ Save & Continue</button>
@@ -199,12 +204,19 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
     <button class="btn btn-purple btn-full" onclick="changePassword()">Update Password</button>
   </div>
   <div class="card fade-in">
-    <h3 class="h3" style="margin-bottom:6px">Google Gemini API Key</h3>
-    <p class="muted" style="font-size:.8rem;margin-bottom:14px">Get free key from <a href="https://aistudio.google.com/apikey" target="_blank" style="color:#ffe066">aistudio.google.com/apikey</a></p>
-    <div class="form-group"><label class="lbl">New API Key</label><input type="password" id="set-apikey" placeholder="AIzaSy..."/></div>
+    <h3 class="h3" style="margin-bottom:6px">OpenRouter API Key</h3>
+    <p class="muted" style="font-size:.8rem;margin-bottom:14px">Get free key from <a href="https://openrouter.ai/keys" target="_blank" style="color:#ffe066">openrouter.ai/keys</a></p>
+    <div class="form-group"><label class="lbl">New API Key</label><input type="password" id="set-apikey" placeholder="sk-or-..."/></div>
     <div class="errbox" id="set-key-err"></div>
     <div class="successbox" id="set-key-ok">✅ API key updated!</div>
     <button class="btn btn-blue btn-full" onclick="changeApiKey()">Update API Key</button>
+  </div>
+  <div class="card fade-in" style="margin-top:16px">
+    <h3 class="h3" style="margin-bottom:6px">AI Model</h3>
+    <p class="muted" style="font-size:.8rem;margin-bottom:14px">Browse free & paid models at <a href="https://openrouter.ai/models" target="_blank" style="color:#ffe066">openrouter.ai/models</a>. Add <code style="background:rgba(255,255,255,.1);padding:1px 6px;border-radius:4px">:online</code> suffix for web search.</p>
+    <div class="form-group"><label class="lbl">Model ID</label><input type="text" id="set-model" placeholder="google/gemini-2.0-flash-exp:free"/></div>
+    <div class="successbox" id="set-model-ok">✅ Model updated!</div>
+    <button class="btn btn-purple btn-full" onclick="changeModel()">Update Model</button>
   </div>
 </div>
 
@@ -230,7 +242,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 <div id="s-create-ai" class="screen" style="max-width:520px;margin:0 auto">
   <button class="back-btn" onclick="show('s-create-method')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:6px">🤖 AI Generator</h2>
-  <p class="muted" style="font-size:.85rem;margin-bottom:20px">Gemini 2.5 Flash Lite searches Google to create accurate questions.</p>
+  <p class="muted" style="font-size:.85rem;margin-bottom:20px">AI searches the web to create accurate, curriculum-aligned questions.</p>
   <div class="card">
     <div class="form-group">
       <label class="lbl">Topic / What you want *</label>
@@ -467,7 +479,8 @@ const COLORS = [
   { bg: "#16a34a", shadow: "#14532d", icon: "◆" }
 ];
 const TIME_PER_Q = 25;
-const GEMINI_MODEL = "gemini-2.5-flash-lite";
+const DEFAULT_MODEL = "google/gemini-2.0-flash-exp:free"; // free model with vision support
+const SEARCH_SUFFIX = ":online"; // appended to model ID for web search
 
 // ══ UTILS ════════════════════════════════════════════════════
 function genCode() { return Math.random().toString(36).slice(2, 8).toUpperCase(); }
@@ -535,40 +548,70 @@ function goHome() {
   else show("s-home");
 }
 
-// ══ GEMINI AI ════════════════════════════════════════════════
-async function callGemini(prompt, useSearch, imageData) {
+// ══ OPENROUTER AI ═══════════════════════════════════════════
+// OpenRouter is OpenAI-compatible. Docs: https://openrouter.ai/docs
+function getModel() { return LS.get("qb_model") || DEFAULT_MODEL; }
+
+async function callOpenRouter(prompt, useSearch, imageData) {
   const apiKey = LS.get("qb_apikey");
-  if (!apiKey) throw new Error("No Google API key set. Please go to ⚙️ Settings.");
+  if (!apiKey) throw new Error("No OpenRouter API key set. Please go to ⚙️ Settings.");
 
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
-  const parts = [];
-  if (imageData) parts.push({ inlineData: { mimeType: imageData.mime, data: imageData.b64 } });
-  parts.push({ text: prompt });
+  // For web search, append :online to the model ID (supported by many models)
+  let model = getModel();
+  if (useSearch && !model.endsWith(SEARCH_SUFFIX) && !model.endsWith(":free")) {
+    model = model + SEARCH_SUFFIX;
+  } else if (useSearch && model.endsWith(":free")) {
+    // :free models can't use :online — try without :free suffix + :online
+    model = model.replace(":free", "") + SEARCH_SUFFIX;
+  }
+  // For image tasks always use the base model (vision-capable)
+  if (imageData) model = getModel();
 
-  const body = {
-    contents: [{ role: "user", parts }],
-    generationConfig: { temperature: 0.4, maxOutputTokens: 4096 }
-  };
-  if (useSearch) body.tools = [{ googleSearch: {} }];
+  // Build message content
+  let content;
+  if (imageData) {
+    content = [
+      { type: "image_url", image_url: { url: `data:${imageData.mime};base64,${imageData.b64}` } },
+      { type: "text", text: prompt }
+    ];
+  } else {
+    content = prompt;
+  }
 
-  const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+      "HTTP-Referer": window.location.href,
+      "X-Title": "QuizBlast"
+    },
+    body: JSON.stringify({
+      model,
+      messages: [{ role: "user", content }],
+      max_tokens: 4000,
+      temperature: 0.4
+    })
+  });
+
   if (!r.ok) {
     const e = await r.json().catch(() => ({}));
-    const msg = e?.error?.message || `Gemini API error ${r.status}`;
-    if (r.status === 400) throw new Error(msg + " — Check your API key.");
-    if (r.status === 403) throw new Error("API key not authorised. Enable Generative Language API in Google Cloud.");
-    if (r.status === 404) throw new Error("Model not found. Your API key may not have access to Gemini 2.5 Flash Lite yet.");
+    const msg = e?.error?.message || `OpenRouter API error ${r.status}`;
+    if (r.status === 401) throw new Error("Invalid API key. Check your key at openrouter.ai/keys");
+    if (r.status === 402) throw new Error("OpenRouter credits exhausted. Add credits at openrouter.ai/credits");
+    if (r.status === 404) throw new Error(`Model "${model}" not found. Check model ID at openrouter.ai/models`);
+    if (r.status === 429) throw new Error("Rate limit hit. Wait a moment and try again.");
     throw new Error(msg);
   }
 
   const d = await r.json();
-  const text = (d.candidates?.[0]?.content?.parts || []).filter(p => p.text).map(p => p.text).join("");
-  if (!text) throw new Error("Gemini returned an empty response. Try again.");
+  const text = d.choices?.[0]?.message?.content || "";
+  if (!text) throw new Error("AI returned an empty response. Try again or use a different model.");
 
   // Strip markdown code fences if present
   const clean = text.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
   const s = clean.indexOf("["), e = clean.lastIndexOf("]");
-  if (s === -1 || e === -1) throw new Error("Could not parse questions from AI response. Try a more specific topic.");
+  if (s === -1 || e === -1) throw new Error("Could not parse questions from AI response. Try a more specific topic or a different model.");
   return JSON.parse(clean.slice(s, e + 1));
 }
 
@@ -577,12 +620,14 @@ function saveSetup() {
   const pass  = document.getElementById("setup-pass").value;
   const pass2 = document.getElementById("setup-pass2").value;
   const key   = document.getElementById("setup-apikey").value.trim();
+  const model = document.getElementById("setup-model").value.trim();
   hideErr("setup-err");
   if (pass.length < 4) { showErr("setup-err", "Password must be at least 4 characters."); return; }
   if (pass !== pass2)  { showErr("setup-err", "Passwords do not match."); return; }
-  if (!key.startsWith("AIza")) { showErr("setup-err", "Google API key should start with AIza... Get it from aistudio.google.com/apikey"); return; }
+  if (!key.startsWith("sk-or-")) { showErr("setup-err", "OpenRouter API key should start with sk-or-... Get it from openrouter.ai/keys"); return; }
   LS.set("qb_pass", pass);
   LS.set("qb_apikey", key);
+  if (model) LS.set("qb_model", model);
   toast("✅ Setup complete!");
   enterTeacherDash();
 }
@@ -628,10 +673,17 @@ function changePassword() {
 function changeApiKey() {
   const key = document.getElementById("set-apikey").value.trim();
   hideErr("set-key-err");
-  if (!key.startsWith("AIza")) { showErr("set-key-err", "Google API key should start with AIza..."); return; }
+  if (!key.startsWith("sk-or-")) { showErr("set-key-err", "OpenRouter API key should start with sk-or-..."); return; }
   LS.set("qb_apikey", key);
   document.getElementById("set-apikey").value = "";
   showOk("set-key-ok", "✅ API key updated!");
+}
+
+function changeModel() {
+  const model = document.getElementById("set-model").value.trim();
+  if (model) { LS.set("qb_model", model); document.getElementById("set-model").value = ""; }
+  else LS.set("qb_model", null);
+  showOk("set-model-ok", "✅ Model updated to: " + (model || DEFAULT_MODEL));
 }
 
 // ══ SAVED QUIZZES ════════════════════════════════════════════
@@ -681,17 +733,17 @@ async function runAI() {
   const diff  = document.getElementById("ai-diff").value;
   hideErr("ai-err");
   if (!topic) { showErr("ai-err", "Please describe the topic first."); return; }
-  setLoading("🤖 Gemini 2.5 Flash Lite is generating questions... (may take 15–30 sec)");
+  setLoading("🤖 AI is generating questions... (may take 15–30 sec)");
   try {
     const prompt = `You are a quiz creator for Malaysian school students (primary and secondary level).
-Use Google Search to find accurate, curriculum-aligned information, then create exactly ${count} multiple-choice questions about: "${topic}".
+Search the web for accurate, curriculum-aligned information, then create exactly ${count} multiple-choice questions about: "${topic}".
 Difficulty level: ${diff}.
 For Bahasa Malaysia topics, write questions in Bahasa Malaysia.
 
 IMPORTANT: Return ONLY a raw JSON array. No markdown, no explanation, no text before or after the array.
 [{"question":"...","options":["Option A","Option B","Option C","Option D"],"correct":0,"explanation":"Brief reason why this is correct."}]
 "correct" = 0-based index (0, 1, 2, or 3) of the correct option.`;
-    const qs = await callGemini(prompt, true, null);
+    const qs = await callOpenRouter(prompt, true, null);
     if (!Array.isArray(qs) || qs.length === 0) throw new Error("AI returned no questions. Try a more specific topic.");
     STATE.quiz = { title: topic.slice(0, 60), difficulty: diff, questions: qs };
     saveQuizToStorage(STATE.quiz);
@@ -729,7 +781,7 @@ async function runPhoto() {
 Return ONLY a raw JSON array (no markdown, no text before or after):
 [{"question":"...","options":["A","B","C","D"],"correct":0,"explanation":"..."}]
 "correct" = 0-based index of the correct answer. If the image already has options, use them. Otherwise create 4 sensible options.`;
-    const qs = await callGemini(prompt, false, { b64: photoB64, mime: photoMime });
+    const qs = await callOpenRouter(prompt, false, { b64: photoB64, mime: photoMime });
     if (!Array.isArray(qs) || qs.length === 0) throw new Error("No questions found in the image.");
     STATE.quiz = { title, difficulty: "Mixed", questions: qs };
     saveQuizToStorage(STATE.quiz);
