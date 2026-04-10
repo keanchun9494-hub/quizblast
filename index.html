@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,6 +84,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 </nav>
 <div id="app">
 
+<!-- HOME -->
 <div id="s-home" class="screen center" style="padding-top:36px">
   <div style="font-size:72px;margin-bottom:10px">🎯</div>
   <h1 class="h1" style="background:linear-gradient(135deg,#fff 30%,#ffe066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px">QuizBlast!</h1>
@@ -101,6 +103,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
+<!-- FIRST-TIME SETUP -->
 <div id="s-setup" class="screen" style="max-width:480px;margin:0 auto;padding-top:24px">
   <div style="text-align:center;margin-bottom:28px">
     <div style="font-size:48px;margin-bottom:8px">⚙️</div>
@@ -124,7 +127,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
     </div>
     <div class="form-group" style="margin-bottom:0">
       <label class="lbl">Pin a Model (optional — leave blank for auto)</label>
-      <input type="text" id="setup-model" placeholder="e.g. google/gemini-2.0-flash-lite-preview:free"/>
+      <input type="text" id="setup-model" placeholder="e.g. google/gemini-2.0-flash-exp:free"/>
       <p class="muted" style="font-size:.77rem;margin-top:6px">Blank = auto-rotates 6 free models. Browse at <a href="https://openrouter.ai/models" target="_blank" style="color:#ffe066">openrouter.ai/models</a></p>
     </div>
     <div class="errbox" id="setup-err"></div>
@@ -132,6 +135,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
+<!-- TEACHER LOGIN -->
 <div id="s-teacher-login" class="screen" style="max-width:400px;margin:0 auto;padding-top:30px">
   <button class="back-btn" onclick="show('s-home')">← Back</button>
   <div style="text-align:center;margin-bottom:28px">
@@ -150,6 +154,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
+<!-- STUDENT LOGIN -->
 <div id="s-student-login" class="screen" style="max-width:400px;margin:0 auto;padding-top:30px;text-align:center">
   <button class="back-btn" onclick="show('s-home')">← Back</button>
   <div style="font-size:56px;margin-bottom:8px">🎓</div>
@@ -172,6 +177,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
+<!-- TEACHER DASHBOARD -->
 <div id="s-teacher-dash" class="screen" style="max-width:540px;margin:0 auto;padding-top:20px">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:10px">
     <h2 class="h2 accent">Dashboard</h2>
@@ -185,6 +191,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <div id="saved-list"><p class="muted" style="text-align:center;padding:20px 0">No quizzes yet. Create your first one!</p></div>
 </div>
 
+<!-- SETTINGS -->
 <div id="s-settings" class="screen" style="max-width:460px;margin:0 auto;padding-top:20px">
   <button class="back-btn" onclick="show('s-teacher-dash')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:20px">⚙️ Settings</h2>
@@ -210,12 +217,12 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
     <p class="muted" style="font-size:.8rem;margin-bottom:10px">By default the app <strong>auto-rotates free models</strong> when one hits its limit. Pin a specific model to override.</p>
     <div class="model-hint">
       <strong>Free models in rotation:</strong><br/>
-      google/gemini-2.0-flash-lite-preview:free<br/>
       google/gemini-2.0-flash-exp:free<br/>
+      google/gemini-flash-1.5-8b:free<br/>
       meta-llama/llama-3.3-70b-instruct:free<br/>
+      mistralai/mistral-7b-instruct:free<br/>
       qwen/qwen-2.5-72b-instruct:free<br/>
-      deepseek/deepseek-r1:free<br/>
-      mistralai/mistral-7b-instruct:free
+      deepseek/deepseek-chat:free
     </div>
     <div class="form-group">
       <label class="lbl">Pin a Specific Model (optional)</label>
@@ -230,6 +237,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
+<!-- CREATE METHOD -->
 <div id="s-create-method" class="screen">
   <button class="back-btn" onclick="show('s-teacher-dash')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:20px">Create Quiz</h2>
@@ -247,6 +255,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
+<!-- CREATE AI -->
 <div id="s-create-ai" class="screen" style="max-width:520px;margin:0 auto">
   <button class="back-btn" onclick="show('s-create-method')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:6px">🤖 AI Generator</h2>
@@ -269,6 +278,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
+<!-- CREATE PHOTO -->
 <div id="s-create-photo" class="screen" style="max-width:500px;margin:0 auto">
   <button class="back-btn" onclick="show('s-create-method')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:20px">📸 From Photo</h2>
@@ -291,6 +301,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
+<!-- MANUAL CREATE -->
 <div id="s-create-manual" class="screen" style="max-width:560px;margin:0 auto">
   <button class="back-btn" onclick="show('s-create-method')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:20px">✏️ Manual Entry</h2>
@@ -306,6 +317,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
+<!-- LOADING -->
 <div id="s-loading" class="screen center">
   <div class="spinner-wrap">
     <div class="spinner"></div>
@@ -313,6 +325,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
 </div>
 
+<!-- PREVIEW -->
 <div id="s-preview" class="screen" style="max-width:600px;margin:0 auto">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:20px">
     <div>
@@ -326,6 +339,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <div id="preview-list"></div>
 </div>
 
+<!-- TEACHER LOBBY -->
 <div id="s-lobby" class="screen" style="max-width:500px;margin:0 auto;text-align:center">
   <div class="card fade-in" style="border-color:rgba(255,224,102,.25);margin-bottom:20px">
     <p class="muted" style="font-size:.85rem;margin-bottom:8px">📢 Share this code with your students</p>
@@ -346,6 +360,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <button class="btn btn-green btn-full" id="start-btn" onclick="startQuiz()" disabled style="font-size:1.15rem">Waiting for students...</button>
 </div>
 
+<!-- TEACHER CONTROL -->
 <div id="s-control" class="screen" style="max-width:680px;margin:0 auto">
   <div class="card flex-row" style="margin-bottom:14px;justify-content:space-between">
     <div>
@@ -364,34 +379,26 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
   <div class="ans-grid" id="ctrl-options" style="margin-bottom:14px"></div>
   <div id="ctrl-expl" style="background:rgba(34,197,94,.09);border:1px solid rgba(34,197,94,.22);border-radius:14px;padding:12px 16px;margin-bottom:14px;font-size:.88rem;color:#bbf7d0;display:none"></div>
+  <div id="ctrl-lb-wrap" style="display:none;margin-bottom:14px">
+    <h3 class="h3 accent" style="margin-bottom:12px">🏆 Standings</h3>
+    <div id="ctrl-lb"></div>
+  </div>
   <div class="errbox" id="ctrl-err"></div>
-  <div id="ctrl-reveal-btn" style="display:none">
-    <button class="btn btn-blue btn-full" onclick="teacherReveal()" style="padding:16px">Reveal Correct Answer</button>
-  </div>
-  <div id="ctrl-next-btn" style="display:none">
-    <button class="btn btn-green btn-full" onclick="teacherNext()" style="padding:16px" id="btn-next-text">Next Question →</button>
-  </div>
-  <hr style="border:none;border-top:1.5px solid rgba(255,255,255,.08);margin:20px 0"/>
-  <h3 class="h3" style="margin-bottom:12px">Live Leaderboard</h3>
-  <div id="ctrl-lb"></div>
+  <button class="btn btn-orange btn-full" id="ctrl-reveal-btn" onclick="teacherReveal()" style="margin-bottom:10px">👁 Reveal Answer &amp; Scores</button>
+  <button class="btn btn-purple btn-full" id="ctrl-next-btn" onclick="teacherNext()" style="display:none;margin-bottom:10px">→ Next Question</button>
 </div>
 
-<div id="s-t-results" class="screen" style="max-width:540px;margin:0 auto">
-  <div style="text-align:center;margin-bottom:28px">
-    <div style="font-size:60px;margin-bottom:10px">🏆</div>
-    <h2 class="h2 accent">Quiz Finished!</h2>
-    <p class="muted" id="t-results-meta"></p>
-  </div>
-  <div class="card" style="margin-bottom:20px">
-    <h3 class="h3" style="margin-bottom:14px">Final Standings</h3>
-    <div id="t-results-lb"></div>
-  </div>
-  <div class="grid2">
-    <button class="btn btn-csv" onclick="downloadCSV()">📊 Download Results (.csv)</button>
-    <button class="btn btn-purple" onclick="goHome()">🏠 Home</button>
-  </div>
+<!-- TEACHER RESULTS -->
+<div id="s-t-results" class="screen center" style="max-width:500px;margin:0 auto;padding-top:20px">
+  <div style="font-size:64px;margin-bottom:8px">🏁</div>
+  <h2 class="h2 accent" style="margin-bottom:4px">Quiz Complete!</h2>
+  <p class="muted" style="margin-bottom:24px" id="t-results-meta"></p>
+  <div id="t-results-lb" style="margin-bottom:20px"></div>
+  <button class="btn btn-csv btn-full" style="margin-bottom:12px;font-size:1.05rem" onclick="downloadCSV()">📥 Download Results as CSV</button>
+  <button class="btn btn-purple btn-full" onclick="goHome()">← Back to Home</button>
 </div>
 
+<!-- STUDENT LOBBY -->
 <div id="s-s-lobby" class="screen center" style="max-width:400px;margin:0 auto;padding-top:44px">
   <div style="font-size:60px;margin-bottom:10px" class="pulse">⏳</div>
   <h2 class="h2" style="margin-bottom:6px">You're In!</h2>
@@ -403,6 +410,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <p class="muted" style="margin-top:20px;font-size:.82rem">Waiting for teacher to start the quiz...</p>
 </div>
 
+<!-- STUDENT GAME -->
 <div id="s-game" class="screen" style="max-width:580px;margin:0 auto">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
     <div>
@@ -412,666 +420,975 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
     <div id="g-timer" style="width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:1.5rem;background:#22c55e;box-shadow:0 0 18px rgba(34,197,94,.5);transition:background .3s,box-shadow .3s">25</div>
     <div style="text-align:right">
       <div style="font-family:'Fredoka One',cursive;color:#ffe066" id="g-score">0 pts</div>
-      <div class="muted" style="font-size:.75rem">score</div>
+      <div class="muted" style="font-size:.75rem" id="g-rank">Rank #1</div>
     </div>
   </div>
-  <div class="pbar" style="margin-bottom:20px"><div class="pbar-fill" id="g-timer-bar" style="width:100%;background:#22c55e"></div></div>
-  <div class="card" style="margin-bottom:16px;text-align:center;padding:32px 24px">
-    <p id="g-question" style="font-size:clamp(1.05rem,4vw,1.3rem);font-weight:700;line-height:1.4">Loading question...</p>
+  <div class="pbar" style="margin-bottom:12px"><div class="pbar-fill" id="g-timer-bar" style="width:100%;background:#22c55e"></div></div>
+  <div style="background:#1a1850;border:2px solid rgba(255,255,255,.07);border-radius:18px;padding:22px;text-align:center;margin-bottom:14px;min-height:90px;display:flex;align-items:center;justify-content:center">
+    <p style="font-size:clamp(1rem,3.5vw,1.2rem);font-weight:700;margin:0;line-height:1.4" id="g-question">Loading...</p>
   </div>
   <div class="ans-grid" id="g-options"></div>
-  <div id="g-feedback" class="fade-in" style="margin-top:16px;display:none">
-    <div id="g-feedback-box" style="border-radius:18px;padding:20px;text-align:center">
-      <div id="g-feedback-icon" style="font-size:32px;margin-bottom:8px"></div>
-      <div id="g-feedback-title" class="h3" style="margin-bottom:4px"></div>
-      <p id="g-feedback-pts" style="font-weight:700;font-size:1.1rem;margin-bottom:8px"></p>
-      <div id="g-feedback-expl" style="font-size:.88rem;opacity:.9;background:rgba(0,0,0,.1);padding:10px;border-radius:10px"></div>
-    </div>
-  </div>
+  <div id="g-feedback" style="display:none;margin-top:12px;padding:16px 18px;border-radius:16px"></div>
 </div>
 
-<div id="s-s-results" class="screen center" style="max-width:480px;margin:0 auto">
-  <div style="font-size:72px;margin-bottom:14px">🏁</div>
-  <h2 class="h2 accent">Nice Work!</h2>
-  <div class="card" style="margin:24px 0;padding:32px 24px">
-    <h3 class="h3" id="s-result-score">You scored 0 points</h3>
-    <p class="muted" id="s-result-rank" style="margin-top:4px">Rank #0</p>
-    <hr style="border:none;border-top:1px solid rgba(255,255,255,.07);margin:20px 0"/>
-    <h4 style="font-size:.85rem;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:12px;letter-spacing:1px">Final Leaderboard</h4>
-    <div id="s-result-lb" style="text-align:left"></div>
-  </div>
-  <button class="btn btn-purple btn-full" onclick="goHome()">Back to Home</button>
+<!-- STUDENT RESULTS -->
+<div id="s-s-results" class="screen center" style="max-width:480px;margin:0 auto;padding-top:24px">
+  <div style="font-size:72px;margin-bottom:8px" id="s-result-emoji">🎉</div>
+  <h2 class="h2 accent" id="s-result-grade" style="margin-bottom:4px">Good job!</h2>
+  <p class="muted" style="margin-bottom:4px" id="s-result-score"></p>
+  <p class="muted" style="margin-bottom:24px" id="s-result-rank"></p>
+  <div id="s-result-lb"></div>
+  <button class="btn btn-blue btn-full" style="margin-top:24px" onclick="goHome()">← Play Again</button>
 </div>
 
-</div>
+</div><!-- #app -->
+<div id="toast" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#1e1e40;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 22px;font-weight:600;font-size:.9rem;transition:transform .3s;z-index:999;white-space:nowrap"></div>
 
 <script>
-// ══ CONFIG ═══════════════════════════════════════════════════
-const firebaseConfig = {
-  databaseURL: "https://quizblast-f860c-default-rtdb.asia-southeast1.firebasedatabase.app"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+// ═══════════════════════════════════════════════════
+//  FIREBASE
+// ═══════════════════════════════════════════════════
+firebase.initializeApp({
+  apiKey:"AIzaSyCEmZSSqNHBzhALLMpKS-uaECi5iddG_Bo",
+  authDomain:"quizblast-1e778.firebaseapp.com",
+  databaseURL:"https://quizblast-1e778-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId:"quizblast-1e778",
+  storageBucket:"quizblast-1e778.firebasestorage.app",
+  messagingSenderId:"86331098759",
+  appId:"1:86331098759:web:1f127d6574fb8f69be1a22"
+});
+var db = firebase.database();
+async function fbGet(p){ var s=await db.ref(p).get(); return s.val(); }
+async function fbSet(p,v){ await db.ref(p).set(v); }
+async function fbUpdate(p,v){ await db.ref(p).update(v); }
 
-const LS = {
-  get: k => { try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ return null; } },
-  set: (k,v) => localStorage.setItem(k, JSON.stringify(v))
-};
-
-const COLORS = [
-  {bg:"#ef4444", name:"Red"},
-  {bg:"#3b82f6", name:"Blue"},
-  {bg:"#eab308", name:"Yellow"},
-  {bg:"#22c55e", name:"Green"}
-];
-
-const TIME_PER_Q = 25;
-
-// ══ STATE ════════════════════════════════════════════════════
-let STATE = {
-  role: null,
-  quiz: null,
-  roomCode: null,
-  uid: null,
-  playerName: null,
-  answered: {},
-  localScore: 0,
-  pollIv: null,
-  roomListener: null,
-  lastRoom: null
+// ═══════════════════════════════════════════════════
+//  LOCAL STORAGE
+// ═══════════════════════════════════════════════════
+var LS = {
+  get: function(k){ try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ return null; } },
+  set: function(k,v){ localStorage.setItem(k,JSON.stringify(v)); },
+  remove: function(k){ localStorage.removeItem(k); }
 };
 
-let timerIv = null;
-
-// ══ HELPERS ══════════════════════════════════════════════════
-function esc(t){ if(!t)return ""; const d=document.createElement("div"); d.textContent=t; return d.innerHTML; }
-function genCode(){ return Math.random().toString(36).substring(2,8).toUpperCase(); }
-function genUid(){ return "u_"+Math.random().toString(36).substring(2,12); }
-function showErr(id, msg){ const e=document.getElementById(id); if(e){ e.textContent=msg; e.style.display="block"; }}
-function hideErr(id){ const e=document.getElementById(id); if(e) e.style.display="none"; }
-function setLoading(txt){ document.getElementById("loading-text").textContent=txt; show("s-loading"); }
-function toast(m){ alert(m); }
-
-async function fbSet(p,v){ return db.ref(p).set(v); }
-async function fbUpdate(p,v){ return db.ref(p).update(v); }
-async function fbGet(p){ const s=await db.ref(p).once("value"); return s.val(); }
-
-// ══ OPENROUTER AI ═════════════════════════════════════════════
-const FREE_MODELS = [
-  "google/gemini-2.0-flash-lite-preview:free",
+// ═══════════════════════════════════════════════════
+//  OPENROUTER — FREE MODEL AUTO-ROTATION
+// ═══════════════════════════════════════════════════
+var FREE_TEXT_MODELS = [
   "google/gemini-2.0-flash-exp:free",
+  "google/gemini-flash-1.5-8b:free",
   "meta-llama/llama-3.3-70b-instruct:free",
+  "mistralai/mistral-7b-instruct:free",
   "qwen/qwen-2.5-72b-instruct:free",
-  "deepseek/deepseek-r1:free",
-  "mistralai/mistral-7b-instruct:free"
+  "deepseek/deepseek-chat:free"
 ];
 
-function getModelList(hasImage){
-  const pinned = LS.get("qb_pinned_model");
-  if(pinned) return [pinned];
-  return FREE_MODELS;
+var FREE_VISION_MODELS = [
+  "google/gemini-2.0-flash-exp:free",
+  "google/gemini-flash-1.5-8b:free",
+  "meta-llama/llama-3.2-11b-vision-instruct:free",
+  "qwen/qwen-2-vl-7b-instruct:free"
+];
+
+// Per-session cooldown tracker {model: timestamp}
+var MODEL_COOLDOWNS = {};
+var COOLDOWN_MS = 60000;
+
+function isOnCooldown(model){
+  var t = MODEL_COOLDOWNS[model];
+  return t && (Date.now()-t) < COOLDOWN_MS;
+}
+function setCooldown(model){
+  MODEL_COOLDOWNS[model] = Date.now();
 }
 
-const COOLDOWNS = {};
-function isOnCooldown(m){ return COOLDOWNS[m] && (Date.now() < COOLDOWNS[m]); }
-function setCooldown(m){ COOLDOWNS[m] = Date.now() + (60000 * 5); }
+function getModelList(needsVision){
+  var custom = LS.get("qb_model");
+  if(custom) return [custom];
+  return needsVision ? FREE_VISION_MODELS : FREE_TEXT_MODELS;
+}
 
-async function tryOneModel(model, prompt, imageData, apiKey){
-  const url = "https://openrouter.ai/api/v1/chat/completions";
-  const content = [];
-  const seed = `[RequestID: ${Math.random().toString(36).substring(7)}] `;
-  
-  content.push({ type: "text", text: seed + prompt + " Output ONLY valid JSON." });
-  if(imageData) content.push({ type:"image_url", image_url:{ url:`data:${imageData.mime};base64,${imageData.b64}` } });
+// Strip :free suffix for models that need online access
+function toSearchModel(model){
+  if(model.endsWith(":free")) return model.slice(0, -5);
+  return model;
+}
 
-  const resp = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Authorization": "Bearer " + apiKey,
-      "Content-Type": "application/json",
-      "HTTP-Referer": window.location.href,
-      "X-Title": "QuizBlast"
+async function tryOneModel(model, prompt, useSearch, imageData, apiKey){
+  var finalModel = useSearch ? toSearchModel(model) : model;
+  var content = imageData
+    ? [
+        {type:"image_url", image_url:{url:"data:"+imageData.mime+";base64,"+imageData.b64}},
+        {type:"text", text:prompt}
+      ]
+    : prompt;
+
+  var resp = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method:"POST",
+    headers:{
+      "Authorization":"Bearer "+apiKey,
+      "Content-Type":"application/json",
+      "HTTP-Referer":window.location.href,
+      "X-Title":"QuizBlast"
     },
-    body: JSON.stringify({
-      model: model,
-      messages: [{role: "user", content: content}],
-      max_tokens: 4000,
-      temperature: 0.8
+    body:JSON.stringify({
+      model:finalModel,
+      messages:[{role:"user", content:content}],
+      max_tokens:4000,
+      temperature:0.4
     })
   });
 
-  const status = resp.status;
+  var status = resp.status;
   if(!resp.ok){
-    const e = await resp.json().catch(()=>({}));
-    return { ok:false, status:status, error:(e.error && e.error.message) || ("HTTP "+status) };
+    var e = await resp.json().catch(function(){ return {}; });
+    return {ok:false, status:status, error:(e.error&&e.error.message)||("HTTP "+status)};
   }
-
-  const d = await resp.json();
-  let text = d.choices?.[0]?.message?.content || "";
-  
-  // JSON Cleaning Logic
-  text = text.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
-  const s = text.indexOf("["), e = text.lastIndexOf("]");
-  if(s !== -1 && e !== -1) text = text.slice(s, e + 1);
-
-  return { ok:true, text:text, status:status };
+  var d = await resp.json();
+  var text = (d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content)||"";
+  return {ok:true, text:text, status:status};
 }
 
-async function callOpenRouter(prompt, imageData){
-  const apiKey = LS.get("qb_apikey");
+async function callOpenRouter(prompt, useSearch, imageData){
+  var apiKey = LS.get("qb_apikey");
   if(!apiKey) throw new Error("No OpenRouter API key set. Please go to Settings.");
 
-  const models = getModelList(!!imageData);
-  let lastError = "No models available";
+  var models = getModelList(!!imageData);
+  var tried = [];
+  var lastError = "No models available";
 
-  for(let model of models){
-    if(isOnCooldown(model)) continue;
+  for(var i=0; i<models.length; i++){
+    var model = models[i];
 
-    const ltEl = document.getElementById("loading-text");
-    if(ltEl) ltEl.textContent = "🤖 Trying " + (model.split("/")[1]||model) + "...";
+    if(isOnCooldown(model)){
+      tried.push(model+"(cooldown)");
+      continue;
+    }
 
-    const result = await tryOneModel(model, prompt, imageData, apiKey);
+    tried.push(model);
+    // update loading text
+    var ltEl = document.getElementById("loading-text");
+    if(ltEl){
+      var mname = model.split("/")[1]||model;
+      ltEl.textContent = "🤖 Trying "+mname+"...";
+    }
 
-    if(result.status === 401) throw new Error("Invalid API key.");
-    if(result.status === 402) throw new Error("OpenRouter credits exhausted.");
-    if(result.status === 429 || result.status >= 500){
+    var result = await tryOneModel(model, prompt, useSearch, imageData, apiKey);
+
+    if(result.status===401) throw new Error("Invalid API key. Check your key at openrouter.ai/keys");
+    if(result.status===402) throw new Error("OpenRouter credits exhausted. Top up at openrouter.ai/credits");
+
+    if(result.status===429||result.status===503||result.status===529){
       setCooldown(model);
-      lastError = model + " failed/rate limited";
+      lastError = model+" rate limited";
+      continue;
+    }
+    if(result.status===404){
+      lastError = model+" not found";
       continue;
     }
 
     if(!result.ok){
-      lastError = result.error;
+      lastError = model+": "+result.error;
       continue;
     }
 
-    try {
-      return JSON.parse(result.text);
-    } catch(e) {
-      lastError = "JSON Parse Error from " + model;
+    var text = result.text.trim();
+    if(!text){ lastError = model+" returned empty response"; continue; }
+
+    // Parse JSON array from response
+    var clean = text.replace(/```json\s*/g,"").replace(/```\s*/g,"").trim();
+    var s = clean.indexOf("[");
+    var e = clean.lastIndexOf("]");
+    if(s===-1||e===-1){ lastError = model+" returned non-JSON"; continue; }
+
+    try{
+      var parsed = JSON.parse(clean.slice(s,e+1));
+      if(!Array.isArray(parsed)||parsed.length===0){ lastError = model+" returned empty array"; continue; }
+      var shortName = model.split("/")[1]||model;
+      toast("✅ Generated with "+shortName, 3000);
+      return parsed;
+    }catch(parseErr){
+      lastError = model+" invalid JSON";
+      continue;
     }
   }
 
-  throw new Error("All models failed. " + lastError);
+  throw new Error("All models failed. Last: "+lastError+". Tried: "+tried.join(", "));
 }
 
-// ══ NAVIGATION ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════
+var STATE = {
+  role:null, quiz:null, roomCode:null,
+  uid:null, playerName:null,
+  answered:{}, localScore:0,
+  pollIv:null, roomListener:null, lastRoom:null
+};
+
+var COLORS = [
+  {bg:"#e63946",shadow:"#7f1d1d",icon:"▲"},
+  {bg:"#2563eb",shadow:"#1e3a8a",icon:"●"},
+  {bg:"#ea580c",shadow:"#7c2d12",icon:"■"},
+  {bg:"#16a34a",shadow:"#14532d",icon:"◆"}
+];
+var TIME_PER_Q = 25;
+
+// ═══════════════════════════════════════════════════
+//  UTILS
+// ═══════════════════════════════════════════════════
+function genCode(){ return Math.random().toString(36).slice(2,8).toUpperCase(); }
+function genUid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+function esc(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+function toast(msg,dur){
+  dur=dur||2500;
+  var t=document.getElementById("toast");
+  t.textContent=msg;
+  t.style.transform="translateX(-50%) translateY(0)";
+  setTimeout(function(){ t.style.transform="translateX(-50%) translateY(80px)"; },dur);
+}
+
+function showErr(id,msg){
+  var el=document.getElementById(id);
+  if(el){ el.innerHTML="⚠️ "+esc(msg); el.style.display="block"; }
+}
+function hideErr(id){
+  var el=document.getElementById(id);
+  if(el) el.style.display="none";
+}
+function showOk(id,msg){
+  var el=document.getElementById(id);
+  if(el){ el.textContent=msg; el.style.display="block"; setTimeout(function(){ el.style.display="none"; },3000); }
+}
+function setLoading(text){
+  show("s-loading");
+  document.getElementById("loading-text").textContent=text;
+}
+function stopPoll(){
+  if(STATE.pollIv){ clearInterval(STATE.pollIv); STATE.pollIv=null; }
+  if(STATE.roomListener){ STATE.roomListener(); STATE.roomListener=null; }
+}
 function show(id){
-  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-  const el = document.getElementById(id);
+  document.querySelectorAll(".screen").forEach(function(s){ s.classList.remove("active"); });
+  var el=document.getElementById(id);
   if(el) el.classList.add("active");
   window.scrollTo(0,0);
 }
-
 function updateNav(){
-  const nr = document.getElementById("nav-right");
-  if(STATE.role === "teacher"){
-    let h = '<span class="role-badge badge-teacher">👨‍🏫 Teacher</span>';
-    if(STATE.roomCode) h += `<span class="chip" style="color:#ffe066">Room: ${STATE.roomCode}</span>`;
-    h += `<button onclick="teacherLogout()" class="btn btn-ghost" style="padding:5px 12px;font-size:.8rem">Logout</button>`;
-    nr.innerHTML = h;
-  } else if(STATE.role === "student"){
-    nr.innerHTML = `<span class="role-badge badge-student">🎓 ${esc(STATE.playerName)}</span>`;
-  } else {
-    nr.innerHTML = "";
+  var nr=document.getElementById("nav-right");
+  if(STATE.role==="teacher"){
+    var h='<span class="role-badge badge-teacher">👨‍🏫 Teacher</span>';
+    if(STATE.roomCode) h+='<span style="background:rgba(255,224,102,.1);border:1px solid rgba(255,224,102,.25);border-radius:10px;padding:4px 14px;font-size:.8rem;font-weight:700;color:#ffe066">Room: '+STATE.roomCode+'</span>';
+    h+='<button onclick="teacherLogout()" style="background:transparent;border:1px solid rgba(239,68,68,.25);border-radius:9px;padding:5px 12px;color:#fca5a5;cursor:pointer;font-size:.8rem;font-family:Poppins,sans-serif">Logout</button>';
+    nr.innerHTML=h;
+  }else if(STATE.role==="student"){
+    nr.innerHTML='<span class="role-badge badge-student">🎓 '+esc(STATE.playerName||"Student")+'</span>';
+  }else{
+    nr.innerHTML="";
   }
 }
 
 function goHome(){
   stopPoll();
   clearInterval(timerIv);
-  STATE = {role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null,lastRoom:null};
+  STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null,lastRoom:null};
+  updateNav();
+  var code=new URLSearchParams(window.location.search).get("join");
+  if(code){ document.getElementById("s-code").value=code; show("s-student-login"); }
+  else show("s-home");
+}
+
+// ═══════════════════════════════════════════════════
+//  SETUP & AUTH
+// ═══════════════════════════════════════════════════
+function saveSetup(){
+  var pass=document.getElementById("setup-pass").value;
+  var pass2=document.getElementById("setup-pass2").value;
+  var key=document.getElementById("setup-apikey").value.trim();
+  var modelVal=document.getElementById("setup-model").value.trim();
+  hideErr("setup-err");
+  if(pass.length<4){ showErr("setup-err","Password must be at least 4 characters."); return; }
+  if(pass!==pass2){ showErr("setup-err","Passwords do not match."); return; }
+  if(!key.startsWith("sk-or-")){ showErr("setup-err","OpenRouter API key should start with sk-or-... Get it from openrouter.ai/keys"); return; }
+  LS.set("qb_pass",pass);
+  LS.set("qb_apikey",key);
+  if(modelVal) LS.set("qb_model",modelVal);
+  toast("✅ Setup complete!");
+  enterTeacherDash();
+}
+
+function teacherLogin(){
+  var pass=document.getElementById("t-login-pass").value;
+  hideErr("t-login-err");
+  var stored=LS.get("qb_pass");
+  if(!stored){ show("s-setup"); return; }
+  if(pass!==stored){ showErr("t-login-err","Wrong password. Try again."); return; }
+  document.getElementById("t-login-pass").value="";
+  enterTeacherDash();
+}
+
+function enterTeacherDash(){
+  STATE.role="teacher";
+  updateNav();
+  loadSaved();
+  show("s-teacher-dash");
+}
+
+function teacherLogout(){
+  stopPoll();
+  STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null,lastRoom:null};
   updateNav();
   show("s-home");
 }
 
-// ══ AUTH & SETUP ═════════════════════════════════════════════
-function saveSetup(){
-  const pass = document.getElementById("setup-pass").value;
-  const pass2 = document.getElementById("setup-pass2").value;
-  const key = document.getElementById("setup-apikey").value.trim();
-  const model = document.getElementById("setup-model").value.trim();
-  hideErr("setup-err");
-
-  if(pass.length < 4) return showErr("setup-err", "Password too short.");
-  if(pass !== pass2) return showErr("setup-err", "Passwords do not match.");
-  if(!key) return showErr("setup-err", "API key is required.");
-
-  LS.set("qb_teacher_pass", pass);
-  LS.set("qb_apikey", key);
-  if(model) LS.set("qb_pinned_model", model);
-  teacherLogin(pass);
+function openSettings(){
+  showCurrentModel();
+  show("s-settings");
 }
 
-function teacherLogin(providedPass){
-  const saved = LS.get("qb_teacher_pass");
-  if(!saved) return show("s-setup");
-  const pass = providedPass || document.getElementById("t-login-pass").value;
-  if(pass === saved){
-    STATE.role = "teacher";
-    updateNav();
-    renderTeacherDash();
-  } else if(!providedPass) {
-    showErr("t-login-err", "Incorrect password.");
-  }
+// ═══════════════════════════════════════════════════
+//  SETTINGS
+// ═══════════════════════════════════════════════════
+function changePassword(){
+  var old=document.getElementById("set-old-pass").value;
+  var n=document.getElementById("set-new-pass").value;
+  var n2=document.getElementById("set-new-pass2").value;
+  hideErr("set-pass-err");
+  if(old!==LS.get("qb_pass")){ showErr("set-pass-err","Current password is wrong."); return; }
+  if(n.length<4){ showErr("set-pass-err","New password must be at least 4 characters."); return; }
+  if(n!==n2){ showErr("set-pass-err","Passwords do not match."); return; }
+  LS.set("qb_pass",n);
+  ["set-old-pass","set-new-pass","set-new-pass2"].forEach(function(id){ document.getElementById(id).value=""; });
+  showOk("set-pass-ok","✅ Password updated!");
 }
 
-function teacherLogout(){
-  if(confirm("Logout?")) goHome();
+function changeApiKey(){
+  var key=document.getElementById("set-apikey").value.trim();
+  hideErr("set-key-err");
+  if(!key.startsWith("sk-or-")){ showErr("set-key-err","OpenRouter API key should start with sk-or-..."); return; }
+  LS.set("qb_apikey",key);
+  document.getElementById("set-apikey").value="";
+  showOk("set-key-ok","✅ API key updated!");
 }
 
-function renderTeacherDash(){
-  const list = LS.get("qb_quizzes") || [];
-  const wrap = document.getElementById("saved-list");
-  if(list.length === 0){
-    wrap.innerHTML = '<p class="muted center">No quizzes yet.</p>';
-  } else {
-    wrap.innerHTML = list.map((q, i) => `
-      <div class="card fade-in" style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center">
-        <div>
-          <div style="font-weight:700">${esc(q.title)}</div>
-          <div class="muted" style="font-size:.8rem">${q.questions.length} questions · ${q.difficulty}</div>
-        </div>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-blue" style="padding:8px 14px" onclick="loadQuiz(${i})">Open</button>
-          <button class="btn btn-ghost" style="padding:8px" onclick="deleteQuiz(${i})">🗑️</button>
-        </div>
-      </div>
-    `).join("");
-  }
-  show("s-teacher-dash");
+function changeModel(){
+  var model=document.getElementById("set-model").value.trim();
+  if(!model){ showOk("set-model-ok","ℹ️ No model entered — using auto rotation."); return; }
+  LS.set("qb_model",model);
+  document.getElementById("set-model").value="";
+  showCurrentModel();
+  showOk("set-model-ok","✅ Pinned to: "+model);
 }
 
-function loadQuiz(i){
-  const list = LS.get("qb_quizzes") || [];
-  STATE.quiz = list[i];
-  showPreview();
+function clearModel(){
+  LS.remove("qb_model");
+  showCurrentModel();
+  showOk("set-model-ok","✅ Back to auto free model rotation!");
+}
+
+function showCurrentModel(){
+  var el=document.getElementById("set-model-current");
+  if(!el) return;
+  var m=LS.get("qb_model");
+  el.textContent=m?"📌 Currently pinned: "+m:"🔄 Currently: auto free model rotation";
+}
+
+// ═══════════════════════════════════════════════════
+//  SAVED QUIZZES
+// ═══════════════════════════════════════════════════
+function loadSaved(){
+  var saved=LS.get("qb_quizzes")||[];
+  var list=document.getElementById("saved-list");
+  if(!saved.length){ list.innerHTML='<p class="muted" style="text-align:center;padding:20px 0">No quizzes yet. Create your first one above!</p>'; return; }
+  list.innerHTML=saved.map(function(q,i){
+    return '<div class="fade-in" style="display:flex;align-items:center;gap:12px;background:#161630;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 16px;margin-bottom:10px">'
+      +'<div style="flex:1"><div style="font-weight:700">'+esc(q.title)+'</div><div class="muted" style="font-size:.8rem">'+q.questions.length+' questions · '+q.difficulty+'</div></div>'
+      +'<button class="btn btn-green" style="padding:8px 16px;font-size:.85rem" onclick="playQuiz('+i+')">▶ Play</button>'
+      +'<button class="btn btn-ghost" style="padding:8px 12px;font-size:.85rem;color:#fca5a5;border-color:rgba(239,68,68,.25)" onclick="deleteQuiz('+i+')">🗑</button>'
+      +'</div>';
+  }).join("");
 }
 
 function deleteQuiz(i){
-  if(!confirm("Delete this quiz?")) return;
-  const list = LS.get("qb_quizzes") || [];
-  list.splice(i, 1);
-  LS.set("qb_quizzes", list);
-  renderTeacherDash();
+  var s=LS.get("qb_quizzes")||[];
+  s.splice(i,1); LS.set("qb_quizzes",s); loadSaved(); toast("🗑 Quiz deleted");
+}
+function playQuiz(i){
+  var s=LS.get("qb_quizzes")||[]; STATE.quiz=s[i]; showPreview();
+}
+function saveQuizToStorage(quiz){
+  var s=LS.get("qb_quizzes")||[];
+  var i=s.findIndex(function(q){ return q.title===quiz.title; });
+  if(i>=0) s[i]=quiz; else s.unshift(quiz);
+  LS.set("qb_quizzes",s);
 }
 
-// ══ AI GENERATE ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
+//  AI GENERATE
+// ═══════════════════════════════════════════════════
 async function runAI(){
-  const topic = document.getElementById("ai-topic").value.trim();
-  const count = document.getElementById("ai-count").value;
-  const diff = document.getElementById("ai-diff").value;
+  var topic=document.getElementById("ai-topic").value.trim();
+  var count=document.getElementById("ai-count").value;
+  var diff=document.getElementById("ai-diff").value;
   hideErr("ai-err");
-
-  if(!topic) return showErr("ai-err", "Please enter a topic.");
-  setLoading("🤖 AI is generating questions...");
-
-  try {
-    const prompt = `You are a professional quiz creator. 
-Create exactly ${count} multiple-choice questions about: "${topic}".
-Difficulty: ${diff}.
-Return a JSON array ONLY:
-[{"question":"...","options":["A","B","C","D"],"correct":0,"explanation":"..."}]
-Index 0-3 for 'correct'.`;
-    
-    const qs = await callOpenRouter(prompt);
-    STATE.quiz = { title: topic.slice(0, 50), difficulty: diff, questions: qs };
-    saveQuiz(STATE.quiz);
+  if(!topic){ showErr("ai-err","Please describe the topic first."); return; }
+  setLoading("🤖 AI is generating your questions...");
+  try{
+    var prompt="You are a quiz creator for Malaysian school students (primary and secondary level).\n"
+      +"Create exactly "+count+" multiple-choice questions about: \""+topic+"\".\n"
+      +"Difficulty level: "+diff+".\n"
+      +"For Bahasa Malaysia topics, write questions in Bahasa Malaysia.\n\n"
+      +"IMPORTANT: Return ONLY a raw JSON array. No markdown, no explanation, no text before or after:\n"
+      +'[{"question":"...","options":["Option A","Option B","Option C","Option D"],"correct":0,"explanation":"Brief reason."}]\n'
+      +'"correct" = 0-based index (0, 1, 2, or 3) of the correct option.';
+    var qs=await callOpenRouter(prompt,false,null);
+    STATE.quiz={title:topic.slice(0,60),difficulty:diff,questions:qs};
+    saveQuizToStorage(STATE.quiz);
     showPreview();
-  } catch(e) {
+  }catch(e){
     show("s-create-ai");
-    showErr("ai-err", e.message);
+    showErr("ai-err",e.message);
   }
 }
 
-function saveQuiz(q){
-  const list = LS.get("qb_quizzes") || [];
-  list.unshift(q);
-  LS.set("qb_quizzes", list);
-}
+// ═══════════════════════════════════════════════════
+//  PHOTO
+// ═══════════════════════════════════════════════════
+var photoB64=null, photoMime=null;
 
-// ══ PHOTO UPLOAD ══════════════════════════════════════════════
-let photoData = null;
 function handlePhoto(e){
-  const f = e.target.files[0];
-  if(!f) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    photoData = { b64: ev.target.result.split(",")[1], mime: f.type };
-    document.getElementById("photo-preview").src = ev.target.result;
-    document.getElementById("photo-preview").style.display = "block";
-    document.getElementById("photo-placeholder").style.display = "none";
-    document.getElementById("photo-btn").disabled = false;
+  var f=e.target.files[0]; if(!f) return;
+  photoMime=f.type;
+  var r=new FileReader();
+  r.onload=function(ev){
+    photoB64=ev.target.result.split(",")[1];
+    document.getElementById("photo-preview").src=ev.target.result;
+    document.getElementById("photo-preview").style.display="block";
+    document.getElementById("photo-placeholder").style.display="none";
+    document.getElementById("photo-btn").disabled=false;
   };
-  reader.readAsDataURL(f);
+  r.readAsDataURL(f);
 }
 
 async function runPhoto(){
-  const title = document.getElementById("photo-title").value.trim() || "Photo Quiz";
-  setLoading("🔍 AI is reading your photo...");
-  try {
-    const prompt = "Extract all multiple-choice questions from this image into a JSON array. Include 4 options and mark the correct one.";
-    const qs = await callOpenRouter(prompt, photoData);
-    STATE.quiz = { title: title, difficulty: "Photo", questions: qs };
-    saveQuiz(STATE.quiz);
+  hideErr("photo-err");
+  setLoading("📸 AI is reading your photo and extracting questions...");
+  try{
+    var title=document.getElementById("photo-title").value.trim()||"Quiz from Photo";
+    var prompt="Extract ALL questions from this image and convert to multiple-choice quiz format.\n"
+      +"Return ONLY a raw JSON array (no markdown, no text before or after):\n"
+      +'[{"question":"...","options":["A","B","C","D"],"correct":0,"explanation":"..."}]\n'
+      +'"correct" = 0-based index of the correct answer. Use existing options if present, otherwise create 4 sensible ones.';
+    var qs=await callOpenRouter(prompt,false,{b64:photoB64,mime:photoMime});
+    STATE.quiz={title:title,difficulty:"Mixed",questions:qs};
+    saveQuizToStorage(STATE.quiz);
     showPreview();
-  } catch(e) {
+  }catch(e){
     show("s-create-photo");
-    showErr("photo-err", e.message);
+    showErr("photo-err",e.message);
   }
 }
 
-// ══ MANUAL ENTRY ═════════════════════════════════════════════
-function initManual(){
-  document.getElementById("manual-qs").innerHTML = "";
-  addManualQ();
-}
-function addManualQ(){
-  const div = document.createElement("div");
-  div.className = "card fade-in";
-  div.style.marginBottom = "10px";
-  div.innerHTML = `
-    <textarea class="q-txt" placeholder="Enter Question"></textarea>
-    <div class="grid2" style="margin-top:10px">
-      <input class="o-0" placeholder="Option A"/> <input class="o-1" placeholder="Option B"/>
-      <input class="o-2" placeholder="Option C"/> <input class="o-3" placeholder="Option D"/>
-    </div>
-    <select class="q-corr" style="margin-top:10px"><option value="0">A is correct</option><option value="1">B is correct</option><option value="2">C is correct</option><option value="3">D is correct</option></select>
-  `;
-  document.getElementById("manual-qs").appendChild(div);
+// ═══════════════════════════════════════════════════
+//  MANUAL CREATE
+// ═══════════════════════════════════════════════════
+var manualQs=[];
+function blankQ(){ return {question:"",options:["","","",""],correct:0,explanation:""}; }
+function initManual(){ manualQs=[blankQ()]; renderManualQs(); }
+function addManualQ(){ manualQs.push(blankQ()); renderManualQs(); }
+function removeManualQ(i){ manualQs.splice(i,1); renderManualQs(); }
+function updateMQ(i,f,v){ manualQs[i][f]=v; }
+function updateMOpt(qi,oi,v){ manualQs[qi].options[oi]=v; }
+function setCorrect(qi,oi){ manualQs[qi].correct=oi; renderManualQs(); }
+
+function renderManualQs(){
+  document.getElementById("manual-qs").innerHTML=manualQs.map(function(q,qi){
+    return '<div class="card fade-in" style="margin-bottom:14px">'
+      +'<div style="display:flex;justify-content:space-between;margin-bottom:10px">'
+      +'<span class="h3 accent">Q'+(qi+1)+'</span>'
+      +(manualQs.length>1?'<button onclick="removeManualQ('+qi+')" style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:8px;color:#fca5a5;padding:4px 10px;cursor:pointer;font-size:.8rem">✕ Remove</button>':"")
+      +'</div>'
+      +'<input type="text" value="'+esc(q.question)+'" placeholder="Question..." oninput="updateMQ('+qi+',\'question\',this.value)" style="margin-bottom:12px"/>'
+      +'<div class="grid2" style="margin-bottom:10px">'
+      +q.options.map(function(opt,oi){
+        return '<div style="display:flex;gap:6px;align-items:center">'
+          +'<button onclick="setCorrect('+qi+','+oi+')" style="width:28px;height:28px;border-radius:50%;border:2px solid '+(q.correct===oi?"#22c55e":"rgba(255,255,255,.18)")+';background:'+(q.correct===oi?"#22c55e":"transparent")+';cursor:pointer;color:#fff;font-size:11px;flex-shrink:0">✓</button>'
+          +'<input type="text" value="'+esc(opt)+'" placeholder="Option '+(oi+1)+'" oninput="updateMOpt('+qi+','+oi+',this.value)" style="padding:8px 10px;flex:1"/>'
+          +'</div>';
+      }).join("")
+      +'</div>'
+      +'<input type="text" value="'+esc(q.explanation)+'" placeholder="Explanation (optional)" oninput="updateMQ('+qi+',\'explanation\',this.value)" style="font-size:.85rem"/>'
+      +'</div>';
+  }).join("");
 }
 
 function saveManual(){
-  const title = document.getElementById("manual-title").value.trim();
-  if(!title) return showErr("manual-err", "Enter a title.");
-  const qs = [];
-  document.querySelectorAll("#manual-qs .card").forEach(c => {
-    qs.push({
-      question: c.querySelector(".q-txt").value,
-      options: [c.querySelector(".o-0").value, c.querySelector(".o-1").value, c.querySelector(".o-2").value, c.querySelector(".o-3").value],
-      correct: parseInt(c.querySelector(".q-corr").value)
-    });
-  });
-  STATE.quiz = { title, difficulty: "Manual", questions: qs };
-  saveQuiz(STATE.quiz);
+  var title=document.getElementById("manual-title").value.trim();
+  var diff=document.getElementById("manual-diff").value;
+  hideErr("manual-err");
+  if(!title){ showErr("manual-err","Please enter a quiz title."); return; }
+  var allFilled=manualQs.every(function(q){ return q.question.trim()&&q.options.every(function(o){ return o.trim(); }); });
+  if(!allFilled){ showErr("manual-err","Please fill in all questions and all 4 options."); return; }
+  STATE.quiz={title:title,difficulty:diff,questions:manualQs};
+  saveQuizToStorage(STATE.quiz);
   showPreview();
 }
 
-// ══ PREVIEW ══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
+//  PREVIEW
+// ═══════════════════════════════════════════════════
 function showPreview(){
-  const q = STATE.quiz;
-  document.getElementById("preview-title").textContent = q.title;
-  document.getElementById("preview-meta").textContent = `${q.questions.length} questions · ${q.difficulty}`;
-  document.getElementById("preview-list").innerHTML = q.questions.map((item, i) => `
-    <div class="card fade-in" style="margin-bottom:12px">
-      <p style="font-weight:700">Q${i+1}. ${esc(item.question)}</p>
-      <div class="grid2" style="margin-top:8px">
-        ${item.options.map((opt, oi) => `
-          <div class="prev-opt" style="background:${oi===item.correct?'rgba(34,197,94,.1)':'rgba(255,255,255,.05)'};border-color:${oi===item.correct?'#22c55e':'transparent'}">
-            ${oi===item.correct?'✓ ':''}${esc(opt)}
-          </div>
-        `).join("")}
-      </div>
-    </div>
-  `).join("");
+  var q=STATE.quiz;
+  document.getElementById("preview-title").textContent=q.title;
+  document.getElementById("preview-meta").textContent=q.questions.length+" questions · "+q.difficulty;
+  document.getElementById("preview-list").innerHTML=q.questions.map(function(q,i){
+    return '<div class="card fade-in" style="margin-bottom:12px">'
+      +'<p style="font-weight:700;margin-bottom:10px;font-size:.95rem">Q'+(i+1)+'. '+esc(q.question)+'</p>'
+      +'<div class="grid2" style="margin-bottom:8px">'
+      +q.options.map(function(opt,oi){
+        var isCorrect=oi===q.correct;
+        return '<div class="prev-opt" style="background:'+(isCorrect?COLORS[oi].bg+"33":"rgba(255,255,255,.04)")+';border:1.5px solid '+(isCorrect?COLORS[oi].bg:"rgba(255,255,255,.07)")+';color:'+(isCorrect?"#fff":"rgba(255,255,255,.5)")+'">'+(isCorrect?"✓ ":"")+esc(opt)+'</div>';
+      }).join("")
+      +'</div>'
+      +(q.explanation?'<p style="font-size:.78rem;color:rgba(255,255,255,.32);border-top:1px solid rgba(255,255,255,.07);padding-top:8px;margin:0">💡 '+esc(q.explanation)+'</p>':"")
+      +'</div>';
+  }).join("");
   show("s-preview");
 }
 
-// ══ ROOM LOGIC ═══════════════════════════════════════════════
 async function openRoom(){
-  setLoading("Creating Room...");
-  const code = genCode();
-  await fbSet(`rooms/${code}`, {
-    status: "lobby",
-    currentQ: 0,
-    quiz: STATE.quiz,
-    players: { _ph: true },
-    createdAt: Date.now()
-  });
-  STATE.roomCode = code;
-  document.getElementById("lobby-code").textContent = code;
-  show("s-lobby");
-  startLobbyPoll();
-}
-
-function startLobbyPoll(){
-  STATE.pollIv = setInterval(async () => {
-    const r = await fbGet(`rooms/${STATE.roomCode}`);
-    if(!r) return;
-    const players = Object.entries(r.players || {}).filter(e => e[0] !== "_ph");
-    document.getElementById("lobby-count").textContent = players.length;
-    document.getElementById("lobby-players").innerHTML = players.map(p => `
-      <div class="chip me pulse">${esc(p[1].name)}</div>
-    `).join("") || '<p class="muted center">Waiting for students...</p>';
-    document.getElementById("start-btn").disabled = (players.length === 0);
-    document.getElementById("start-btn").textContent = players.length > 0 ? "Start Quiz! 🚀" : "Waiting for students...";
-  }, 2000);
-}
-
-function stopPoll(){ clearInterval(STATE.pollIv); }
-
-async function startQuiz(){
-  stopPoll();
-  await fbUpdate(`rooms/${STATE.roomCode}`, { status: "question", questionStartTime: Date.now() });
-  runTeacherControl();
-}
-
-// ══ TEACHER CONTROL ══════════════════════════════════════════
-function runTeacherControl(){
-  show("s-control");
-  STATE.roomListener = db.ref(`rooms/${STATE.roomCode}`).on("value", s => {
-    const room = s.val();
-    if(!room) return;
-    if(room.status === "finished") return showTeacherResults(room);
-    
-    const qi = room.currentQ;
-    const q = room.quiz.questions[qi];
-    document.getElementById("ctrl-qnum").textContent = `Q ${qi+1}/${room.quiz.questions.length}`;
-    document.getElementById("ctrl-question").textContent = q.question;
-    document.getElementById("ctrl-options").innerHTML = q.options.map((o,i)=>`
-      <div class="ans-btn" style="background:${room.status==='reveal' && i===q.correct ? '#22c55e' : '#2d2d4d'}">
-        <span class="ans-icon">${"ABCD"[i]}</span> ${esc(o)}
-      </div>
-    `).join("");
-
-    const players = Object.entries(room.players || {}).filter(e => e[0] !== "_ph");
-    const ansCount = players.filter(p => p[1].answers && p[1].answers[qi]).length;
-    document.getElementById("ctrl-answered").textContent = `${ansCount}/${players.length}`;
-    document.getElementById("ctrl-ans-bar").style.width = (ansCount/players.length*100) + "%";
-    
-    document.getElementById("ctrl-reveal-btn").style.display = room.status === "question" ? "block" : "none";
-    document.getElementById("ctrl-next-btn").style.display = room.status === "reveal" ? "block" : "none";
-    document.getElementById("btn-next-text").textContent = (qi + 1 >= room.quiz.questions.length) ? "Finish Quiz 🏁" : "Next Question →";
-    
-    document.getElementById("ctrl-lb").innerHTML = renderLB(room.players || {});
-  });
-}
-
-async function teacherReveal(){ await fbUpdate(`rooms/${STATE.roomCode}`, { status: "reveal" }); }
-async function teacherNext(){
-  const room = await fbGet(`rooms/${STATE.roomCode}`);
-  const next = room.currentQ + 1;
-  if(next >= room.quiz.questions.length){
-    await fbUpdate(`rooms/${STATE.roomCode}`, { status: "finished" });
-  } else {
-    await fbUpdate(`rooms/${STATE.roomCode}`, { status: "question", currentQ: next, questionStartTime: Date.now() });
+  hideErr("preview-err");
+  setLoading("Creating your room...");
+  try{
+    var code=genCode();
+    // Write placeholder first so Firebase doesn't strip the players node
+    await fbSet("rooms/"+code,{status:"lobby",currentQ:0,questionStartTime:null,quiz:STATE.quiz,players:{_ph:true},createdAt:Date.now()});
+    await fbSet("rooms/"+code+"/players/_ph",null);
+    STATE.roomCode=code;
+    document.getElementById("lobby-code").textContent=code;
+    document.getElementById("lobby-meta").textContent=STATE.quiz.title+" · "+STATE.quiz.questions.length+" questions";
+    updateNav();
+    show("s-lobby");
+    startLobbyPoll();
+  }catch(e){
+    show("s-preview");
+    showErr("preview-err","Could not create room: "+e.message);
   }
 }
 
-function renderLB(players, myUid){
-  const sorted = Object.entries(players).filter(e => e[0] !== "_ph").sort((a,b) => (b[1].score||0) - (a[1].score||0));
-  return sorted.map(([uid, p], i) => `
-    <div class="lb-row ${uid===myUid?'me':''}">
-      <span>#${i+1}</span>
-      <span style="flex:1;font-weight:600">${esc(p.name)}</span>
-      <span class="accent">${p.score || 0}</span>
-    </div>
-  `).join("");
+// ═══════════════════════════════════════════════════
+//  TEACHER LOBBY
+// ═══════════════════════════════════════════════════
+function startLobbyPoll(){
+  stopPoll();
+  STATE.pollIv=setInterval(async function(){
+    try{
+      var players=await fbGet("rooms/"+STATE.roomCode+"/players")||{};
+      var realPlayers=Object.entries(players).filter(function(e){ return e[0]!=="_ph"&&e[1]&&e[1].name; });
+      var count=realPlayers.length;
+
+      document.getElementById("lobby-count").textContent=count;
+      var wrap=document.getElementById("lobby-players");
+      var empty=document.getElementById("lobby-empty");
+      empty.style.display=count?"none":"";
+
+      // Rebuild chips by uid
+      var existing=new Set(Array.from(wrap.querySelectorAll(".chip")).map(function(c){ return c.dataset.uid; }));
+      Array.from(wrap.querySelectorAll(".chip")).forEach(function(chip){
+        if(!realPlayers.find(function(e){ return e[0]===chip.dataset.uid; })) chip.remove();
+      });
+      realPlayers.forEach(function(entry){
+        var uid=entry[0], p=entry[1];
+        if(!existing.has(uid)){
+          var d=document.createElement("div");
+          d.className="chip"; d.dataset.uid=uid; d.textContent=p.name;
+          wrap.appendChild(d);
+        }
+      });
+
+      var btn=document.getElementById("start-btn");
+      btn.disabled=count===0;
+      btn.textContent=count===0?"Waiting for students...":"▶ Start Quiz! ("+count+" players)";
+    }catch(e){}
+  },1500);
+}
+
+function copyCode(){ navigator.clipboard&&navigator.clipboard.writeText(STATE.roomCode); toast("✅ Code copied!"); }
+function copyLink(){
+  var url=window.location.href.split("?")[0]+"?join="+STATE.roomCode;
+  navigator.clipboard&&navigator.clipboard.writeText(url);
+  toast("🔗 Join link copied!");
+}
+
+async function startQuiz(){
+  hideErr("lobby-err");
+  try{
+    stopPoll();
+    await fbUpdate("rooms/"+STATE.roomCode,{status:"question",currentQ:0,questionStartTime:Date.now()});
+    show("s-control");
+    startControlPoll();
+  }catch(e){
+    showErr("lobby-err","Could not start: "+e.message);
+    startLobbyPoll();
+  }
+}
+
+// ═══════════════════════════════════════════════════
+//  TEACHER CONTROL
+// ═══════════════════════════════════════════════════
+function startControlPoll(){
+  stopPoll();
+  STATE.pollIv=setInterval(async function(){
+    try{
+      var room=await fbGet("rooms/"+STATE.roomCode);
+      if(!room||!STATE.quiz) return;
+      if(room.status==="finished"){ stopPoll(); STATE.lastRoom=room; showTeacherResults(room); return; }
+      renderControl(room);
+    }catch(e){}
+  },900);
+}
+
+function renderControl(room){
+  if(!STATE.quiz) return;
+  var players=room.players||{};
+  var pList=Object.values(players).filter(function(p){ return p&&p.name; });
+  var qi=room.currentQ||0;
+  var q=STATE.quiz.questions[qi];
+  if(!q) return;
+
+  var answeredCount=pList.filter(function(p){ return p.answers&&p.answers[qi]!==undefined; }).length;
+
+  document.getElementById("ctrl-qnum").textContent="Q "+(qi+1)+"/"+STATE.quiz.questions.length;
+  document.getElementById("ctrl-room").textContent="Room: "+STATE.roomCode;
+  document.getElementById("ctrl-answered").textContent=answeredCount+"/"+pList.length;
+  document.getElementById("ctrl-ans-bar").style.width=(pList.length?(answeredCount/pList.length*100):0)+"%";
+
+  var badge=document.getElementById("ctrl-badge");
+  if(room.status==="question"){
+    badge.style.cssText="padding:5px 14px;border-radius:99px;font-size:.78rem;font-weight:700;background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.3)";
+    badge.textContent="● Live";
+  }else{
+    badge.style.cssText="padding:5px 14px;border-radius:99px;font-size:.78rem;font-weight:700;background:rgba(255,224,102,.12);color:#ffe066;border:1px solid rgba(255,224,102,.3)";
+    badge.textContent="👁 Revealed";
+  }
+
+  document.getElementById("ctrl-question").textContent=q.question;
+  document.getElementById("ctrl-options").innerHTML=q.options.map(function(opt,i){
+    var c=COLORS[i];
+    var cnt=pList.filter(function(p){ return p.answers&&p.answers[qi]&&p.answers[qi].choice===i; }).length;
+    var isCorrect=i===q.correct;
+    var bg=room.status==="reveal"?(isCorrect?"#22c55e":"rgba(255,255,255,.06)"):c.bg;
+    var pct=pList.length?cnt/pList.length*100:0;
+    return '<div class="opt-bar" style="background:'+bg+';'+(room.status==="reveal"&&isCorrect?"border:2px solid #4ade80;":"")+'">'
+      +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'
+      +'<span>'+c.icon+'</span>'
+      +'<span style="font-weight:700;font-size:.88rem;flex:1">'+esc(opt)+(room.status==="reveal"&&isCorrect?" ✓":"")+'</span>'
+      +'<span style="font-weight:700">'+cnt+'</span>'
+      +'</div>'
+      +'<div style="height:5px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden">'
+      +'<div style="height:100%;background:rgba(255,255,255,.65);width:'+pct+'%;border-radius:99px;transition:width .5s"></div>'
+      +'</div></div>';
+  }).join("");
+
+  var expl=document.getElementById("ctrl-expl");
+  var lbWrap=document.getElementById("ctrl-lb-wrap");
+  var revBtn=document.getElementById("ctrl-reveal-btn");
+  var nextBtn=document.getElementById("ctrl-next-btn");
+
+  if(room.status==="reveal"){
+    if(q.explanation){ expl.textContent="💡 "+q.explanation; expl.style.display="block"; }
+    else{ expl.style.display="none"; }
+    lbWrap.style.display="block";
+    document.getElementById("ctrl-lb").innerHTML=renderLB(players,null);
+    revBtn.style.display="none"; nextBtn.style.display="block";
+    nextBtn.textContent=(qi+1>=STATE.quiz.questions.length)?"🏁 End Quiz & Show Results":"→ Next Question";
+  }else{
+    expl.style.display="none"; lbWrap.style.display="none";
+    revBtn.style.display="block"; nextBtn.style.display="none";
+  }
+}
+
+async function teacherReveal(){
+  hideErr("ctrl-err");
+  try{ await fbUpdate("rooms/"+STATE.roomCode,{status:"reveal"}); }
+  catch(e){ showErr("ctrl-err","Error: "+e.message); }
+}
+
+async function teacherNext(){
+  hideErr("ctrl-err");
+  try{
+    var qi=(await fbGet("rooms/"+STATE.roomCode+"/currentQ"))||0;
+    var next=qi+1;
+    if(next>=STATE.quiz.questions.length){
+      var room=await fbGet("rooms/"+STATE.roomCode);
+      STATE.lastRoom=room;
+      await fbUpdate("rooms/"+STATE.roomCode,{status:"finished"});
+    }else{
+      await fbUpdate("rooms/"+STATE.roomCode,{status:"question",currentQ:next,questionStartTime:Date.now()});
+    }
+  }catch(e){ showErr("ctrl-err","Error: "+e.message); }
 }
 
 function showTeacherResults(room){
-  db.ref(`rooms/${STATE.roomCode}`).off();
-  document.getElementById("t-results-lb").innerHTML = renderLB(room.players);
+  STATE.lastRoom=room;
+  var playerCount=Object.values(room.players||{}).filter(function(p){ return p&&p.name; }).length;
+  document.getElementById("t-results-meta").textContent=STATE.quiz.title+" · "+playerCount+" players";
+  document.getElementById("t-results-lb").innerHTML=renderLB(room.players||{},null);
   show("s-t-results");
 }
 
-// ══ STUDENT LOGIC ════════════════════════════════════════════
-async function studentJoin(){
-  const name = document.getElementById("s-name").value.trim();
-  const code = document.getElementById("s-code").value.trim().toUpperCase();
-  if(!name || !code) return showErr("join-err", "Name and Room Code required.");
-  
-  const room = await fbGet(`rooms/${code}`);
-  if(!room) return showErr("join-err", "Room not found.");
-  
-  const uid = genUid();
-  await fbSet(`rooms/${code}/players/${uid}`, { name, score: 0 });
-  STATE.uid = uid;
-  STATE.playerName = name;
-  STATE.roomCode = code;
-  STATE.role = "student";
-  updateNav();
-  runStudentLobby();
-}
+// ═══════════════════════════════════════════════════
+//  CSV DOWNLOAD
+// ═══════════════════════════════════════════════════
+function downloadCSV(){
+  var room=STATE.lastRoom, quiz=STATE.quiz;
+  if(!room||!quiz){ toast("⚠️ No results to download."); return; }
 
-function runStudentLobby(){
-  show("s-s-lobby");
-  document.getElementById("s-lobby-name").textContent = "Hi, " + STATE.playerName;
-  STATE.roomListener = db.ref(`rooms/${STATE.roomCode}`).on("value", s => {
-    const room = s.val();
-    if(!room) return;
-    const players = Object.entries(room.players || {}).filter(e => e[0] !== "_ph");
-    document.getElementById("s-lobby-count").textContent = players.length;
-    document.getElementById("s-lobby-players").innerHTML = players.map(p => `<div class="chip">${esc(p[1].name)}</div>`).join("");
-    
-    if(room.status === "question" || room.status === "reveal") runStudentGame(room);
-    if(room.status === "finished") showStudentResults(room);
+  var allPlayers=room.players||{};
+  var sorted=Object.entries(allPlayers)
+    .filter(function(e){ return e[0]!=="_ph"&&e[1]&&e[1].name; })
+    .sort(function(a,b){ return (b[1].score||0)-(a[1].score||0); });
+
+  var now=new Date();
+  var dateStr=now.toLocaleDateString("en-MY",{day:"2-digit",month:"2-digit",year:"numeric"});
+  var timeStr=now.toLocaleTimeString("en-MY",{hour:"2-digit",minute:"2-digit"});
+
+  var rows=[];
+  rows.push(["QuizBlast - Quiz Results"]);
+  rows.push(["Quiz Title",quiz.title]);
+  rows.push(["Date",dateStr]);
+  rows.push(["Time",timeStr]);
+  rows.push(["Room Code",STATE.roomCode||"-"]);
+  rows.push(["Total Questions",quiz.questions.length]);
+  rows.push(["Total Players",sorted.length]);
+  rows.push([]);
+  rows.push(["=== LEADERBOARD ==="]);
+  rows.push(["Rank","Student Name","Score","Correct","Wrong","Not Answered","Accuracy %"]);
+
+  sorted.forEach(function(entry,i){
+    var uid=entry[0], p=entry[1];
+    var answers=p.answers||{};
+    var correct=0,wrong=0;
+    quiz.questions.forEach(function(q,qi){
+      var a=answers[qi];
+      if(a!==undefined){ if(a.choice===q.correct) correct++; else wrong++; }
+    });
+    var notAnswered=quiz.questions.length-correct-wrong;
+    var accuracy=quiz.questions.length>0?Math.round(correct/quiz.questions.length*100):0;
+    rows.push([i+1,p.name,p.score||0,correct,wrong,notAnswered,accuracy+"%"]);
   });
+
+  rows.push([]);
+  rows.push(["=== QUESTION BREAKDOWN ==="]);
+  var qHeader=["Question No.","Question","Correct Answer"];
+  sorted.forEach(function(e){ qHeader.push(e[1].name); });
+  rows.push(qHeader);
+
+  quiz.questions.forEach(function(q,qi){
+    var row=["Q"+(qi+1),q.question,q.options[q.correct]];
+    sorted.forEach(function(entry){
+      var p=entry[1];
+      var ans=(p.answers||{})[qi];
+      if(ans===undefined) row.push("No Answer");
+      else if(ans.choice===q.correct) row.push("✓ Correct");
+      else row.push("✗ "+q.options[ans.choice]);
+    });
+    rows.push(row);
+  });
+
+  var csv=rows.map(function(row){
+    return row.map(function(cell){
+      var s=String(cell===undefined||cell===null?"":cell);
+      return (s.includes(",")||s.includes('"')||s.includes("\n"))
+        ? '"'+s.replace(/"/g,'""')+'"' : s;
+    }).join(",");
+  }).join("\n");
+
+  var blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8;"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");
+  a.href=url; a.download="QuizBlast_"+quiz.title.replace(/[^a-zA-Z0-9]/g,"_")+"_"+dateStr.replace(/\//g,"-")+".csv";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+  toast("📥 CSV downloaded!");
 }
 
-function runStudentGame(room){
-  show("s-game");
-  const qi = room.currentQ;
-  const q = room.quiz.questions[qi];
-  document.getElementById("g-qnum").textContent = `Q ${qi+1}/${room.quiz.questions.length}`;
-  document.getElementById("g-question").textContent = q.question;
-  document.getElementById("g-name").textContent = STATE.playerName;
-  document.getElementById("g-score").textContent = (room.players[STATE.uid].score || 0) + " pts";
+// ═══════════════════════════════════════════════════
+//  STUDENT JOIN
+// ═══════════════════════════════════════════════════
+async function studentJoin(){
+  var name=document.getElementById("s-name").value.trim();
+  var code=document.getElementById("s-code").value.trim().toUpperCase();
+  hideErr("join-err");
+  if(!name){ showErr("join-err","Please enter your name."); return; }
+  if(code.length<6){ showErr("join-err","Please enter the 6-character room code."); return; }
+  setLoading("Joining room...");
+  try{
+    var room=await fbGet("rooms/"+code);
+    if(!room){ show("s-student-login"); showErr("join-err","Room not found! Double-check the code."); return; }
+    if(room.status==="finished"){ show("s-student-login"); showErr("join-err","This quiz has already ended."); return; }
+    var uid=genUid();
+    STATE.uid=uid; STATE.playerName=name; STATE.roomCode=code; STATE.role="student";
+    STATE.answered={}; STATE.localScore=0;
+    await fbSet("rooms/"+code+"/players/"+uid,{name:name,score:0,joinedAt:Date.now()});
+    document.getElementById("s-lobby-name").textContent="Hi "+name+"! 👋";
+    updateNav(); show("s-s-lobby"); startStudentListener();
+  }catch(e){
+    show("s-student-login"); showErr("join-err","Could not join: "+e.message);
+  }
+}
 
-  const hasAns = STATE.answered.hasOwnProperty(qi);
-  document.getElementById("g-options").innerHTML = q.options.map((o, i) => {
-    let style = "";
-    if(room.status === "reveal"){
-      if(i === q.correct) style = "background:#22c55e";
-      else if(hasAns && STATE.answered[qi] === i) style = "background:#ef4444";
-    } else if(hasAns && STATE.answered[qi] === i){
-      style = "background:#7c3aed; transform:scale(0.95); opacity:0.8";
+// ═══════════════════════════════════════════════════
+//  STUDENT GAME
+// ═══════════════════════════════════════════════════
+var timerIv=null;
+
+function startStudentListener(){
+  stopPoll();
+  var ref=db.ref("rooms/"+STATE.roomCode);
+  ref.on("value",function(snap){ var room=snap.val(); if(room) handleStudentUpdate(room); });
+  STATE.roomListener=function(){ ref.off(); };
+}
+
+function handleStudentUpdate(room){
+  var players=room.players||{};
+
+  if(room.status==="lobby"){
+    var realPlayers=Object.values(players).filter(function(p){ return p&&p.name; });
+    document.getElementById("s-lobby-count").textContent=realPlayers.length;
+    document.getElementById("s-lobby-players").innerHTML=realPlayers.map(function(p){
+      return '<div class="chip'+(p.name===STATE.playerName?" me":"")+'">'+esc(p.name)+'</div>';
+    }).join("");
+    show("s-s-lobby"); return;
+  }
+
+  if(room.status==="finished"){
+    clearInterval(timerIv);
+    var myScore=players[STATE.uid]?players[STATE.uid].score:STATE.localScore;
+    if(myScore===null||myScore===undefined) myScore=STATE.localScore;
+    var realSorted=Object.entries(players).filter(function(e){ return e[1]&&e[1].name; }).sort(function(a,b){ return (b[1].score||0)-(a[1].score||0); });
+    var myRank=realSorted.findIndex(function(e){ return e[0]===STATE.uid; })+1;
+    var maxScore=room.quiz.questions.length*(100+TIME_PER_Q*3);
+    var pct=maxScore>0?Math.round(myScore/maxScore*100):0;
+    var emojis=["🏆","🥈","🥉","🎉"];
+    document.getElementById("s-result-emoji").textContent=emojis[Math.min(myRank-1,3)]||"🎉";
+    document.getElementById("s-result-grade").textContent=pct>=80?"Excellent! 🌟":pct>=60?"Good Job! 👍":pct>=40?"Keep Trying! 💪":"Study More! 📚";
+    document.getElementById("s-result-score").textContent="You scored "+myScore+" points";
+    document.getElementById("s-result-rank").textContent="Rank #"+myRank+" of "+realSorted.length;
+    document.getElementById("s-result-lb").innerHTML=renderLB(players,STATE.uid);
+    show("s-s-results"); return;
+  }
+
+  show("s-game");
+  var qi=room.currentQ||0;
+  var q=room.quiz.questions[qi];
+  if(!q) return;
+
+  var realSorted=Object.entries(players).filter(function(e){ return e[1]&&e[1].name; }).sort(function(a,b){ return (b[1].score||0)-(a[1].score||0); });
+  var myRank2=realSorted.findIndex(function(e){ return e[0]===STATE.uid; })+1;
+  var myScore2=(players[STATE.uid]&&players[STATE.uid].score!=null)?players[STATE.uid].score:STATE.localScore;
+  // Use hasOwnProperty to correctly detect answer index 0
+  var myAnswer=STATE.answered.hasOwnProperty(qi)?STATE.answered[qi]:undefined;
+
+  document.getElementById("g-qnum").textContent="Q "+(qi+1)+"/"+room.quiz.questions.length;
+  document.getElementById("g-name").textContent=STATE.playerName;
+  document.getElementById("g-score").textContent=myScore2+" pts";
+  document.getElementById("g-rank").textContent="Rank #"+myRank2;
+  document.getElementById("g-question").textContent=q.question;
+
+  // Timer — only run if not yet answered (correct undefined check for index 0)
+  clearInterval(timerIv);
+  if(room.status==="question"&&myAnswer===undefined&&room.questionStartTime){
+    timerIv=setInterval(function(){
+      var left=Math.max(0,TIME_PER_Q-(Date.now()-room.questionStartTime)/1000);
+      var t=Math.ceil(left);
+      var pct2=left/TIME_PER_Q*100;
+      var col=left>10?"#22c55e":left>5?"#f97316":"#ef4444";
+      var el=document.getElementById("g-timer");
+      var bar=document.getElementById("g-timer-bar");
+      if(el){ el.textContent=t; el.style.background=col; el.style.boxShadow="0 0 18px "+col+"88"; }
+      if(bar){ bar.style.width=pct2+"%"; bar.style.background=col; }
+      if(left<=0) clearInterval(timerIv);
+    },250);
+  }
+
+  document.getElementById("g-options").innerHTML=q.options.map(function(opt,i){
+    var c=COLORS[i];
+    var bg=c.bg, opacity=1, shadow="0 4px 0 "+c.shadow, cursor="pointer";
+    if(room.status==="reveal"){
+      bg=i===q.correct?"#22c55e":(i===myAnswer&&i!==q.correct?"#ef4444":"rgba(255,255,255,.07)");
+      shadow="none"; cursor="default";
+    }else if(myAnswer!==undefined){
+      if(i!==myAnswer){ bg="rgba(255,255,255,.07)"; opacity=0.45; }
+      shadow="none"; cursor="default";
     }
-    return `<button class="ans-btn" style="${style}" onclick="studentAnswer(${i})" ${hasAns || room.status==='reveal' ? 'disabled' : ''}>
-      <span class="ans-icon">${"ABCD"[i]}</span> ${esc(o)}
-    </button>`;
+    var suffix=room.status==="reveal"?(i===q.correct?" ✓":(i===myAnswer&&i!==q.correct?" ✗":"")):"";
+    var disabled=(myAnswer!==undefined||room.status==="reveal")?"disabled":"";
+    return '<button class="ans-btn" onclick="studentAnswer('+i+')" '+disabled+' style="background:'+bg+';opacity:'+opacity+';box-shadow:'+shadow+';cursor:'+cursor+'">'
+      +'<span class="ans-icon">'+c.icon+'</span>'
+      +'<span style="flex:1">'+esc(opt)+suffix+'</span>'
+      +'</button>';
   }).join("");
 
-  // Feedback display
-  if(room.status === "reveal" && hasAns){
-    const correct = STATE.answered[qi] === q.correct;
-    document.getElementById("g-feedback").style.display = "block";
-    document.getElementById("g-feedback-box").style.background = correct ? "rgba(34,197,94,.15)" : "rgba(239,68,68,.15)";
-    document.getElementById("g-feedback-icon").textContent = correct ? "✅" : "❌";
-    document.getElementById("g-feedback-title").textContent = correct ? "Correct!" : "Wrong!";
-    document.getElementById("g-feedback-expl").textContent = q.explanation || "";
-  } else {
-    document.getElementById("g-feedback").style.display = "none";
-  }
-
-  // Timer logic
-  if(room.status === "question"){
-    const elapsed = (Date.now() - room.questionStartTime) / 1000;
-    const remaining = Math.max(0, TIME_PER_Q - elapsed);
-    updateTimerUI(remaining);
+  var fb=document.getElementById("g-feedback");
+  if(myAnswer!==undefined&&room.status==="question"){
+    fb.style.cssText="display:block;margin-top:12px;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)";
+    fb.innerHTML='<div style="font-family:\'Fredoka One\',cursive;color:#ffe066">✓ Submitted!</div><div class="muted" style="font-size:.82rem;margin-top:4px">Waiting for teacher to reveal the answer...</div>';
+  }else if(room.status==="reveal"){
+    var correct2=myAnswer===q.correct;
+    var noAns=myAnswer===undefined;
+    fb.style.cssText="display:block;margin-top:12px;padding:16px 18px;border-radius:16px;background:"+(correct2?"rgba(34,197,94,.1)":"rgba(239,68,68,.1)")+";border:1.5px solid "+(correct2?"rgba(34,197,94,.3)":"rgba(239,68,68,.3)");
+    fb.innerHTML='<div style="font-family:\'Fredoka One\',cursive;font-size:1.1rem;margin-bottom:4px">'+(noAns?"⏰ Time\'s up!":correct2?"🎉 Correct!":"❌ Wrong!")+'</div>'+(q.explanation?'<div class="muted" style="font-size:.85rem">'+esc(q.explanation)+'</div>':'')+'<div class="muted" style="font-size:.8rem;margin-top:6px">Waiting for next question...</div>';
+  }else{
+    fb.style.display="none";
   }
 }
 
-function updateTimerUI(sec){
-  const p = (sec / TIME_PER_Q) * 100;
-  const timer = document.getElementById("g-timer");
-  const bar = document.getElementById("g-timer-bar");
-  timer.textContent = Math.ceil(sec);
-  bar.style.width = p + "%";
-  if(sec < 5){
-    timer.style.background = "#ef4444";
-    bar.style.background = "#ef4444";
-  } else {
-    timer.style.background = "#22c55e";
-    bar.style.background = "#22c55e";
-  }
+async function studentAnswer(choice){
+  if(!STATE.roomCode) return;
+  var qi=(await fbGet("rooms/"+STATE.roomCode+"/currentQ"))||0;
+  if(STATE.answered.hasOwnProperty(qi)) return; // already answered
+  var room=await fbGet("rooms/"+STATE.roomCode);
+  if(!room||room.status!=="question") return;
+  STATE.answered[qi]=choice; // lock immediately
+  var q=room.quiz.questions[qi];
+  var elapsed=(Date.now()-room.questionStartTime)/1000;
+  var bonus=choice===q.correct?Math.round(Math.max(0,TIME_PER_Q-elapsed)*3):0;
+  var pts=choice===q.correct?100+bonus:0;
+  STATE.localScore+=pts;
+  try{
+    await fbSet("rooms/"+STATE.roomCode+"/players/"+STATE.uid+"/answers/"+qi,{choice:choice,pts:pts});
+    await fbSet("rooms/"+STATE.roomCode+"/players/"+STATE.uid+"/score",STATE.localScore);
+  }catch(e){ console.error("Answer save error:",e); }
 }
 
-async function studentAnswer(i){
-  if(STATE.answered.hasOwnProperty(room.currentQ)) return;
-  const room = await fbGet(`rooms/${STATE.roomCode}`);
-  const qi = room.currentQ;
-  const q = room.quiz.questions[qi];
-  
-  const elapsed = (Date.now() - room.questionStartTime) / 1000;
-  const bonus = i === q.correct ? Math.round(Math.max(0, TIME_PER_Q - elapsed) * 5) : 0;
-  const pts = i === q.correct ? 100 + bonus : 0;
-  
-  STATE.answered[qi] = i;
-  STATE.localScore += pts;
-  await fbUpdate(`rooms/${STATE.roomCode}/players/${STATE.uid}`, { 
-    score: STATE.localScore,
-    [`answers/${qi}`]: { choice: i, pts: pts }
-  });
+// ═══════════════════════════════════════════════════
+//  LEADERBOARD
+// ═══════════════════════════════════════════════════
+function renderLB(players,myUid){
+  var sorted=Object.entries(players)
+    .filter(function(e){ return e[0]!=="_ph"&&e[1]&&e[1].name; })
+    .sort(function(a,b){ return (b[1].score||0)-(a[1].score||0); });
+  var medals=["🥇","🥈","🥉"];
+  return sorted.map(function(entry,i){
+    var uid=entry[0], p=entry[1];
+    return '<div class="lb-row'+(uid===myUid?" me":"")+'">'
+      +'<span style="font-size:1.3rem;width:32px;text-align:center">'+(medals[i]||("#"+(i+1)))+'</span>'
+      +'<span style="flex:1;font-weight:600">'+esc(p.name)+(uid===myUid?" 👈":"")+'</span>'
+      +'<span style="font-family:\'Fredoka One\',cursive;color:#ffe066;font-size:1.1rem">'+(p.score||0)+'</span>'
+      +'</div>';
+  }).join("");
 }
 
-function showStudentResults(room){
-  db.ref(`rooms/${STATE.roomCode}`).off();
-  document.getElementById("s-result-score").textContent = `You scored ${room.players[STATE.uid].score || 0} points`;
-  document.getElementById("s-result-lb").innerHTML = renderLB(room.players, STATE.uid);
-  show("s-s-results");
-}
-
-// ════════════════════════════════════════════════════════════
-// SETTINGS
-// ════════════════════════════════════════════════════════════
-function openSettings(){ show("s-settings"); }
-function changeApiKey(){
-  const key = document.getElementById("set-apikey").value.trim();
-  if(!key) return;
-  LS.set("qb_apikey", key);
-  document.getElementById("set-key-ok").style.display = "block";
-}
-function changeModel(){
-  const m = document.getElementById("set-model").value.trim();
-  LS.set("qb_pinned_model", m || null);
-  document.getElementById("set-model-ok").style.display = "block";
-}
-function clearModel(){
-  LS.set("qb_pinned_model", null);
-  document.getElementById("set-model").value = "";
-  document.getElementById("set-model-ok").style.display = "block";
-}
-
-// ══ CSV EXPORT ═══════════════════════════════════════════════
-function downloadCSV(){
-  const room = STATE.lastRoom;
-  if(!room) return;
-  let csv = "Rank,Name,Score\n";
-  const sorted = Object.entries(room.players).filter(e => e[0] !== "_ph").sort((a,b) => (b[1].score||0) - (a[1].score||0));
-  sorted.forEach((p, i) => {
-    csv += `${i+1},${p[1].name},${p[1].score}\n`;
-  });
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const url = window.URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.setAttribute('href', url);
-  a.setAttribute('download', `results_${STATE.roomCode}.csv`);
-  a.click();
-}
-
-// Init
-window.onload = () => { if(LS.get("qb_teacher_pass")) show("s-teacher-login"); else show("s-home"); };
+// ═══════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════
+window.addEventListener("DOMContentLoaded",function(){
+  var code=new URLSearchParams(window.location.search).get("join");
+  if(code){ document.getElementById("s-code").value=code.toUpperCase(); show("s-student-login"); }
+  else show("s-home");
+});
 </script>
 </body>
 </html>
