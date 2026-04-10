@@ -11,18 +11,18 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{min-height:100%;background:linear-gradient(135deg,#0d0d1a,#101028,#0d0d1e);color:#fff;font-family:'Poppins',sans-serif}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:99px}
-nav{position:sticky;top:0;z-index:99;display:flex;align-items:center;justify-content:space-between;padding:13px 20px;background:rgba(13,13,26,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07)}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:99px}
+nav{position:sticky;top:0;z-index:99;display:flex;align-items:center;justify-content:space-between;padding:13px 20px;background:rgba(13,13,26,0.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07)}
 .logo{font-family:'Fredoka One',cursive;font-size:1.5rem;color:#ffe066;cursor:pointer;user-select:none}
 #nav-right{display:flex;gap:10px;align-items:center}
 #app{max-width:720px;margin:0 auto;padding:16px 16px 80px}
 .screen{display:none}.screen.active{display:block}
-.card{background:#161630;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:24px}
-input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:#fff;font-family:'Poppins',sans-serif;font-size:1rem;outline:none;box-sizing:border-box;transition:border-color .2s}
+.card{background:#161630;border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:24px}
+input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.07);color:#fff;font-family:'Poppins',sans-serif;font-size:1rem;outline:none;box-sizing:border-box;transition:border-color .2s}
 input:focus,select:focus,textarea:focus{border-color:#7c3aed}
 select option{background:#161630}
 textarea{resize:vertical;line-height:1.6}
-label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,.4);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,0.4);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
 .form-group{margin-bottom:16px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border:none;border-radius:14px;font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .15s,box-shadow .15s,opacity .15s;color:#fff}
 .btn:hover{transform:translateY(-2px)}.btn:active{transform:none}
@@ -68,7 +68,6 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 .badge-teacher{background:rgba(124,58,237,.18);color:#c4b5fd;border:1px solid rgba(124,58,237,.35)}
 .badge-student{background:rgba(8,145,178,.18);color:#7dd3fc;border:1px solid rgba(8,145,178,.35)}
 .setup-hint{background:rgba(255,224,102,.08);border:1px solid rgba(255,224,102,.25);border-radius:12px;padding:12px 16px;margin-bottom:16px;color:#fde68a;font-size:.85rem;line-height:1.5}
-.model-hint{background:rgba(255,224,102,.07);border:1px solid rgba(255,224,102,.2);border-radius:12px;padding:12px 14px;margin-bottom:14px;font-size:.8rem;color:#fde68a;line-height:1.7}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
@@ -120,15 +119,10 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
       <label class="lbl">Confirm Password *</label>
       <input type="password" id="setup-pass2" placeholder="Re-enter password"/>
     </div>
-    <div class="form-group">
-      <label class="lbl">OpenRouter API Key *</label>
-      <input type="password" id="setup-apikey" placeholder="sk-or-..."/>
-      <p class="muted" style="font-size:.77rem;margin-top:6px">Get free key from <a href="https://openrouter.ai/keys" target="_blank" style="color:#ffe066">openrouter.ai/keys</a> · stored locally in your browser only.</p>
-    </div>
     <div class="form-group" style="margin-bottom:0">
-      <label class="lbl">Pin a Model (optional — leave blank for auto)</label>
-      <input type="text" id="setup-model" placeholder="e.g. google/gemini-2.0-flash-exp:free"/>
-      <p class="muted" style="font-size:.77rem;margin-top:6px">Blank = auto-rotates 6 free models. Browse at <a href="https://openrouter.ai/models" target="_blank" style="color:#ffe066">openrouter.ai/models</a></p>
+      <label class="lbl">Google Gemini API Key *</label>
+      <input type="password" id="setup-apikey" placeholder="AIzaSy..."/>
+      <p class="muted" style="font-size:.77rem;margin-top:6px">Get free key from <a href="https://aistudio.google.com/apikey" target="_blank" style="color:#ffe066">aistudio.google.com/apikey</a> · stored locally in your browser only.</p>
     </div>
     <div class="errbox" id="setup-err"></div>
     <button class="btn btn-purple btn-full" style="margin-top:16px" onclick="saveSetup()">✓ Save & Continue</button>
@@ -182,7 +176,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:10px">
     <h2 class="h2 accent">Dashboard</h2>
     <div style="display:flex;gap:8px">
-      <button class="btn btn-ghost" style="font-size:.82rem;padding:8px 14px" onclick="openSettings()">⚙️ Settings</button>
+      <button class="btn btn-ghost" style="font-size:.82rem;padding:8px 14px" onclick="show('s-settings')">⚙️ Settings</button>
       <button class="btn btn-ghost" style="font-size:.82rem;padding:8px 14px;color:#fca5a5;border-color:rgba(239,68,68,.3)" onclick="teacherLogout()">Logout</button>
     </div>
   </div>
@@ -204,36 +198,13 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
     <div class="successbox" id="set-pass-ok">✅ Password updated!</div>
     <button class="btn btn-purple btn-full" onclick="changePassword()">Update Password</button>
   </div>
-  <div class="card fade-in" style="margin-bottom:16px">
-    <h3 class="h3" style="margin-bottom:6px">OpenRouter API Key</h3>
-    <p class="muted" style="font-size:.8rem;margin-bottom:14px">Get free key from <a href="https://openrouter.ai/keys" target="_blank" style="color:#ffe066">openrouter.ai/keys</a></p>
-    <div class="form-group"><label class="lbl">New API Key</label><input type="password" id="set-apikey" placeholder="sk-or-..."/></div>
+  <div class="card fade-in">
+    <h3 class="h3" style="margin-bottom:6px">Google Gemini API Key</h3>
+    <p class="muted" style="font-size:.8rem;margin-bottom:14px">Get free key from <a href="https://aistudio.google.com/apikey" target="_blank" style="color:#ffe066">aistudio.google.com/apikey</a></p>
+    <div class="form-group"><label class="lbl">New API Key</label><input type="password" id="set-apikey" placeholder="AIzaSy..."/></div>
     <div class="errbox" id="set-key-err"></div>
     <div class="successbox" id="set-key-ok">✅ API key updated!</div>
     <button class="btn btn-blue btn-full" onclick="changeApiKey()">Update API Key</button>
-  </div>
-  <div class="card fade-in">
-    <h3 class="h3" style="margin-bottom:6px">AI Model</h3>
-    <p class="muted" style="font-size:.8rem;margin-bottom:10px">By default the app <strong>auto-rotates free models</strong> when one hits its limit. Pin a specific model to override.</p>
-    <div class="model-hint">
-      <strong>Free models in rotation:</strong><br/>
-      google/gemini-2.0-flash-exp:free<br/>
-      google/gemini-flash-1.5-8b:free<br/>
-      meta-llama/llama-3.3-70b-instruct:free<br/>
-      mistralai/mistral-7b-instruct:free<br/>
-      qwen/qwen-2.5-72b-instruct:free<br/>
-      deepseek/deepseek-chat:free
-    </div>
-    <div class="form-group">
-      <label class="lbl">Pin a Specific Model (optional)</label>
-      <input type="text" id="set-model" placeholder="e.g. openai/gpt-4o-mini or leave blank for auto"/>
-    </div>
-    <div id="set-model-current" class="muted" style="font-size:.78rem;margin-bottom:10px"></div>
-    <div class="successbox" id="set-model-ok">✅ Model setting saved!</div>
-    <div style="display:flex;gap:10px">
-      <button class="btn btn-purple" style="flex:2" onclick="changeModel()">📌 Pin Model</button>
-      <button class="btn btn-ghost" style="flex:1" onclick="clearModel()">✕ Use Auto</button>
-    </div>
   </div>
 </div>
 
@@ -243,7 +214,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <h2 class="h2 accent" style="margin-bottom:20px">Create Quiz</h2>
   <div class="method-card" onclick="show('s-create-ai')">
     <span style="font-size:2.2rem;flex-shrink:0">🤖</span>
-    <div><div class="h3">AI — Type your topic</div><div class="muted" style="font-size:.8rem">Describe topic → AI generates questions automatically</div></div>
+    <div><div class="h3">AI — Type your topic</div><div class="muted" style="font-size:.8rem">Describe topic → Gemini searches Google → instant questions</div></div>
   </div>
   <div class="method-card" onclick="show('s-create-photo')">
     <span style="font-size:2.2rem;flex-shrink:0">📸</span>
@@ -259,7 +230,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 <div id="s-create-ai" class="screen" style="max-width:520px;margin:0 auto">
   <button class="back-btn" onclick="show('s-create-method')">← Back</button>
   <h2 class="h2 accent" style="margin-bottom:6px">🤖 AI Generator</h2>
-  <p class="muted" style="font-size:.85rem;margin-bottom:20px">AI auto-selects the best available free model to generate your questions.</p>
+  <p class="muted" style="font-size:.85rem;margin-bottom:20px">Gemini 2.5 Flash Lite searches Google to create accurate questions.</p>
   <div class="card">
     <div class="form-group">
       <label class="lbl">Topic / What you want *</label>
@@ -321,7 +292,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
 <div id="s-loading" class="screen center">
   <div class="spinner-wrap">
     <div class="spinner"></div>
-    <p id="loading-text" class="muted" style="max-width:300px">Loading...</p>
+    <p id="loading-text" class="muted" style="max-width:280px">Loading...</p>
   </div>
 </div>
 
@@ -384,7 +355,7 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
     <div id="ctrl-lb"></div>
   </div>
   <div class="errbox" id="ctrl-err"></div>
-  <button class="btn btn-orange btn-full" id="ctrl-reveal-btn" onclick="teacherReveal()" style="margin-bottom:10px">👁 Reveal Answer &amp; Scores</button>
+  <button class="btn btn-orange btn-full" id="ctrl-reveal-btn" onclick="teacherReveal()" style="margin-bottom:10px">👁 Reveal Answer & Scores</button>
   <button class="btn btn-purple btn-full" id="ctrl-next-btn" onclick="teacherNext()" style="display:none;margin-bottom:10px">→ Next Question</button>
 </div>
 
@@ -394,7 +365,10 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <h2 class="h2 accent" style="margin-bottom:4px">Quiz Complete!</h2>
   <p class="muted" style="margin-bottom:24px" id="t-results-meta"></p>
   <div id="t-results-lb" style="margin-bottom:20px"></div>
-  <button class="btn btn-csv btn-full" style="margin-bottom:12px;font-size:1.05rem" onclick="downloadCSV()">📥 Download Results as CSV</button>
+  <!-- CSV DOWNLOAD BUTTON -->
+  <button class="btn btn-csv btn-full" style="margin-bottom:12px;font-size:1.05rem" onclick="downloadCSV()">
+    📥 Download Results as CSV
+  </button>
   <button class="btn btn-purple btn-full" onclick="goHome()">← Back to Home</button>
 </div>
 
@@ -441,13 +415,11 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   <button class="btn btn-blue btn-full" style="margin-top:24px" onclick="goHome()">← Play Again</button>
 </div>
 
-</div><!-- #app -->
+</div>
 <div id="toast" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#1e1e40;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 22px;font-weight:600;font-size:.9rem;transition:transform .3s;z-index:999;white-space:nowrap"></div>
 
 <script>
-// ═══════════════════════════════════════════════════
-//  FIREBASE
-// ═══════════════════════════════════════════════════
+// ══ FIREBASE ══════════════════════════════════════════════════
 firebase.initializeApp({
   apiKey:"AIzaSyCEmZSSqNHBzhALLMpKS-uaECi5iddG_Bo",
   authDomain:"quizblast-1e778.firebaseapp.com",
@@ -457,412 +429,190 @@ firebase.initializeApp({
   messagingSenderId:"86331098759",
   appId:"1:86331098759:web:1f127d6574fb8f69be1a22"
 });
-var db = firebase.database();
-async function fbGet(p){ var s=await db.ref(p).get(); return s.val(); }
-async function fbSet(p,v){ await db.ref(p).set(v); }
-async function fbUpdate(p,v){ await db.ref(p).update(v); }
+const db=firebase.database();
+async function fbGet(p){const s=await db.ref(p).get();return s.val();}
+async function fbSet(p,v){await db.ref(p).set(v);}
+async function fbUpdate(p,v){await db.ref(p).update(v);}
 
-// ═══════════════════════════════════════════════════
-//  LOCAL STORAGE
-// ═══════════════════════════════════════════════════
-var LS = {
-  get: function(k){ try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ return null; } },
-  set: function(k,v){ localStorage.setItem(k,JSON.stringify(v)); },
-  remove: function(k){ localStorage.removeItem(k); }
+// ══ LOCAL STORAGE ═════════════════════════════════════════════
+const LS={
+  get:k=>{try{return JSON.parse(localStorage.getItem(k));}catch{return null;}},
+  set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))
 };
 
-// ═══════════════════════════════════════════════════
-//  OPENROUTER — FREE MODEL AUTO-ROTATION
-// ═══════════════════════════════════════════════════
-var FREE_TEXT_MODELS = [
-  "google/gemini-2.0-flash-exp:free",
-  "google/gemini-flash-1.5-8b:free",
-  "meta-llama/llama-3.3-70b-instruct:free",
-  "mistralai/mistral-7b-instruct:free",
-  "qwen/qwen-2.5-72b-instruct:free",
-  "deepseek/deepseek-chat:free"
-];
+// ══ STATE ═════════════════════════════════════════════════════
+let STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null,lastRoom:null};
+const COLORS=[{bg:"#e63946",shadow:"#7f1d1d",icon:"▲"},{bg:"#2563eb",shadow:"#1e3a8a",icon:"●"},{bg:"#ea580c",shadow:"#7c2d12",icon:"■"},{bg:"#16a34a",shadow:"#14532d",icon:"◆"}];
+const TIME_PER_Q=25;
+const GEMINI_MODEL="gemini-2.5-flash-lite";
 
-var FREE_VISION_MODELS = [
-  "google/gemini-2.0-flash-exp:free",
-  "google/gemini-flash-1.5-8b:free",
-  "meta-llama/llama-3.2-11b-vision-instruct:free",
-  "qwen/qwen-2-vl-7b-instruct:free"
-];
+// ══ UTILS ═════════════════════════════════════════════════════
+function genCode(){return Math.random().toString(36).slice(2,8).toUpperCase();}
+function genUid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function toast(msg,dur=2500){const t=document.getElementById("toast");t.textContent=msg;t.style.transform="translateX(-50%) translateY(0)";setTimeout(()=>t.style.transform="translateX(-50%) translateY(80px)",dur);}
+function showErr(id,msg){const el=document.getElementById(id);if(el){el.innerHTML="⚠️ "+esc(msg);el.style.display="block";}}
+function hideErr(id){const el=document.getElementById(id);if(el)el.style.display="none";}
+function showOk(id,msg){const el=document.getElementById(id);if(el){el.textContent=msg;el.style.display="block";setTimeout(()=>el.style.display="none",3000);}}
+function setLoading(text){show("s-loading");document.getElementById("loading-text").textContent=text;}
+function stopPoll(){if(STATE.pollIv){clearInterval(STATE.pollIv);STATE.pollIv=null;}if(STATE.roomListener){STATE.roomListener();STATE.roomListener=null;}}
 
-// Per-session cooldown tracker {model: timestamp}
-var MODEL_COOLDOWNS = {};
-var COOLDOWN_MS = 60000;
-
-function isOnCooldown(model){
-  var t = MODEL_COOLDOWNS[model];
-  return t && (Date.now()-t) < COOLDOWN_MS;
-}
-function setCooldown(model){
-  MODEL_COOLDOWNS[model] = Date.now();
-}
-
-function getModelList(needsVision){
-  var custom = LS.get("qb_model");
-  if(custom) return [custom];
-  return needsVision ? FREE_VISION_MODELS : FREE_TEXT_MODELS;
-}
-
-// Strip :free suffix for models that need online access
-function toSearchModel(model){
-  if(model.endsWith(":free")) return model.slice(0, -5);
-  return model;
-}
-
-async function tryOneModel(model, prompt, useSearch, imageData, apiKey){
-  var finalModel = useSearch ? toSearchModel(model) : model;
-  var content = imageData
-    ? [
-        {type:"image_url", image_url:{url:"data:"+imageData.mime+";base64,"+imageData.b64}},
-        {type:"text", text:prompt}
-      ]
-    : prompt;
-
-  var resp = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method:"POST",
-    headers:{
-      "Authorization":"Bearer "+apiKey,
-      "Content-Type":"application/json",
-      "HTTP-Referer":window.location.href,
-      "X-Title":"QuizBlast"
-    },
-    body:JSON.stringify({
-      model:finalModel,
-      messages:[{role:"user", content:content}],
-      max_tokens:4000,
-      temperature:0.4
-    })
-  });
-
-  var status = resp.status;
-  if(!resp.ok){
-    var e = await resp.json().catch(function(){ return {}; });
-    return {ok:false, status:status, error:(e.error&&e.error.message)||("HTTP "+status)};
-  }
-  var d = await resp.json();
-  var text = (d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content)||"";
-  return {ok:true, text:text, status:status};
-}
-
-async function callOpenRouter(prompt, useSearch, imageData){
-  var apiKey = LS.get("qb_apikey");
-  if(!apiKey) throw new Error("No OpenRouter API key set. Please go to Settings.");
-
-  var models = getModelList(!!imageData);
-  var tried = [];
-  var lastError = "No models available";
-
-  for(var i=0; i<models.length; i++){
-    var model = models[i];
-
-    if(isOnCooldown(model)){
-      tried.push(model+"(cooldown)");
-      continue;
-    }
-
-    tried.push(model);
-    // update loading text
-    var ltEl = document.getElementById("loading-text");
-    if(ltEl){
-      var mname = model.split("/")[1]||model;
-      ltEl.textContent = "🤖 Trying "+mname+"...";
-    }
-
-    var result = await tryOneModel(model, prompt, useSearch, imageData, apiKey);
-
-    if(result.status===401) throw new Error("Invalid API key. Check your key at openrouter.ai/keys");
-    if(result.status===402) throw new Error("OpenRouter credits exhausted. Top up at openrouter.ai/credits");
-
-    if(result.status===429||result.status===503||result.status===529){
-      setCooldown(model);
-      lastError = model+" rate limited";
-      continue;
-    }
-    if(result.status===404){
-      lastError = model+" not found";
-      continue;
-    }
-
-    if(!result.ok){
-      lastError = model+": "+result.error;
-      continue;
-    }
-
-    var text = result.text.trim();
-    if(!text){ lastError = model+" returned empty response"; continue; }
-
-    // Parse JSON array from response
-    var clean = text.replace(/```json\s*/g,"").replace(/```\s*/g,"").trim();
-    var s = clean.indexOf("[");
-    var e = clean.lastIndexOf("]");
-    if(s===-1||e===-1){ lastError = model+" returned non-JSON"; continue; }
-
-    try{
-      var parsed = JSON.parse(clean.slice(s,e+1));
-      if(!Array.isArray(parsed)||parsed.length===0){ lastError = model+" returned empty array"; continue; }
-      var shortName = model.split("/")[1]||model;
-      toast("✅ Generated with "+shortName, 3000);
-      return parsed;
-    }catch(parseErr){
-      lastError = model+" invalid JSON";
-      continue;
-    }
-  }
-
-  throw new Error("All models failed. Last: "+lastError+". Tried: "+tried.join(", "));
-}
-
-// ═══════════════════════════════════════════════════
-//  STATE
-// ═══════════════════════════════════════════════════
-var STATE = {
-  role:null, quiz:null, roomCode:null,
-  uid:null, playerName:null,
-  answered:{}, localScore:0,
-  pollIv:null, roomListener:null, lastRoom:null
-};
-
-var COLORS = [
-  {bg:"#e63946",shadow:"#7f1d1d",icon:"▲"},
-  {bg:"#2563eb",shadow:"#1e3a8a",icon:"●"},
-  {bg:"#ea580c",shadow:"#7c2d12",icon:"■"},
-  {bg:"#16a34a",shadow:"#14532d",icon:"◆"}
-];
-var TIME_PER_Q = 25;
-
-// ═══════════════════════════════════════════════════
-//  UTILS
-// ═══════════════════════════════════════════════════
-function genCode(){ return Math.random().toString(36).slice(2,8).toUpperCase(); }
-function genUid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
-function esc(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
-
-function toast(msg,dur){
-  dur=dur||2500;
-  var t=document.getElementById("toast");
-  t.textContent=msg;
-  t.style.transform="translateX(-50%) translateY(0)";
-  setTimeout(function(){ t.style.transform="translateX(-50%) translateY(80px)"; },dur);
-}
-
-function showErr(id,msg){
-  var el=document.getElementById(id);
-  if(el){ el.innerHTML="⚠️ "+esc(msg); el.style.display="block"; }
-}
-function hideErr(id){
-  var el=document.getElementById(id);
-  if(el) el.style.display="none";
-}
-function showOk(id,msg){
-  var el=document.getElementById(id);
-  if(el){ el.textContent=msg; el.style.display="block"; setTimeout(function(){ el.style.display="none"; },3000); }
-}
-function setLoading(text){
-  show("s-loading");
-  document.getElementById("loading-text").textContent=text;
-}
-function stopPoll(){
-  if(STATE.pollIv){ clearInterval(STATE.pollIv); STATE.pollIv=null; }
-  if(STATE.roomListener){ STATE.roomListener(); STATE.roomListener=null; }
-}
 function show(id){
-  document.querySelectorAll(".screen").forEach(function(s){ s.classList.remove("active"); });
-  var el=document.getElementById(id);
-  if(el) el.classList.add("active");
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  const el=document.getElementById(id);if(el)el.classList.add("active");
   window.scrollTo(0,0);
 }
+
 function updateNav(){
-  var nr=document.getElementById("nav-right");
+  const nr=document.getElementById("nav-right");
   if(STATE.role==="teacher"){
-    var h='<span class="role-badge badge-teacher">👨‍🏫 Teacher</span>';
-    if(STATE.roomCode) h+='<span style="background:rgba(255,224,102,.1);border:1px solid rgba(255,224,102,.25);border-radius:10px;padding:4px 14px;font-size:.8rem;font-weight:700;color:#ffe066">Room: '+STATE.roomCode+'</span>';
-    h+='<button onclick="teacherLogout()" style="background:transparent;border:1px solid rgba(239,68,68,.25);border-radius:9px;padding:5px 12px;color:#fca5a5;cursor:pointer;font-size:.8rem;font-family:Poppins,sans-serif">Logout</button>';
+    let h=`<span class="role-badge badge-teacher">👨‍🏫 Teacher</span>`;
+    if(STATE.roomCode)h+=`<span style="background:rgba(255,224,102,.1);border:1px solid rgba(255,224,102,.25);border-radius:10px;padding:4px 14px;font-size:.8rem;font-weight:700;color:#ffe066">Room: ${STATE.roomCode}</span>`;
+    h+=`<button onclick="teacherLogout()" style="background:transparent;border:1px solid rgba(239,68,68,.25);border-radius:9px;padding:5px 12px;color:#fca5a5;cursor:pointer;font-size:.8rem;font-family:'Poppins',sans-serif">Logout</button>`;
     nr.innerHTML=h;
   }else if(STATE.role==="student"){
-    nr.innerHTML='<span class="role-badge badge-student">🎓 '+esc(STATE.playerName||"Student")+'</span>';
-  }else{
-    nr.innerHTML="";
-  }
+    nr.innerHTML=`<span class="role-badge badge-student">🎓 ${esc(STATE.playerName||"Student")}</span>`;
+  }else{nr.innerHTML="";}
 }
 
 function goHome(){
   stopPoll();
-  clearInterval(timerIv);
   STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null,lastRoom:null};
   updateNav();
-  var code=new URLSearchParams(window.location.search).get("join");
-  if(code){ document.getElementById("s-code").value=code; show("s-student-login"); }
+  const code=new URLSearchParams(window.location.search).get("join");
+  if(code){document.getElementById("s-code").value=code;show("s-student-login");}
   else show("s-home");
 }
 
-// ═══════════════════════════════════════════════════
-//  SETUP & AUTH
-// ═══════════════════════════════════════════════════
+// ══ GEMINI AI ═════════════════════════════════════════════════
+async function callGemini(prompt,useSearch,imageData){
+  const apiKey=LS.get("qb_apikey");
+  if(!apiKey)throw new Error("No Google API key set. Please go to ⚙️ Settings.");
+  const url=`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
+  const parts=[];
+  if(imageData)parts.push({inlineData:{mimeType:imageData.mime,data:imageData.b64}});
+  parts.push({text:prompt});
+  const body={
+    contents:[{role:"user",parts}],
+    generationConfig:{temperature:0.4,maxOutputTokens:4096}
+  };
+  if(useSearch)body.tools=[{googleSearch:{}}];
+  const r=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+  if(!r.ok){
+    const e=await r.json().catch(()=>({}));
+    const msg=e?.error?.message||`Gemini API error ${r.status}`;
+    if(r.status===400)throw new Error(msg+" — Check your API key.");
+    if(r.status===403)throw new Error("API key not authorised. Enable Generative Language API in Google Cloud.");
+    if(r.status===404)throw new Error("Model not found. Check that your API key has access to Gemini 2.5 Flash Lite.");
+    throw new Error(msg);
+  }
+  const d=await r.json();
+  const text=(d.candidates?.[0]?.content?.parts||[]).filter(p=>p.text).map(p=>p.text).join("");
+  if(!text)throw new Error("Gemini returned an empty response. Try again.");
+  const clean=text.replace(/```json\s*/g,"").replace(/```\s*/g,"").trim();
+  const s=clean.indexOf("["),e=clean.lastIndexOf("]");
+  if(s===-1||e===-1)throw new Error("Could not parse questions from AI. Try a more specific topic.");
+  return JSON.parse(clean.slice(s,e+1));
+}
+
+// ══ SETUP & AUTH ══════════════════════════════════════════════
 function saveSetup(){
-  var pass=document.getElementById("setup-pass").value;
-  var pass2=document.getElementById("setup-pass2").value;
-  var key=document.getElementById("setup-apikey").value.trim();
-  var modelVal=document.getElementById("setup-model").value.trim();
+  const pass=document.getElementById("setup-pass").value;
+  const pass2=document.getElementById("setup-pass2").value;
+  const key=document.getElementById("setup-apikey").value.trim();
   hideErr("setup-err");
-  if(pass.length<4){ showErr("setup-err","Password must be at least 4 characters."); return; }
-  if(pass!==pass2){ showErr("setup-err","Passwords do not match."); return; }
-  if(!key.startsWith("sk-or-")){ showErr("setup-err","OpenRouter API key should start with sk-or-... Get it from openrouter.ai/keys"); return; }
-  LS.set("qb_pass",pass);
-  LS.set("qb_apikey",key);
-  if(modelVal) LS.set("qb_model",modelVal);
-  toast("✅ Setup complete!");
-  enterTeacherDash();
+  if(pass.length<4){showErr("setup-err","Password must be at least 4 characters.");return;}
+  if(pass!==pass2){showErr("setup-err","Passwords do not match.");return;}
+  if(!key.startsWith("AIza")){showErr("setup-err","Google API key should start with AIza... Get it from aistudio.google.com/apikey");return;}
+  LS.set("qb_pass",pass);LS.set("qb_apikey",key);
+  toast("✅ Setup complete!");enterTeacherDash();
 }
 
 function teacherLogin(){
-  var pass=document.getElementById("t-login-pass").value;
+  const pass=document.getElementById("t-login-pass").value;
   hideErr("t-login-err");
-  var stored=LS.get("qb_pass");
-  if(!stored){ show("s-setup"); return; }
-  if(pass!==stored){ showErr("t-login-err","Wrong password. Try again."); return; }
+  const stored=LS.get("qb_pass");
+  if(!stored){show("s-setup");return;}
+  if(pass!==stored){showErr("t-login-err","Wrong password. Try again.");return;}
   document.getElementById("t-login-pass").value="";
   enterTeacherDash();
 }
 
-function enterTeacherDash(){
-  STATE.role="teacher";
-  updateNav();
-  loadSaved();
-  show("s-teacher-dash");
-}
+function enterTeacherDash(){STATE.role="teacher";updateNav();loadSaved();show("s-teacher-dash");}
 
 function teacherLogout(){
   stopPoll();
   STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null,lastRoom:null};
-  updateNav();
-  show("s-home");
+  updateNav();show("s-home");
 }
 
-function openSettings(){
-  showCurrentModel();
-  show("s-settings");
-}
-
-// ═══════════════════════════════════════════════════
-//  SETTINGS
-// ═══════════════════════════════════════════════════
+// ══ SETTINGS ══════════════════════════════════════════════════
 function changePassword(){
-  var old=document.getElementById("set-old-pass").value;
-  var n=document.getElementById("set-new-pass").value;
-  var n2=document.getElementById("set-new-pass2").value;
+  const old=document.getElementById("set-old-pass").value;
+  const n=document.getElementById("set-new-pass").value;
+  const n2=document.getElementById("set-new-pass2").value;
   hideErr("set-pass-err");
-  if(old!==LS.get("qb_pass")){ showErr("set-pass-err","Current password is wrong."); return; }
-  if(n.length<4){ showErr("set-pass-err","New password must be at least 4 characters."); return; }
-  if(n!==n2){ showErr("set-pass-err","Passwords do not match."); return; }
+  if(old!==LS.get("qb_pass")){showErr("set-pass-err","Current password is wrong.");return;}
+  if(n.length<4){showErr("set-pass-err","New password must be at least 4 characters.");return;}
+  if(n!==n2){showErr("set-pass-err","Passwords do not match.");return;}
   LS.set("qb_pass",n);
-  ["set-old-pass","set-new-pass","set-new-pass2"].forEach(function(id){ document.getElementById(id).value=""; });
+  ["set-old-pass","set-new-pass","set-new-pass2"].forEach(id=>document.getElementById(id).value="");
   showOk("set-pass-ok","✅ Password updated!");
 }
-
 function changeApiKey(){
-  var key=document.getElementById("set-apikey").value.trim();
+  const key=document.getElementById("set-apikey").value.trim();
   hideErr("set-key-err");
-  if(!key.startsWith("sk-or-")){ showErr("set-key-err","OpenRouter API key should start with sk-or-..."); return; }
-  LS.set("qb_apikey",key);
-  document.getElementById("set-apikey").value="";
+  if(!key.startsWith("AIza")){showErr("set-key-err","Google API key should start with AIza...");return;}
+  LS.set("qb_apikey",key);document.getElementById("set-apikey").value="";
   showOk("set-key-ok","✅ API key updated!");
 }
 
-function changeModel(){
-  var model=document.getElementById("set-model").value.trim();
-  if(!model){ showOk("set-model-ok","ℹ️ No model entered — using auto rotation."); return; }
-  LS.set("qb_model",model);
-  document.getElementById("set-model").value="";
-  showCurrentModel();
-  showOk("set-model-ok","✅ Pinned to: "+model);
-}
-
-function clearModel(){
-  LS.remove("qb_model");
-  showCurrentModel();
-  showOk("set-model-ok","✅ Back to auto free model rotation!");
-}
-
-function showCurrentModel(){
-  var el=document.getElementById("set-model-current");
-  if(!el) return;
-  var m=LS.get("qb_model");
-  el.textContent=m?"📌 Currently pinned: "+m:"🔄 Currently: auto free model rotation";
-}
-
-// ═══════════════════════════════════════════════════
-//  SAVED QUIZZES
-// ═══════════════════════════════════════════════════
+// ══ SAVED QUIZZES ═════════════════════════════════════════════
 function loadSaved(){
-  var saved=LS.get("qb_quizzes")||[];
-  var list=document.getElementById("saved-list");
-  if(!saved.length){ list.innerHTML='<p class="muted" style="text-align:center;padding:20px 0">No quizzes yet. Create your first one above!</p>'; return; }
-  list.innerHTML=saved.map(function(q,i){
-    return '<div class="fade-in" style="display:flex;align-items:center;gap:12px;background:#161630;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 16px;margin-bottom:10px">'
-      +'<div style="flex:1"><div style="font-weight:700">'+esc(q.title)+'</div><div class="muted" style="font-size:.8rem">'+q.questions.length+' questions · '+q.difficulty+'</div></div>'
-      +'<button class="btn btn-green" style="padding:8px 16px;font-size:.85rem" onclick="playQuiz('+i+')">▶ Play</button>'
-      +'<button class="btn btn-ghost" style="padding:8px 12px;font-size:.85rem;color:#fca5a5;border-color:rgba(239,68,68,.25)" onclick="deleteQuiz('+i+')">🗑</button>'
-      +'</div>';
-  }).join("");
+  const saved=LS.get("qb_quizzes")||[];
+  const list=document.getElementById("saved-list");
+  if(!saved.length){list.innerHTML='<p class="muted" style="text-align:center;padding:20px 0">No quizzes yet. Create your first one above!</p>';return;}
+  list.innerHTML=saved.map((q,i)=>`
+    <div class="fade-in" style="display:flex;align-items:center;gap:12px;background:#161630;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 16px;margin-bottom:10px">
+      <div style="flex:1"><div style="font-weight:700">${esc(q.title)}</div><div class="muted" style="font-size:.8rem">${q.questions.length} questions · ${q.difficulty}</div></div>
+      <button class="btn btn-green" style="padding:8px 16px;font-size:.85rem" onclick="playQuiz(${i})">▶ Play</button>
+      <button class="btn btn-ghost" style="padding:8px 12px;font-size:.85rem;color:#fca5a5;border-color:rgba(239,68,68,.25)" onclick="deleteQuiz(${i})">🗑</button>
+    </div>`).join("");
 }
+function deleteQuiz(i){const s=LS.get("qb_quizzes")||[];s.splice(i,1);LS.set("qb_quizzes",s);loadSaved();toast("🗑 Quiz deleted");}
+function playQuiz(i){const s=LS.get("qb_quizzes")||[];STATE.quiz=s[i];showPreview();}
+function saveQuizToStorage(quiz){const s=LS.get("qb_quizzes")||[];const i=s.findIndex(q=>q.title===quiz.title);if(i>=0)s[i]=quiz;else s.unshift(quiz);LS.set("qb_quizzes",s);}
 
-function deleteQuiz(i){
-  var s=LS.get("qb_quizzes")||[];
-  s.splice(i,1); LS.set("qb_quizzes",s); loadSaved(); toast("🗑 Quiz deleted");
-}
-function playQuiz(i){
-  var s=LS.get("qb_quizzes")||[]; STATE.quiz=s[i]; showPreview();
-}
-function saveQuizToStorage(quiz){
-  var s=LS.get("qb_quizzes")||[];
-  var i=s.findIndex(function(q){ return q.title===quiz.title; });
-  if(i>=0) s[i]=quiz; else s.unshift(quiz);
-  LS.set("qb_quizzes",s);
-}
-
-// ═══════════════════════════════════════════════════
-//  AI GENERATE
-// ═══════════════════════════════════════════════════
+// ══ AI GENERATE ═══════════════════════════════════════════════
 async function runAI(){
-  var topic=document.getElementById("ai-topic").value.trim();
-  var count=document.getElementById("ai-count").value;
-  var diff=document.getElementById("ai-diff").value;
+  const topic=document.getElementById("ai-topic").value.trim();
+  const count=document.getElementById("ai-count").value;
+  const diff=document.getElementById("ai-diff").value;
   hideErr("ai-err");
-  if(!topic){ showErr("ai-err","Please describe the topic first."); return; }
-  setLoading("🤖 AI is generating your questions...");
+  if(!topic){showErr("ai-err","Please describe the topic first.");return;}
+  setLoading("🤖 Gemini 2.5 Flash Lite is generating questions... (may take 15–30 sec)");
   try{
-    var prompt="You are a quiz creator for Malaysian school students (primary and secondary level).\n"
-      +"Create exactly "+count+" multiple-choice questions about: \""+topic+"\".\n"
-      +"Difficulty level: "+diff+".\n"
-      +"For Bahasa Malaysia topics, write questions in Bahasa Malaysia.\n\n"
-      +"IMPORTANT: Return ONLY a raw JSON array. No markdown, no explanation, no text before or after:\n"
-      +'[{"question":"...","options":["Option A","Option B","Option C","Option D"],"correct":0,"explanation":"Brief reason."}]\n'
-      +'"correct" = 0-based index (0, 1, 2, or 3) of the correct option.';
-    var qs=await callOpenRouter(prompt,false,null);
+    const prompt=`You are a quiz creator for Malaysian school students (primary and secondary level).
+Use Google Search to find accurate, curriculum-aligned information, then create exactly ${count} multiple-choice questions about: "${topic}".
+Difficulty level: ${diff}.
+For Bahasa Malaysia topics, write questions in Bahasa Malaysia.
+
+IMPORTANT: Return ONLY a raw JSON array. No markdown, no explanation, no text before or after the array.
+[{"question":"...","options":["Option A","Option B","Option C","Option D"],"correct":0,"explanation":"Brief reason why this is correct."}]
+"correct" = 0-based index (0, 1, 2, or 3) of the correct option.`;
+    const qs=await callGemini(prompt,true,null);
     STATE.quiz={title:topic.slice(0,60),difficulty:diff,questions:qs};
-    saveQuizToStorage(STATE.quiz);
-    showPreview();
-  }catch(e){
-    show("s-create-ai");
-    showErr("ai-err",e.message);
-  }
+    saveQuizToStorage(STATE.quiz);showPreview();
+  }catch(e){show("s-create-ai");showErr("ai-err",e.message);}
 }
 
-// ═══════════════════════════════════════════════════
-//  PHOTO
-// ═══════════════════════════════════════════════════
-var photoB64=null, photoMime=null;
-
+// ══ PHOTO ═════════════════════════════════════════════════════
+let photoB64=null,photoMime=null;
 function handlePhoto(e){
-  var f=e.target.files[0]; if(!f) return;
+  const f=e.target.files[0];if(!f)return;
   photoMime=f.type;
-  var r=new FileReader();
-  r.onload=function(ev){
+  const r=new FileReader();
+  r.onload=ev=>{
     photoB64=ev.target.result.split(",")[1];
     document.getElementById("photo-preview").src=ev.target.result;
     document.getElementById("photo-preview").style.display="block";
@@ -871,90 +621,74 @@ function handlePhoto(e){
   };
   r.readAsDataURL(f);
 }
-
 async function runPhoto(){
   hideErr("photo-err");
-  setLoading("📸 AI is reading your photo and extracting questions...");
+  setLoading("📸 Gemini is reading your photo and extracting questions...");
   try{
-    var title=document.getElementById("photo-title").value.trim()||"Quiz from Photo";
-    var prompt="Extract ALL questions from this image and convert to multiple-choice quiz format.\n"
-      +"Return ONLY a raw JSON array (no markdown, no text before or after):\n"
-      +'[{"question":"...","options":["A","B","C","D"],"correct":0,"explanation":"..."}]\n'
-      +'"correct" = 0-based index of the correct answer. Use existing options if present, otherwise create 4 sensible ones.';
-    var qs=await callOpenRouter(prompt,false,{b64:photoB64,mime:photoMime});
-    STATE.quiz={title:title,difficulty:"Mixed",questions:qs};
-    saveQuizToStorage(STATE.quiz);
-    showPreview();
-  }catch(e){
-    show("s-create-photo");
-    showErr("photo-err",e.message);
-  }
+    const title=document.getElementById("photo-title").value.trim()||"Quiz from Photo";
+    const prompt=`Extract ALL questions from this image and convert them to multiple-choice quiz format.
+Return ONLY a raw JSON array (no markdown, no text before or after):
+[{"question":"...","options":["A","B","C","D"],"correct":0,"explanation":"..."}]
+"correct" = 0-based index of the correct answer. If the image already has options, use them. Otherwise create 4 sensible options.`;
+    const qs=await callGemini(prompt,false,{b64:photoB64,mime:photoMime});
+    STATE.quiz={title,difficulty:"Mixed",questions:qs};
+    saveQuizToStorage(STATE.quiz);showPreview();
+  }catch(e){show("s-create-photo");showErr("photo-err",e.message);}
 }
 
-// ═══════════════════════════════════════════════════
-//  MANUAL CREATE
-// ═══════════════════════════════════════════════════
-var manualQs=[];
-function blankQ(){ return {question:"",options:["","","",""],correct:0,explanation:""}; }
-function initManual(){ manualQs=[blankQ()]; renderManualQs(); }
-function addManualQ(){ manualQs.push(blankQ()); renderManualQs(); }
-function removeManualQ(i){ manualQs.splice(i,1); renderManualQs(); }
-function updateMQ(i,f,v){ manualQs[i][f]=v; }
-function updateMOpt(qi,oi,v){ manualQs[qi].options[oi]=v; }
-function setCorrect(qi,oi){ manualQs[qi].correct=oi; renderManualQs(); }
-
+// ══ MANUAL ════════════════════════════════════════════════════
+let manualQs=[];
+function blankQ(){return{question:"",options:["","","",""],correct:0,explanation:""};}
+function initManual(){manualQs=[blankQ()];renderManualQs();}
+function addManualQ(){manualQs.push(blankQ());renderManualQs();}
+function removeManualQ(i){manualQs.splice(i,1);renderManualQs();}
+function updateMQ(i,f,v){manualQs[i][f]=v;}
+function updateMOpt(qi,oi,v){manualQs[qi].options[oi]=v;}
+function setCorrect(qi,oi){manualQs[qi].correct=oi;renderManualQs();}
 function renderManualQs(){
-  document.getElementById("manual-qs").innerHTML=manualQs.map(function(q,qi){
-    return '<div class="card fade-in" style="margin-bottom:14px">'
-      +'<div style="display:flex;justify-content:space-between;margin-bottom:10px">'
-      +'<span class="h3 accent">Q'+(qi+1)+'</span>'
-      +(manualQs.length>1?'<button onclick="removeManualQ('+qi+')" style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:8px;color:#fca5a5;padding:4px 10px;cursor:pointer;font-size:.8rem">✕ Remove</button>':"")
-      +'</div>'
-      +'<input type="text" value="'+esc(q.question)+'" placeholder="Question..." oninput="updateMQ('+qi+',\'question\',this.value)" style="margin-bottom:12px"/>'
-      +'<div class="grid2" style="margin-bottom:10px">'
-      +q.options.map(function(opt,oi){
-        return '<div style="display:flex;gap:6px;align-items:center">'
-          +'<button onclick="setCorrect('+qi+','+oi+')" style="width:28px;height:28px;border-radius:50%;border:2px solid '+(q.correct===oi?"#22c55e":"rgba(255,255,255,.18)")+';background:'+(q.correct===oi?"#22c55e":"transparent")+';cursor:pointer;color:#fff;font-size:11px;flex-shrink:0">✓</button>'
-          +'<input type="text" value="'+esc(opt)+'" placeholder="Option '+(oi+1)+'" oninput="updateMOpt('+qi+','+oi+',this.value)" style="padding:8px 10px;flex:1"/>'
-          +'</div>';
-      }).join("")
-      +'</div>'
-      +'<input type="text" value="'+esc(q.explanation)+'" placeholder="Explanation (optional)" oninput="updateMQ('+qi+',\'explanation\',this.value)" style="font-size:.85rem"/>'
-      +'</div>';
-  }).join("");
+  document.getElementById("manual-qs").innerHTML=manualQs.map((q,qi)=>`
+    <div class="card fade-in" style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+        <span class="h3 accent">Q${qi+1}</span>
+        ${manualQs.length>1?`<button onclick="removeManualQ(${qi})" style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:8px;color:#fca5a5;padding:4px 10px;cursor:pointer;font-size:.8rem;font-family:'Poppins',sans-serif">✕ Remove</button>`:""}
+      </div>
+      <input type="text" value="${esc(q.question)}" placeholder="Question..." oninput="updateMQ(${qi},'question',this.value)" style="margin-bottom:12px"/>
+      <div class="grid2" style="margin-bottom:10px">
+        ${q.options.map((opt,oi)=>`
+          <div style="display:flex;gap:6px;align-items:center">
+            <button onclick="setCorrect(${qi},${oi})" title="Mark correct" style="width:28px;height:28px;border-radius:50%;border:2px solid ${q.correct===oi?"#22c55e":"rgba(255,255,255,.18)"};background:${q.correct===oi?"#22c55e":"transparent"};cursor:pointer;color:#fff;font-size:11px;flex-shrink:0;font-family:'Poppins',sans-serif">✓</button>
+            <input type="text" value="${esc(opt)}" placeholder="Option ${oi+1}" oninput="updateMOpt(${qi},${oi},this.value)" style="padding:8px 10px;flex:1"/>
+          </div>`).join("")}
+      </div>
+      <input type="text" value="${esc(q.explanation)}" placeholder="Explanation (optional)" oninput="updateMQ(${qi},'explanation',this.value)" style="font-size:.85rem"/>
+    </div>`).join("");
 }
-
 function saveManual(){
-  var title=document.getElementById("manual-title").value.trim();
-  var diff=document.getElementById("manual-diff").value;
+  const title=document.getElementById("manual-title").value.trim();
+  const diff=document.getElementById("manual-diff").value;
   hideErr("manual-err");
-  if(!title){ showErr("manual-err","Please enter a quiz title."); return; }
-  var allFilled=manualQs.every(function(q){ return q.question.trim()&&q.options.every(function(o){ return o.trim(); }); });
-  if(!allFilled){ showErr("manual-err","Please fill in all questions and all 4 options."); return; }
-  STATE.quiz={title:title,difficulty:diff,questions:manualQs};
-  saveQuizToStorage(STATE.quiz);
-  showPreview();
+  if(!title){showErr("manual-err","Please enter a quiz title.");return;}
+  if(!manualQs.every(q=>q.question.trim()&&q.options.every(o=>o.trim()))){showErr("manual-err","Please fill in all questions and all 4 options.");return;}
+  STATE.quiz={title,difficulty:diff,questions:manualQs};
+  saveQuizToStorage(STATE.quiz);showPreview();
 }
 
-// ═══════════════════════════════════════════════════
-//  PREVIEW
-// ═══════════════════════════════════════════════════
+// ══ PREVIEW ═══════════════════════════════════════════════════
 function showPreview(){
-  var q=STATE.quiz;
+  const q=STATE.quiz;
   document.getElementById("preview-title").textContent=q.title;
-  document.getElementById("preview-meta").textContent=q.questions.length+" questions · "+q.difficulty;
-  document.getElementById("preview-list").innerHTML=q.questions.map(function(q,i){
-    return '<div class="card fade-in" style="margin-bottom:12px">'
-      +'<p style="font-weight:700;margin-bottom:10px;font-size:.95rem">Q'+(i+1)+'. '+esc(q.question)+'</p>'
-      +'<div class="grid2" style="margin-bottom:8px">'
-      +q.options.map(function(opt,oi){
-        var isCorrect=oi===q.correct;
-        return '<div class="prev-opt" style="background:'+(isCorrect?COLORS[oi].bg+"33":"rgba(255,255,255,.04)")+';border:1.5px solid '+(isCorrect?COLORS[oi].bg:"rgba(255,255,255,.07)")+';color:'+(isCorrect?"#fff":"rgba(255,255,255,.5)")+'">'+(isCorrect?"✓ ":"")+esc(opt)+'</div>';
-      }).join("")
-      +'</div>'
-      +(q.explanation?'<p style="font-size:.78rem;color:rgba(255,255,255,.32);border-top:1px solid rgba(255,255,255,.07);padding-top:8px;margin:0">💡 '+esc(q.explanation)+'</p>':"")
-      +'</div>';
-  }).join("");
+  document.getElementById("preview-meta").textContent=`${q.questions.length} questions · ${q.difficulty}`;
+  document.getElementById("preview-list").innerHTML=q.questions.map((q,i)=>`
+    <div class="card fade-in" style="margin-bottom:12px">
+      <p style="font-weight:700;margin-bottom:10px;font-size:.95rem">Q${i+1}. ${esc(q.question)}</p>
+      <div class="grid2" style="margin-bottom:8px">
+        ${q.options.map((opt,oi)=>`
+          <div class="prev-opt" style="background:${oi===q.correct?COLORS[oi].bg+"33":"rgba(255,255,255,.04)"};border:1.5px solid ${oi===q.correct?COLORS[oi].bg:"rgba(255,255,255,.07)"};color:${oi===q.correct?"#fff":"rgba(255,255,255,.5)"}">
+            ${oi===q.correct?"✓ ":""}${esc(opt)}
+          </div>`).join("")}
+      </div>
+      ${q.explanation?`<p style="font-size:.78rem;color:rgba(255,255,255,.32);border-top:1px solid rgba(255,255,255,.07);padding-top:8px;margin:0">💡 ${esc(q.explanation)}</p>`:""}
+    </div>`).join("");
   show("s-preview");
 }
 
@@ -962,200 +696,131 @@ async function openRoom(){
   hideErr("preview-err");
   setLoading("Creating your room...");
   try{
-    var code=genCode();
-    // Write placeholder first so Firebase doesn't strip the players node
-    await fbSet("rooms/"+code,{status:"lobby",currentQ:0,questionStartTime:null,quiz:STATE.quiz,players:{_ph:true},createdAt:Date.now()});
-    await fbSet("rooms/"+code+"/players/_ph",null);
+    const code=genCode();
+    await fbSet(`rooms/${code}`,{status:"lobby",currentQ:0,questionStartTime:null,quiz:STATE.quiz,players:{},createdAt:Date.now()});
     STATE.roomCode=code;
     document.getElementById("lobby-code").textContent=code;
-    document.getElementById("lobby-meta").textContent=STATE.quiz.title+" · "+STATE.quiz.questions.length+" questions";
-    updateNav();
-    show("s-lobby");
-    startLobbyPoll();
-  }catch(e){
-    show("s-preview");
-    showErr("preview-err","Could not create room: "+e.message);
-  }
+    document.getElementById("lobby-meta").textContent=`${STATE.quiz.title} · ${STATE.quiz.questions.length} questions`;
+    updateNav();show("s-lobby");startLobbyPoll();
+  }catch(e){show("s-preview");showErr("preview-err","Could not create room: "+e.message);}
 }
 
-// ═══════════════════════════════════════════════════
-//  TEACHER LOBBY
-// ═══════════════════════════════════════════════════
+// ══ TEACHER LOBBY ═════════════════════════════════════════════
 function startLobbyPoll(){
   stopPoll();
-  STATE.pollIv=setInterval(async function(){
+  STATE.pollIv=setInterval(async()=>{
     try{
-      var players=await fbGet("rooms/"+STATE.roomCode+"/players")||{};
-      var realPlayers=Object.entries(players).filter(function(e){ return e[0]!=="_ph"&&e[1]&&e[1].name; });
-      var count=realPlayers.length;
-
-      document.getElementById("lobby-count").textContent=count;
-      var wrap=document.getElementById("lobby-players");
-      var empty=document.getElementById("lobby-empty");
-      empty.style.display=count?"none":"";
-
-      // Rebuild chips by uid
-      var existing=new Set(Array.from(wrap.querySelectorAll(".chip")).map(function(c){ return c.dataset.uid; }));
-      Array.from(wrap.querySelectorAll(".chip")).forEach(function(chip){
-        if(!realPlayers.find(function(e){ return e[0]===chip.dataset.uid; })) chip.remove();
-      });
-      realPlayers.forEach(function(entry){
-        var uid=entry[0], p=entry[1];
-        if(!existing.has(uid)){
-          var d=document.createElement("div");
-          d.className="chip"; d.dataset.uid=uid; d.textContent=p.name;
-          wrap.appendChild(d);
-        }
-      });
-
-      var btn=document.getElementById("start-btn");
-      btn.disabled=count===0;
-      btn.textContent=count===0?"Waiting for students...":"▶ Start Quiz! ("+count+" players)";
+      const players=await fbGet(`rooms/${STATE.roomCode}/players`)||{};
+      const list=Object.values(players);
+      document.getElementById("lobby-count").textContent=list.length;
+      const wrap=document.getElementById("lobby-players");
+      const empty=document.getElementById("lobby-empty");
+      empty.style.display=list.length?"none":"";
+      const existing=new Set(Array.from(wrap.querySelectorAll(".chip")).map(c=>c.dataset.name));
+      list.forEach(p=>{if(!existing.has(p.name)){const d=document.createElement("div");d.className="chip";d.dataset.name=p.name;d.textContent=p.name;wrap.appendChild(d);}});
+      const btn=document.getElementById("start-btn");
+      btn.disabled=list.length===0;
+      btn.textContent=list.length===0?"Waiting for students...":`▶ Start Quiz! (${list.length} players)`;
     }catch(e){}
   },1500);
 }
-
-function copyCode(){ navigator.clipboard&&navigator.clipboard.writeText(STATE.roomCode); toast("✅ Code copied!"); }
-function copyLink(){
-  var url=window.location.href.split("?")[0]+"?join="+STATE.roomCode;
-  navigator.clipboard&&navigator.clipboard.writeText(url);
-  toast("🔗 Join link copied!");
-}
+function copyCode(){navigator.clipboard?.writeText(STATE.roomCode);toast("✅ Code copied!");}
+function copyLink(){const url=window.location.href.split("?")[0]+"?join="+STATE.roomCode;navigator.clipboard?.writeText(url);toast("🔗 Join link copied!");}
 
 async function startQuiz(){
   hideErr("lobby-err");
   try{
     stopPoll();
-    await fbUpdate("rooms/"+STATE.roomCode,{status:"question",currentQ:0,questionStartTime:Date.now()});
-    show("s-control");
-    startControlPoll();
-  }catch(e){
-    showErr("lobby-err","Could not start: "+e.message);
-    startLobbyPoll();
-  }
+    await fbUpdate(`rooms/${STATE.roomCode}`,{status:"question",currentQ:0,questionStartTime:Date.now()});
+    show("s-control");startControlPoll();
+  }catch(e){showErr("lobby-err","Could not start: "+e.message);}
 }
 
-// ═══════════════════════════════════════════════════
-//  TEACHER CONTROL
-// ═══════════════════════════════════════════════════
+// ══ TEACHER CONTROL ═══════════════════════════════════════════
 function startControlPoll(){
   stopPoll();
-  STATE.pollIv=setInterval(async function(){
+  STATE.pollIv=setInterval(async()=>{
     try{
-      var room=await fbGet("rooms/"+STATE.roomCode);
-      if(!room||!STATE.quiz) return;
-      if(room.status==="finished"){ stopPoll(); STATE.lastRoom=room; showTeacherResults(room); return; }
+      const room=await fbGet(`rooms/${STATE.roomCode}`);
+      if(!room)return;
+      if(room.status==="finished"){stopPoll();STATE.lastRoom=room;showTeacherResults(room);return;}
       renderControl(room);
     }catch(e){}
   },900);
 }
 
 function renderControl(room){
-  if(!STATE.quiz) return;
-  var players=room.players||{};
-  var pList=Object.values(players).filter(function(p){ return p&&p.name; });
-  var qi=room.currentQ||0;
-  var q=STATE.quiz.questions[qi];
-  if(!q) return;
-
-  var answeredCount=pList.filter(function(p){ return p.answers&&p.answers[qi]!==undefined; }).length;
-
-  document.getElementById("ctrl-qnum").textContent="Q "+(qi+1)+"/"+STATE.quiz.questions.length;
-  document.getElementById("ctrl-room").textContent="Room: "+STATE.roomCode;
-  document.getElementById("ctrl-answered").textContent=answeredCount+"/"+pList.length;
-  document.getElementById("ctrl-ans-bar").style.width=(pList.length?(answeredCount/pList.length*100):0)+"%";
-
-  var badge=document.getElementById("ctrl-badge");
-  if(room.status==="question"){
-    badge.style.cssText="padding:5px 14px;border-radius:99px;font-size:.78rem;font-weight:700;background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.3)";
-    badge.textContent="● Live";
-  }else{
-    badge.style.cssText="padding:5px 14px;border-radius:99px;font-size:.78rem;font-weight:700;background:rgba(255,224,102,.12);color:#ffe066;border:1px solid rgba(255,224,102,.3)";
-    badge.textContent="👁 Revealed";
-  }
-
+  const players=room.players||{};const pList=Object.values(players);
+  const qi=room.currentQ||0;const q=STATE.quiz.questions[qi];
+  const answeredCount=pList.filter(p=>p.answers&&p.answers[qi]!==undefined).length;
+  document.getElementById("ctrl-qnum").textContent=`Q ${qi+1}/${STATE.quiz.questions.length}`;
+  document.getElementById("ctrl-room").textContent=`Room: ${STATE.roomCode}`;
+  document.getElementById("ctrl-answered").textContent=`${answeredCount}/${pList.length}`;
+  document.getElementById("ctrl-ans-bar").style.width=pList.length?(answeredCount/pList.length*100)+"%":"0%";
+  const badge=document.getElementById("ctrl-badge");
+  if(room.status==="question"){badge.style.cssText="padding:5px 14px;border-radius:99px;font-size:.78rem;font-weight:700;background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.3)";badge.textContent="● Live";}
+  else{badge.style.cssText="padding:5px 14px;border-radius:99px;font-size:.78rem;font-weight:700;background:rgba(255,224,102,.12);color:#ffe066;border:1px solid rgba(255,224,102,.3)";badge.textContent="👁 Revealed";}
   document.getElementById("ctrl-question").textContent=q.question;
-  document.getElementById("ctrl-options").innerHTML=q.options.map(function(opt,i){
-    var c=COLORS[i];
-    var cnt=pList.filter(function(p){ return p.answers&&p.answers[qi]&&p.answers[qi].choice===i; }).length;
-    var isCorrect=i===q.correct;
-    var bg=room.status==="reveal"?(isCorrect?"#22c55e":"rgba(255,255,255,.06)"):c.bg;
-    var pct=pList.length?cnt/pList.length*100:0;
-    return '<div class="opt-bar" style="background:'+bg+';'+(room.status==="reveal"&&isCorrect?"border:2px solid #4ade80;":"")+'">'
-      +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'
-      +'<span>'+c.icon+'</span>'
-      +'<span style="font-weight:700;font-size:.88rem;flex:1">'+esc(opt)+(room.status==="reveal"&&isCorrect?" ✓":"")+'</span>'
-      +'<span style="font-weight:700">'+cnt+'</span>'
-      +'</div>'
-      +'<div style="height:5px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden">'
-      +'<div style="height:100%;background:rgba(255,255,255,.65);width:'+pct+'%;border-radius:99px;transition:width .5s"></div>'
-      +'</div></div>';
+  document.getElementById("ctrl-options").innerHTML=q.options.map((opt,i)=>{
+    const c=COLORS[i];const cnt=pList.filter(p=>p.answers?.[qi]?.choice===i).length;
+    const isCorrect=i===q.correct;
+    const bg=room.status==="reveal"?(isCorrect?"#22c55e":"rgba(255,255,255,.06)"):c.bg;
+    const pct=pList.length?cnt/pList.length*100:0;
+    return `<div class="opt-bar" style="background:${bg};${room.status==="reveal"&&isCorrect?"border:2px solid #4ade80;":""}">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span>${c.icon}</span><span style="font-weight:700;font-size:.88rem;flex:1">${esc(opt)}${room.status==="reveal"&&isCorrect?" ✓":""}</span><span style="font-weight:700">${cnt}</span>
+      </div>
+      <div style="height:5px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden"><div style="height:100%;background:rgba(255,255,255,.65);width:${pct}%;border-radius:99px;transition:width .5s"></div></div>
+    </div>`;
   }).join("");
-
-  var expl=document.getElementById("ctrl-expl");
-  var lbWrap=document.getElementById("ctrl-lb-wrap");
-  var revBtn=document.getElementById("ctrl-reveal-btn");
-  var nextBtn=document.getElementById("ctrl-next-btn");
-
+  const expl=document.getElementById("ctrl-expl");const lbWrap=document.getElementById("ctrl-lb-wrap");
+  const revBtn=document.getElementById("ctrl-reveal-btn");const nextBtn=document.getElementById("ctrl-next-btn");
   if(room.status==="reveal"){
-    if(q.explanation){ expl.textContent="💡 "+q.explanation; expl.style.display="block"; }
-    else{ expl.style.display="none"; }
-    lbWrap.style.display="block";
-    document.getElementById("ctrl-lb").innerHTML=renderLB(players,null);
-    revBtn.style.display="none"; nextBtn.style.display="block";
-    nextBtn.textContent=(qi+1>=STATE.quiz.questions.length)?"🏁 End Quiz & Show Results":"→ Next Question";
-  }else{
-    expl.style.display="none"; lbWrap.style.display="none";
-    revBtn.style.display="block"; nextBtn.style.display="none";
-  }
+    if(q.explanation){expl.textContent="💡 "+q.explanation;expl.style.display="block";}else{expl.style.display="none";}
+    lbWrap.style.display="block";document.getElementById("ctrl-lb").innerHTML=renderLB(players,null);
+    revBtn.style.display="none";nextBtn.style.display="block";
+    nextBtn.textContent=qi+1>=STATE.quiz.questions.length?"🏁 End Quiz & Show Results":"→ Next Question";
+  }else{expl.style.display="none";lbWrap.style.display="none";revBtn.style.display="block";nextBtn.style.display="none";}
 }
 
-async function teacherReveal(){
-  hideErr("ctrl-err");
-  try{ await fbUpdate("rooms/"+STATE.roomCode,{status:"reveal"}); }
-  catch(e){ showErr("ctrl-err","Error: "+e.message); }
-}
-
+async function teacherReveal(){hideErr("ctrl-err");try{await fbUpdate(`rooms/${STATE.roomCode}`,{status:"reveal"});}catch(e){showErr("ctrl-err",e.message);}}
 async function teacherNext(){
   hideErr("ctrl-err");
   try{
-    var qi=(await fbGet("rooms/"+STATE.roomCode+"/currentQ"))||0;
-    var next=qi+1;
+    const qi=(await fbGet(`rooms/${STATE.roomCode}/currentQ`))||0;const next=qi+1;
     if(next>=STATE.quiz.questions.length){
-      var room=await fbGet("rooms/"+STATE.roomCode);
+      const room=await fbGet(`rooms/${STATE.roomCode}`);
       STATE.lastRoom=room;
-      await fbUpdate("rooms/"+STATE.roomCode,{status:"finished"});
+      await fbUpdate(`rooms/${STATE.roomCode}`,{status:"finished"});
     }else{
-      await fbUpdate("rooms/"+STATE.roomCode,{status:"question",currentQ:next,questionStartTime:Date.now()});
+      await fbUpdate(`rooms/${STATE.roomCode}`,{status:"question",currentQ:next,questionStartTime:Date.now()});
     }
-  }catch(e){ showErr("ctrl-err","Error: "+e.message); }
+  }catch(e){showErr("ctrl-err",e.message);}
 }
 
 function showTeacherResults(room){
   STATE.lastRoom=room;
-  var playerCount=Object.values(room.players||{}).filter(function(p){ return p&&p.name; }).length;
-  document.getElementById("t-results-meta").textContent=STATE.quiz.title+" · "+playerCount+" players";
+  document.getElementById("t-results-meta").textContent=`${STATE.quiz.title} · ${Object.keys(room.players||{}).length} players`;
   document.getElementById("t-results-lb").innerHTML=renderLB(room.players||{},null);
   show("s-t-results");
 }
 
-// ═══════════════════════════════════════════════════
-//  CSV DOWNLOAD
-// ═══════════════════════════════════════════════════
+// ══ CSV DOWNLOAD ══════════════════════════════════════════════
 function downloadCSV(){
-  var room=STATE.lastRoom, quiz=STATE.quiz;
-  if(!room||!quiz){ toast("⚠️ No results to download."); return; }
+  const room=STATE.lastRoom;
+  const quiz=STATE.quiz;
+  if(!room||!quiz){toast("⚠️ No results to download.");return;}
 
-  var allPlayers=room.players||{};
-  var sorted=Object.entries(allPlayers)
-    .filter(function(e){ return e[0]!=="_ph"&&e[1]&&e[1].name; })
-    .sort(function(a,b){ return (b[1].score||0)-(a[1].score||0); });
+  const players=room.players||{};
+  const sorted=Object.entries(players).sort((a,b)=>(b[1].score||0)-(a[1].score||0));
+  const now=new Date();
+  const dateStr=now.toLocaleDateString("en-MY",{day:"2-digit",month:"2-digit",year:"numeric"});
+  const timeStr=now.toLocaleTimeString("en-MY",{hour:"2-digit",minute:"2-digit"});
 
-  var now=new Date();
-  var dateStr=now.toLocaleDateString("en-MY",{day:"2-digit",month:"2-digit",year:"numeric"});
-  var timeStr=now.toLocaleTimeString("en-MY",{hour:"2-digit",minute:"2-digit"});
+  // Build CSV rows
+  const rows=[];
 
-  var rows=[];
+  // Header info
   rows.push(["QuizBlast - Quiz Results"]);
   rows.push(["Quiz Title",quiz.title]);
   rows.push(["Date",dateStr]);
@@ -1163,230 +828,201 @@ function downloadCSV(){
   rows.push(["Room Code",STATE.roomCode||"-"]);
   rows.push(["Total Questions",quiz.questions.length]);
   rows.push(["Total Players",sorted.length]);
-  rows.push([]);
-  rows.push(["=== LEADERBOARD ==="]);
-  rows.push(["Rank","Student Name","Score","Correct","Wrong","Not Answered","Accuracy %"]);
+  rows.push([]); // empty row
 
-  sorted.forEach(function(entry,i){
-    var uid=entry[0], p=entry[1];
-    var answers=p.answers||{};
-    var correct=0,wrong=0;
-    quiz.questions.forEach(function(q,qi){
-      var a=answers[qi];
-      if(a!==undefined){ if(a.choice===q.correct) correct++; else wrong++; }
+  // Leaderboard section
+  rows.push(["=== LEADERBOARD ==="]);
+  rows.push(["Rank","Student Name","Score","Correct Answers","Wrong Answers","Accuracy %"]);
+
+  sorted.forEach(([uid,p],i)=>{
+    const answers=p.answers||{};
+    let correct=0,wrong=0;
+    quiz.questions.forEach((q,qi)=>{
+      if(answers[qi]!==undefined){
+        if(answers[qi].choice===q.correct)correct++;
+        else wrong++;
+      }
     });
-    var notAnswered=quiz.questions.length-correct-wrong;
-    var accuracy=quiz.questions.length>0?Math.round(correct/quiz.questions.length*100):0;
-    rows.push([i+1,p.name,p.score||0,correct,wrong,notAnswered,accuracy+"%"]);
+    const unanswered=quiz.questions.length-correct-wrong;
+    const accuracy=quiz.questions.length>0?Math.round(correct/quiz.questions.length*100):0;
+    rows.push([i+1,p.name,p.score||0,correct,wrong,accuracy+"%"]);
   });
 
-  rows.push([]);
+  rows.push([]); // empty row
+
+  // Question breakdown section
   rows.push(["=== QUESTION BREAKDOWN ==="]);
-  var qHeader=["Question No.","Question","Correct Answer"];
-  sorted.forEach(function(e){ qHeader.push(e[1].name); });
+  const qHeader=["Question No.","Question","Correct Answer"];
+  sorted.forEach(([uid,p])=>qHeader.push(p.name));
   rows.push(qHeader);
 
-  quiz.questions.forEach(function(q,qi){
-    var row=["Q"+(qi+1),q.question,q.options[q.correct]];
-    sorted.forEach(function(entry){
-      var p=entry[1];
-      var ans=(p.answers||{})[qi];
-      if(ans===undefined) row.push("No Answer");
-      else if(ans.choice===q.correct) row.push("✓ Correct");
-      else row.push("✗ "+q.options[ans.choice]);
+  quiz.questions.forEach((q,qi)=>{
+    const row=[`Q${qi+1}`,q.question,q.options[q.correct]];
+    sorted.forEach(([uid,p])=>{
+      const ans=p.answers?.[qi];
+      if(ans===undefined){row.push("No Answer");}
+      else if(ans.choice===q.correct){row.push("✓ Correct");}
+      else{row.push("✗ "+q.options[ans.choice]);}
     });
     rows.push(row);
   });
 
-  var csv=rows.map(function(row){
-    return row.map(function(cell){
-      var s=String(cell===undefined||cell===null?"":cell);
-      return (s.includes(",")||s.includes('"')||s.includes("\n"))
-        ? '"'+s.replace(/"/g,'""')+'"' : s;
-    }).join(",");
-  }).join("\n");
+  // Convert to CSV string
+  const csvContent=rows.map(row=>
+    row.map(cell=>{
+      const s=String(cell||"");
+      // Wrap in quotes if contains comma, quote or newline
+      if(s.includes(",")||s.includes('"')||s.includes("\n")){
+        return '"'+s.replace(/"/g,'""')+'"';
+      }
+      return s;
+    }).join(",")
+  ).join("\n");
 
-  var blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8;"});
-  var url=URL.createObjectURL(blob);
-  var a=document.createElement("a");
-  a.href=url; a.download="QuizBlast_"+quiz.title.replace(/[^a-zA-Z0-9]/g,"_")+"_"+dateStr.replace(/\//g,"-")+".csv";
-  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+  // Add BOM for Excel UTF-8 compatibility
+  const BOM="\uFEFF";
+  const blob=new Blob([BOM+csvContent],{type:"text/csv;charset=utf-8;"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download=`QuizBlast_${quiz.title.replace(/[^a-zA-Z0-9]/g,"_")}_${dateStr.replace(/\//g,"-")}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
   toast("📥 CSV downloaded!");
 }
 
-// ═══════════════════════════════════════════════════
-//  STUDENT JOIN
-// ═══════════════════════════════════════════════════
+// ══ STUDENT JOIN ══════════════════════════════════════════════
 async function studentJoin(){
-  var name=document.getElementById("s-name").value.trim();
-  var code=document.getElementById("s-code").value.trim().toUpperCase();
+  const name=document.getElementById("s-name").value.trim();
+  const code=document.getElementById("s-code").value.trim().toUpperCase();
   hideErr("join-err");
-  if(!name){ showErr("join-err","Please enter your name."); return; }
-  if(code.length<6){ showErr("join-err","Please enter the 6-character room code."); return; }
+  if(!name){showErr("join-err","Please enter your name.");return;}
+  if(code.length<6){showErr("join-err","Please enter the 6-character room code.");return;}
   setLoading("Joining room...");
   try{
-    var room=await fbGet("rooms/"+code);
-    if(!room){ show("s-student-login"); showErr("join-err","Room not found! Double-check the code."); return; }
-    if(room.status==="finished"){ show("s-student-login"); showErr("join-err","This quiz has already ended."); return; }
-    var uid=genUid();
-    STATE.uid=uid; STATE.playerName=name; STATE.roomCode=code; STATE.role="student";
-    STATE.answered={}; STATE.localScore=0;
-    await fbSet("rooms/"+code+"/players/"+uid,{name:name,score:0,joinedAt:Date.now()});
-    document.getElementById("s-lobby-name").textContent="Hi "+name+"! 👋";
-    updateNav(); show("s-s-lobby"); startStudentListener();
-  }catch(e){
-    show("s-student-login"); showErr("join-err","Could not join: "+e.message);
-  }
+    const room=await fbGet(`rooms/${code}`);
+    if(!room){show("s-student-login");showErr("join-err","Room not found! Double-check the code.");return;}
+    if(room.status==="finished"){show("s-student-login");showErr("join-err","This quiz has already ended.");return;}
+    const uid=genUid();
+    STATE.uid=uid;STATE.playerName=name;STATE.roomCode=code;STATE.role="student";
+    STATE.answered={};STATE.localScore=0;
+    await fbSet(`rooms/${code}/players/${uid}`,{name,score:0,joinedAt:Date.now()});
+    document.getElementById("s-lobby-name").textContent=`Hi ${name}! 👋`;
+    updateNav();show("s-s-lobby");startStudentListener();
+  }catch(e){show("s-student-login");showErr("join-err","Could not join: "+e.message);}
 }
 
-// ═══════════════════════════════════════════════════
-//  STUDENT GAME
-// ═══════════════════════════════════════════════════
-var timerIv=null;
-
+// ══ STUDENT GAME ══════════════════════════════════════════════
+let timerIv=null;
 function startStudentListener(){
   stopPoll();
-  var ref=db.ref("rooms/"+STATE.roomCode);
-  ref.on("value",function(snap){ var room=snap.val(); if(room) handleStudentUpdate(room); });
-  STATE.roomListener=function(){ ref.off(); };
+  const ref=db.ref(`rooms/${STATE.roomCode}`);
+  ref.on("value",snap=>{const room=snap.val();if(room)handleStudentUpdate(room);});
+  STATE.roomListener=()=>ref.off();
 }
 
 function handleStudentUpdate(room){
-  var players=room.players||{};
-
+  const players=room.players||{};
   if(room.status==="lobby"){
-    var realPlayers=Object.values(players).filter(function(p){ return p&&p.name; });
-    document.getElementById("s-lobby-count").textContent=realPlayers.length;
-    document.getElementById("s-lobby-players").innerHTML=realPlayers.map(function(p){
-      return '<div class="chip'+(p.name===STATE.playerName?" me":"")+'">'+esc(p.name)+'</div>';
-    }).join("");
-    show("s-s-lobby"); return;
+    const list=Object.values(players);
+    document.getElementById("s-lobby-count").textContent=list.length;
+    document.getElementById("s-lobby-players").innerHTML=list.map(p=>`<div class="chip${p.name===STATE.playerName?" me":""}">${esc(p.name)}</div>`).join("");
+    show("s-s-lobby");return;
   }
-
   if(room.status==="finished"){
     clearInterval(timerIv);
-    var myScore=players[STATE.uid]?players[STATE.uid].score:STATE.localScore;
-    if(myScore===null||myScore===undefined) myScore=STATE.localScore;
-    var realSorted=Object.entries(players).filter(function(e){ return e[1]&&e[1].name; }).sort(function(a,b){ return (b[1].score||0)-(a[1].score||0); });
-    var myRank=realSorted.findIndex(function(e){ return e[0]===STATE.uid; })+1;
-    var maxScore=room.quiz.questions.length*(100+TIME_PER_Q*3);
-    var pct=maxScore>0?Math.round(myScore/maxScore*100):0;
-    var emojis=["🏆","🥈","🥉","🎉"];
+    const myScore=players[STATE.uid]?.score??STATE.localScore;
+    const sorted=Object.entries(players).sort((a,b)=>(b[1].score||0)-(a[1].score||0));
+    const myRank=sorted.findIndex(([u])=>u===STATE.uid)+1;
+    const pct=Math.round(myScore/(room.quiz.questions.length*(100+TIME_PER_Q*3))*100);
+    const emojis=["🏆","🥈","🥉","🎉"];
     document.getElementById("s-result-emoji").textContent=emojis[Math.min(myRank-1,3)]||"🎉";
     document.getElementById("s-result-grade").textContent=pct>=80?"Excellent! 🌟":pct>=60?"Good Job! 👍":pct>=40?"Keep Trying! 💪":"Study More! 📚";
-    document.getElementById("s-result-score").textContent="You scored "+myScore+" points";
-    document.getElementById("s-result-rank").textContent="Rank #"+myRank+" of "+realSorted.length;
+    document.getElementById("s-result-score").textContent=`You scored ${myScore} points`;
+    document.getElementById("s-result-rank").textContent=`Rank #${myRank} of ${Object.keys(players).length}`;
     document.getElementById("s-result-lb").innerHTML=renderLB(players,STATE.uid);
-    show("s-s-results"); return;
+    show("s-s-results");return;
   }
-
   show("s-game");
-  var qi=room.currentQ||0;
-  var q=room.quiz.questions[qi];
-  if(!q) return;
-
-  var realSorted=Object.entries(players).filter(function(e){ return e[1]&&e[1].name; }).sort(function(a,b){ return (b[1].score||0)-(a[1].score||0); });
-  var myRank2=realSorted.findIndex(function(e){ return e[0]===STATE.uid; })+1;
-  var myScore2=(players[STATE.uid]&&players[STATE.uid].score!=null)?players[STATE.uid].score:STATE.localScore;
-  // Use hasOwnProperty to correctly detect answer index 0
-  var myAnswer=STATE.answered.hasOwnProperty(qi)?STATE.answered[qi]:undefined;
-
-  document.getElementById("g-qnum").textContent="Q "+(qi+1)+"/"+room.quiz.questions.length;
+  const qi=room.currentQ||0;const q=room.quiz.questions[qi];
+  const sorted=Object.entries(players).sort((a,b)=>(b[1].score||0)-(a[1].score||0));
+  const myRank=sorted.findIndex(([u])=>u===STATE.uid)+1;
+  const myScore=players[STATE.uid]?.score??STATE.localScore;
+  const myAnswer=STATE.answered[qi];
+  document.getElementById("g-qnum").textContent=`Q ${qi+1}/${room.quiz.questions.length}`;
   document.getElementById("g-name").textContent=STATE.playerName;
-  document.getElementById("g-score").textContent=myScore2+" pts";
-  document.getElementById("g-rank").textContent="Rank #"+myRank2;
+  document.getElementById("g-score").textContent=`${myScore} pts`;
+  document.getElementById("g-rank").textContent=`Rank #${myRank}`;
   document.getElementById("g-question").textContent=q.question;
-
-  // Timer — only run if not yet answered (correct undefined check for index 0)
   clearInterval(timerIv);
-  if(room.status==="question"&&myAnswer===undefined&&room.questionStartTime){
-    timerIv=setInterval(function(){
-      var left=Math.max(0,TIME_PER_Q-(Date.now()-room.questionStartTime)/1000);
-      var t=Math.ceil(left);
-      var pct2=left/TIME_PER_Q*100;
-      var col=left>10?"#22c55e":left>5?"#f97316":"#ef4444";
-      var el=document.getElementById("g-timer");
-      var bar=document.getElementById("g-timer-bar");
-      if(el){ el.textContent=t; el.style.background=col; el.style.boxShadow="0 0 18px "+col+"88"; }
-      if(bar){ bar.style.width=pct2+"%"; bar.style.background=col; }
-      if(left<=0) clearInterval(timerIv);
+  if(room.status==="question"&&!myAnswer&&room.questionStartTime){
+    timerIv=setInterval(()=>{
+      const left=Math.max(0,TIME_PER_Q-(Date.now()-room.questionStartTime)/1000);
+      const t=Math.ceil(left);const pct2=left/TIME_PER_Q*100;
+      const col=left>10?"#22c55e":left>5?"#f97316":"#ef4444";
+      const el=document.getElementById("g-timer");
+      if(el){el.textContent=t;el.style.background=col;el.style.boxShadow=`0 0 18px ${col}88`;}
+      const bar=document.getElementById("g-timer-bar");
+      if(bar){bar.style.width=pct2+"%";bar.style.background=col;}
+      if(left<=0)clearInterval(timerIv);
     },250);
   }
-
-  document.getElementById("g-options").innerHTML=q.options.map(function(opt,i){
-    var c=COLORS[i];
-    var bg=c.bg, opacity=1, shadow="0 4px 0 "+c.shadow, cursor="pointer";
-    if(room.status==="reveal"){
-      bg=i===q.correct?"#22c55e":(i===myAnswer&&i!==q.correct?"#ef4444":"rgba(255,255,255,.07)");
-      shadow="none"; cursor="default";
-    }else if(myAnswer!==undefined){
-      if(i!==myAnswer){ bg="rgba(255,255,255,.07)"; opacity=0.45; }
-      shadow="none"; cursor="default";
-    }
-    var suffix=room.status==="reveal"?(i===q.correct?" ✓":(i===myAnswer&&i!==q.correct?" ✗":"")):"";
-    var disabled=(myAnswer!==undefined||room.status==="reveal")?"disabled":"";
-    return '<button class="ans-btn" onclick="studentAnswer('+i+')" '+disabled+' style="background:'+bg+';opacity:'+opacity+';box-shadow:'+shadow+';cursor:'+cursor+'">'
-      +'<span class="ans-icon">'+c.icon+'</span>'
-      +'<span style="flex:1">'+esc(opt)+suffix+'</span>'
-      +'</button>';
+  document.getElementById("g-options").innerHTML=q.options.map((opt,i)=>{
+    const c=COLORS[i];let bg=c.bg,opacity=1,shadow=`0 4px 0 ${c.shadow}`,cursor="pointer";
+    if(room.status==="reveal"){bg=i===q.correct?"#22c55e":(i===myAnswer&&i!==q.correct?"#ef4444":"rgba(255,255,255,.07)");shadow="none";cursor="default";}
+    else if(myAnswer!==undefined){if(i!==myAnswer){bg="rgba(255,255,255,.07)";opacity=0.45;}shadow="none";cursor="default";}
+    const suffix=room.status==="reveal"?(i===q.correct?" ✓":(i===myAnswer&&i!==q.correct?" ✗":"")):"";
+    const disabled=myAnswer!==undefined||room.status==="reveal";
+    return `<button class="ans-btn" onclick="studentAnswer(${i})" ${disabled?"disabled":""} style="background:${bg};opacity:${opacity};box-shadow:${shadow};cursor:${cursor}">
+      <span class="ans-icon">${c.icon}</span><span style="flex:1">${esc(opt)}${suffix}</span>
+    </button>`;
   }).join("");
-
-  var fb=document.getElementById("g-feedback");
+  const fb=document.getElementById("g-feedback");
   if(myAnswer!==undefined&&room.status==="question"){
     fb.style.cssText="display:block;margin-top:12px;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)";
-    fb.innerHTML='<div style="font-family:\'Fredoka One\',cursive;color:#ffe066">✓ Submitted!</div><div class="muted" style="font-size:.82rem;margin-top:4px">Waiting for teacher to reveal the answer...</div>';
+    fb.innerHTML=`<div style="font-family:'Fredoka One',cursive;color:#ffe066">✓ Submitted!</div><div class="muted" style="font-size:.82rem;margin-top:4px">Waiting for teacher to reveal the answer...</div>`;
   }else if(room.status==="reveal"){
-    var correct2=myAnswer===q.correct;
-    var noAns=myAnswer===undefined;
-    fb.style.cssText="display:block;margin-top:12px;padding:16px 18px;border-radius:16px;background:"+(correct2?"rgba(34,197,94,.1)":"rgba(239,68,68,.1)")+";border:1.5px solid "+(correct2?"rgba(34,197,94,.3)":"rgba(239,68,68,.3)");
-    fb.innerHTML='<div style="font-family:\'Fredoka One\',cursive;font-size:1.1rem;margin-bottom:4px">'+(noAns?"⏰ Time\'s up!":correct2?"🎉 Correct!":"❌ Wrong!")+'</div>'+(q.explanation?'<div class="muted" style="font-size:.85rem">'+esc(q.explanation)+'</div>':'')+'<div class="muted" style="font-size:.8rem;margin-top:6px">Waiting for next question...</div>';
-  }else{
-    fb.style.display="none";
-  }
+    const correct=myAnswer===q.correct;const noAns=myAnswer===undefined;
+    fb.style.cssText=`display:block;margin-top:12px;padding:16px 18px;border-radius:16px;background:${correct?"rgba(34,197,94,.1)":"rgba(239,68,68,.1)"};border:1.5px solid ${correct?"rgba(34,197,94,.3)":"rgba(239,68,68,.3)"}`;
+    fb.innerHTML=`<div style="font-family:'Fredoka One',cursive;font-size:1.1rem;margin-bottom:4px">${noAns?"⏰ Time's up!":correct?"🎉 Correct!":"❌ Wrong!"}</div>${q.explanation?`<div class="muted" style="font-size:.85rem">${esc(q.explanation)}</div>`:""}<div class="muted" style="font-size:.8rem;margin-top:6px">Waiting for next question...</div>`;
+  }else{fb.style.display="none";}
 }
 
 async function studentAnswer(choice){
-  if(!STATE.roomCode) return;
-  var qi=(await fbGet("rooms/"+STATE.roomCode+"/currentQ"))||0;
-  if(STATE.answered.hasOwnProperty(qi)) return; // already answered
-  var room=await fbGet("rooms/"+STATE.roomCode);
-  if(!room||room.status!=="question") return;
-  STATE.answered[qi]=choice; // lock immediately
-  var q=room.quiz.questions[qi];
-  var elapsed=(Date.now()-room.questionStartTime)/1000;
-  var bonus=choice===q.correct?Math.round(Math.max(0,TIME_PER_Q-elapsed)*3):0;
-  var pts=choice===q.correct?100+bonus:0;
+  const qi=(await fbGet(`rooms/${STATE.roomCode}/currentQ`))||0;
+  if(STATE.answered[qi]!==undefined)return;
+  const room=await fbGet(`rooms/${STATE.roomCode}`);
+  if(!room||room.status!=="question")return;
+  STATE.answered[qi]=choice;
+  const q=room.quiz.questions[qi];
+  const elapsed=(Date.now()-room.questionStartTime)/1000;
+  const bonus=choice===q.correct?Math.round(Math.max(0,TIME_PER_Q-elapsed)*3):0;
+  const pts=choice===q.correct?100+bonus:0;
   STATE.localScore+=pts;
   try{
-    await fbSet("rooms/"+STATE.roomCode+"/players/"+STATE.uid+"/answers/"+qi,{choice:choice,pts:pts});
-    await fbSet("rooms/"+STATE.roomCode+"/players/"+STATE.uid+"/score",STATE.localScore);
-  }catch(e){ console.error("Answer save error:",e); }
+    await fbSet(`rooms/${STATE.roomCode}/players/${STATE.uid}/answers/${qi}`,{choice,pts});
+    await fbSet(`rooms/${STATE.roomCode}/players/${STATE.uid}/score`,STATE.localScore);
+  }catch(e){console.error("Answer save error",e);}
 }
 
-// ═══════════════════════════════════════════════════
-//  LEADERBOARD
-// ═══════════════════════════════════════════════════
+// ══ LEADERBOARD ═══════════════════════════════════════════════
 function renderLB(players,myUid){
-  var sorted=Object.entries(players)
-    .filter(function(e){ return e[0]!=="_ph"&&e[1]&&e[1].name; })
-    .sort(function(a,b){ return (b[1].score||0)-(a[1].score||0); });
-  var medals=["🥇","🥈","🥉"];
-  return sorted.map(function(entry,i){
-    var uid=entry[0], p=entry[1];
-    return '<div class="lb-row'+(uid===myUid?" me":"")+'">'
-      +'<span style="font-size:1.3rem;width:32px;text-align:center">'+(medals[i]||("#"+(i+1)))+'</span>'
-      +'<span style="flex:1;font-weight:600">'+esc(p.name)+(uid===myUid?" 👈":"")+'</span>'
-      +'<span style="font-family:\'Fredoka One\',cursive;color:#ffe066;font-size:1.1rem">'+(p.score||0)+'</span>'
-      +'</div>';
-  }).join("");
+  const sorted=Object.entries(players).sort((a,b)=>(b[1].score||0)-(a[1].score||0));
+  const medals=["🥇","🥈","🥉"];
+  return sorted.map(([uid,p],i)=>`
+    <div class="lb-row${uid===myUid?" me":""}">
+      <span style="font-size:1.3rem;width:32px;text-align:center">${medals[i]||`#${i+1}`}</span>
+      <span style="flex:1;font-weight:600">${esc(p.name)}${uid===myUid?" 👈":""}</span>
+      <span style="font-family:'Fredoka One',cursive;color:#ffe066;font-size:1.1rem">${p.score||0}</span>
+    </div>`).join("");
 }
 
-// ═══════════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════════
-window.addEventListener("DOMContentLoaded",function(){
-  var code=new URLSearchParams(window.location.search).get("join");
-  if(code){ document.getElementById("s-code").value=code.toUpperCase(); show("s-student-login"); }
+// ══ INIT ══════════════════════════════════════════════════════
+window.addEventListener("DOMContentLoaded",()=>{
+  const code=new URLSearchParams(window.location.search).get("join");
+  if(code){document.getElementById("s-code").value=code.toUpperCase();show("s-student-login");}
   else show("s-home");
 });
 </script>
