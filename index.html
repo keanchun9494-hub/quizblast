@@ -444,16 +444,23 @@ var LS = {
 };
 
 // ═══════════════════════════════════════════════════
-//  GOOGLE GEMINI 2.5 FLASH LITE
+//  GOOGLE GEMINI API — WITH MODEL FALLBACK
 // ═══════════════════════════════════════════════════
-var GEMINI_MODEL = "gemini-2.5-flash-lite-preview-06-17";
+// Tried in order — first one that works is used
+var GEMINI_MODELS = [
+  "gemini-2.5-flash-lite",
+  "gemini-2.5-flash-lite-preview-06-17",
+  "gemini-2.5-flash",
+  "gemini-2.0-flash-lite",
+  "gemini-2.0-flash",
+  "gemini-1.5-flash-8b",
+  "gemini-1.5-flash"
+];
 var GEMINI_URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models/";
 
 async function callGemini(prompt, imageData){
   var apiKey = LS.get("qb_apikey");
   if(!apiKey) throw new Error("No Google API key set. Please go to ⚙️ Settings.");
-
-  var url = GEMINI_URL_BASE + GEMINI_MODEL + ":generateContent?key=" + apiKey;
 
   var parts = [];
   if(imageData){
@@ -466,30 +473,56 @@ async function callGemini(prompt, imageData){
     generationConfig:{temperature:1.0, maxOutputTokens:4096}
   };
 
-  var resp = await fetch(url, {
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify(body)
-  });
+  var lastError = "";
+  for(var mi=0; mi<GEMINI_MODELS.length; mi++){
+    var model = GEMINI_MODELS[mi];
 
-  if(!resp.ok){
-    var e = await resp.json().catch(function(){ return {}; });
-    var msg = (e.error&&e.error.message)||("Gemini API error "+resp.status);
-    if(resp.status===400) throw new Error(msg+" — Check your API key.");
-    if(resp.status===403) throw new Error("API key not authorised. Make sure the Generative Language API is enabled.");
-    if(resp.status===404) throw new Error("Model not found. Your key may not have access to Gemini 2.5 Flash Lite yet.");
-    if(resp.status===429) throw new Error("Rate limit reached. Wait a moment and try again.");
-    throw new Error(msg);
+    // Update loading text to show which model is being tried
+    var ltEl = document.getElementById("loading-text");
+    if(ltEl) ltEl.textContent = "🤖 Trying "+model+"...";
+
+    var url = GEMINI_URL_BASE + model + ":generateContent?key=" + apiKey;
+    var resp = await fetch(url, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(body)
+    });
+
+    if(resp.status===400){
+      var e400 = await resp.json().catch(function(){ return {}; });
+      throw new Error((e400.error&&e400.error.message)||"Bad request — check your API key.");
+    }
+    if(resp.status===403){
+      throw new Error("API key not authorised. Make sure the Generative Language API is enabled in your Google Cloud project.");
+    }
+    if(resp.status===429){
+      throw new Error("Rate limit reached. Wait a moment and try again.");
+    }
+    if(resp.status===404){
+      // This model not available on this key — try next
+      lastError = model + " not available";
+      continue;
+    }
+    if(!resp.ok){
+      var eGen = await resp.json().catch(function(){ return {}; });
+      lastError = (eGen.error&&eGen.error.message)||("HTTP "+resp.status);
+      continue;
+    }
+
+    var d = await resp.json();
+    var text = ((d.candidates&&d.candidates[0]&&d.candidates[0].content&&d.candidates[0].content.parts)||[])
+      .filter(function(p){ return p.text; })
+      .map(function(p){ return p.text; })
+      .join("");
+
+    if(!text){ lastError = model+" returned empty response"; continue; }
+
+    // Save which model worked so UI can show it
+    toast("✅ Generated with "+model, 3000);
+    return text;
   }
 
-  var d = await resp.json();
-  var text = ((d.candidates&&d.candidates[0]&&d.candidates[0].content&&d.candidates[0].content.parts)||[])
-    .filter(function(p){ return p.text; })
-    .map(function(p){ return p.text; })
-    .join("");
-
-  if(!text) throw new Error("Gemini returned an empty response. Please try again.");
-  return text;
+  throw new Error("No Gemini model available. Last error: "+lastError+". Check your API key at aistudio.google.com/apikey");
 }
 
 // Parse a JSON array out of an AI text response (strips markdown fences)
