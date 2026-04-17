@@ -305,10 +305,31 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
       <h2 class="h2 accent" id="preview-title" style="margin:0"></h2>
       <p class="muted" style="font-size:.85rem;margin-top:4px" id="preview-meta"></p>
     </div>
-    <button class="btn btn-green" onclick="openRoom()" style="padding:14px 28px;font-size:1.05rem">▶ Open Room</button>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-ghost" onclick="openEditQuiz()" style="padding:12px 18px">✏️ Edit Questions</button>
+      <button class="btn btn-green" onclick="openRoom()" style="padding:14px 28px;font-size:1.05rem">▶ Open Room</button>
+    </div>
   </div>
   <div class="errbox" id="preview-err"></div>
   <div id="preview-list"></div>
+</div>
+
+<!-- EDIT QUIZ -->
+<div id="s-edit-quiz" class="screen" style="max-width:620px;margin:0 auto;padding-top:8px">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:20px">
+    <div>
+      <button class="back-btn" onclick="show('s-preview')">← Back to Preview</button>
+      <h2 class="h2 accent" style="margin:0">✏️ Edit Questions</h2>
+    </div>
+    <button class="btn btn-green" onclick="saveEditedQuiz()" style="padding:12px 22px">✓ Save &amp; Back</button>
+  </div>
+  <!-- Quiz title edit -->
+  <div class="card" style="margin-bottom:14px">
+    <label class="lbl">Quiz Title</label>
+    <input type="text" id="edit-quiz-title" placeholder="Quiz title..."/>
+  </div>
+  <div id="edit-questions-list"></div>
+  <button class="btn btn-ghost" style="width:100%;margin-top:4px" onclick="addEditQuestion()">＋ Add Question</button>
 </div>
 
 <!-- TEACHER LOBBY -->
@@ -329,6 +350,19 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
     </div>
   </div>
   <div class="errbox" id="lobby-err"></div>
+  <!-- Timer per question selector -->
+  <div style="background:#161630;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px 20px;margin-bottom:14px;text-align:left">
+    <label class="lbl" style="margin-bottom:8px">⏱ Time per question</label>
+    <select id="lobby-timer" style="width:100%;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:#fff;font-size:1rem;font-family:inherit">
+      <option value="20">20 seconds</option>
+      <option value="30" selected>30 seconds</option>
+      <option value="60">1 minute</option>
+      <option value="120">2 minutes</option>
+      <option value="180">3 minutes</option>
+      <option value="240">4 minutes</option>
+      <option value="300">5 minutes</option>
+    </select>
+  </div>
   <button class="btn btn-green btn-full" id="start-btn" onclick="startQuiz()" disabled style="font-size:1.15rem">Waiting for students...</button>
 </div>
 
@@ -540,7 +574,10 @@ function parseJsonArray(text){
 var STATE = {
   role:null, quiz:null, roomCode:null,
   uid:null, playerName:null,
-  answered:{}, localScore:0,
+  answered:{},      // committed to Firebase {qi: choice}
+  pendingAnswer:{}, // selected but not yet committed {qi: choice}
+  answerFirstTime:{},// timestamp of first selection {qi: ms}
+  localScore:0,
   pollIv:null, roomListener:null, lastRoom:null
 };
 
@@ -610,7 +647,7 @@ function updateNav(){
 function goHome(){
   stopPoll();
   clearInterval(timerIv);
-  STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},localScore:0,pollIv:null,roomListener:null,lastRoom:null};
+  STATE={role:null,quiz:null,roomCode:null,uid:null,playerName:null,answered:{},pendingAnswer:{},answerFirstTime:{},localScore:0,pollIv:null,roomListener:null,lastRoom:null};
   updateNav();
   var code=new URLSearchParams(window.location.search).get("join");
   if(code){ document.getElementById("s-code").value=code; show("s-student-login"); }
@@ -892,6 +929,76 @@ function saveManual(){
 }
 
 // ═══════════════════════════════════════════════════
+//  EDIT QUIZ
+// ═══════════════════════════════════════════════════
+// editQs mirrors STATE.quiz.questions during editing
+var editQs = [];
+
+function openEditQuiz(){
+  // Deep-copy current questions into edit buffer
+  editQs = JSON.parse(JSON.stringify(STATE.quiz.questions));
+  document.getElementById("edit-quiz-title").value = STATE.quiz.title || "";
+  renderEditQs();
+  show("s-edit-quiz");
+}
+
+function addEditQuestion(){
+  editQs.push({question:"",options:["","","",""],correct:0,explanation:""});
+  renderEditQs();
+}
+
+function removeEditQ(i){
+  if(editQs.length<=1){ toast("⚠️ Quiz must have at least 1 question."); return; }
+  editQs.splice(i,1);
+  renderEditQs();
+}
+
+function setEditCorrect(qi,oi){
+  editQs[qi].correct=oi;
+  renderEditQs();
+}
+
+function renderEditQs(){
+  document.getElementById("edit-questions-list").innerHTML = editQs.map(function(q,qi){
+    return '<div class="card fade-in" style="margin-bottom:14px">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">'
+      +'<span class="h3 accent">Q'+(qi+1)+'</span>'
+      +(editQs.length>1?'<button onclick="removeEditQ('+qi+')" style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:8px;color:#fca5a5;padding:4px 10px;cursor:pointer;font-size:.8rem">✕ Remove</button>':"")
+      +'</div>'
+      +'<div class="form-group"><label class="lbl">Question</label>'
+      +'<textarea rows="2" oninput="editQs['+qi+'].question=this.value" style="resize:vertical">'+esc(q.question)+'</textarea></div>'
+      +'<label class="lbl" style="margin-bottom:8px">Options — click ✓ to mark correct</label>'
+      +'<div class="grid2" style="margin-bottom:10px">'
+      +q.options.map(function(opt,oi){
+        var isC = oi===q.correct;
+        return '<div style="display:flex;gap:6px;align-items:center">'
+          +'<button onclick="setEditCorrect('+qi+','+oi+')" style="width:28px;height:28px;border-radius:50%;flex-shrink:0;border:2px solid '+(isC?"#22c55e":"rgba(255,255,255,.18)")+';background:'+(isC?"#22c55e":"transparent")+';cursor:pointer;color:#fff;font-size:11px">✓</button>'
+          +'<input type="text" value="'+esc(opt)+'" oninput="editQs['+qi+'].options['+oi+']=this.value" placeholder="Option '+(oi+1)+'" style="padding:8px 10px;flex:1"/>'
+          +'</div>';
+      }).join("")
+      +'</div>'
+      +'<label class="lbl">Explanation (optional)</label>'
+      +'<input type="text" value="'+esc(q.explanation||"")+'" oninput="editQs['+qi+'].explanation=this.value" placeholder="Why is this the correct answer?"/>'
+      +'</div>';
+  }).join("");
+}
+
+function saveEditedQuiz(){
+  var title = document.getElementById("edit-quiz-title").value.trim();
+  // Validate
+  var allFilled = editQs.every(function(q){
+    return q.question.trim() && q.options.every(function(o){ return o.trim(); });
+  });
+  if(!allFilled){ toast("⚠️ Please fill in all questions and all 4 options."); return; }
+  // Commit edits to STATE.quiz
+  STATE.quiz.questions = editQs;
+  if(title) STATE.quiz.title = title;
+  saveQuizToStorage(STATE.quiz);
+  showPreview();
+  toast("✅ Quiz saved!");
+}
+
+// ═══════════════════════════════════════════════════
 //  PREVIEW
 // ═══════════════════════════════════════════════════
 function showPreview(){
@@ -981,7 +1088,8 @@ async function startQuiz(){
   hideErr("lobby-err");
   try{
     stopPoll();
-    await fbUpdate("rooms/"+STATE.roomCode,{status:"question",currentQ:0,questionStartTime:Date.now()});
+    var timePerQ = parseInt(document.getElementById("lobby-timer").value)||30;
+    await fbUpdate("rooms/"+STATE.roomCode,{status:"question",currentQ:0,questionStartTime:Date.now(),timePerQ:timePerQ});
     show("s-control");
     startControlPoll();
   }catch(e){
@@ -1074,14 +1182,14 @@ async function teacherReveal(){
 async function teacherNext(){
   hideErr("ctrl-err");
   try{
-    var qi=(await fbGet("rooms/"+STATE.roomCode+"/currentQ"))||0;
+    var room=await fbGet("rooms/"+STATE.roomCode);
+    var qi=(room&&room.currentQ)||0;
     var next=qi+1;
     if(next>=STATE.quiz.questions.length){
-      var room=await fbGet("rooms/"+STATE.roomCode);
       STATE.lastRoom=room;
       await fbUpdate("rooms/"+STATE.roomCode,{status:"finished"});
     }else{
-      await fbUpdate("rooms/"+STATE.roomCode,{status:"question",currentQ:next,questionStartTime:Date.now()});
+      await fbUpdate("rooms/"+STATE.roomCode,{status:"question",currentQ:next,questionStartTime:Date.now(),timePerQ:room.timePerQ||30});
     }
   }catch(e){ showErr("ctrl-err","Error: "+e.message); }
 }
@@ -1185,7 +1293,7 @@ async function studentJoin(){
     if(room.status==="finished"){ show("s-student-login"); showErr("join-err","This quiz has already ended."); return; }
     var uid=genUid();
     STATE.uid=uid; STATE.playerName=name; STATE.roomCode=code; STATE.role="student";
-    STATE.answered={}; STATE.localScore=0;
+    STATE.answered={}; STATE.pendingAnswer={}; STATE.answerFirstTime={}; STATE.localScore=0;
     await fbSet("rooms/"+code+"/players/"+uid,{name:name,score:0,joinedAt:Date.now()});
     document.getElementById("s-lobby-name").textContent="Hi "+name+"! 👋";
     updateNav(); show("s-s-lobby"); startStudentListener();
@@ -1224,7 +1332,7 @@ function handleStudentUpdate(room){
     if(myScore===null||myScore===undefined) myScore=STATE.localScore;
     var realSorted=Object.entries(players).filter(function(e){ return e[1]&&e[1].name; }).sort(function(a,b){ return (b[1].score||0)-(a[1].score||0); });
     var myRank=realSorted.findIndex(function(e){ return e[0]===STATE.uid; })+1;
-    var maxScore=room.quiz.questions.length*(100+TIME_PER_Q*3);
+    var maxScore=room.quiz.questions.length*(100+(room.timePerQ||30)*3);
     var pct=maxScore>0?Math.round(myScore/maxScore*100):0;
     var emojis=["🏆","🥈","🥉","🎉"];
     document.getElementById("s-result-emoji").textContent=emojis[Math.min(myRank-1,3)]||"🎉";
@@ -1240,11 +1348,22 @@ function handleStudentUpdate(room){
   var q=room.quiz.questions[qi];
   if(!q) return;
 
+  var tPerQ = room.timePerQ||30;
   var realSorted=Object.entries(players).filter(function(e){ return e[1]&&e[1].name; }).sort(function(a,b){ return (b[1].score||0)-(a[1].score||0); });
   var myRank2=realSorted.findIndex(function(e){ return e[0]===STATE.uid; })+1;
   var myScore2=(players[STATE.uid]&&players[STATE.uid].score!=null)?players[STATE.uid].score:STATE.localScore;
-  // Use hasOwnProperty to correctly detect answer index 0
-  var myAnswer=STATE.answered.hasOwnProperty(qi)?STATE.answered[qi]:undefined;
+
+  // Pending = locally selected (changeable). Committed = saved to Firebase.
+  var pending = STATE.pendingAnswer.hasOwnProperty(qi) ? STATE.pendingAnswer[qi] : undefined;
+  var committed = STATE.answered.hasOwnProperty(qi);
+
+  // When teacher reveals: commit pending answer if not yet committed
+  if(room.status==="reveal" && !committed && pending!==undefined){
+    commitAnswer(qi, pending, room);
+  }
+
+  // After commit, read from committed answer for display
+  var displayAnswer = committed ? STATE.answered[qi] : pending;
 
   document.getElementById("g-qnum").textContent="Q "+(qi+1)+"/"+room.quiz.questions.length;
   document.getElementById("g-name").textContent=STATE.playerName;
@@ -1252,14 +1371,14 @@ function handleStudentUpdate(room){
   document.getElementById("g-rank").textContent="Rank #"+myRank2;
   document.getElementById("g-question").textContent=q.question;
 
-  // Timer — only run if not yet answered (correct undefined check for index 0)
+  // Timer — runs always during question phase (even after selecting), stops at 0
   clearInterval(timerIv);
-  if(room.status==="question"&&myAnswer===undefined&&room.questionStartTime){
+  if(room.status==="question" && room.questionStartTime){
     timerIv=setInterval(function(){
-      var left=Math.max(0,TIME_PER_Q-(Date.now()-room.questionStartTime)/1000);
+      var left=Math.max(0, tPerQ - (Date.now()-room.questionStartTime)/1000);
       var t=Math.ceil(left);
-      var pct2=left/TIME_PER_Q*100;
-      var col=left>10?"#22c55e":left>5?"#f97316":"#ef4444";
+      var pct2=left/tPerQ*100;
+      var col=left>tPerQ*0.4?"#22c55e":left>tPerQ*0.15?"#f97316":"#ef4444";
       var el=document.getElementById("g-timer");
       var bar=document.getElementById("g-timer-bar");
       if(el){ el.textContent=t; el.style.background=col; el.style.boxShadow="0 0 18px "+col+"88"; }
@@ -1268,33 +1387,45 @@ function handleStudentUpdate(room){
     },250);
   }
 
+  // Answer buttons — changeable until reveal
   document.getElementById("g-options").innerHTML=q.options.map(function(opt,i){
     var c=COLORS[i];
     var bg=c.bg, opacity=1, shadow="0 4px 0 "+c.shadow, cursor="pointer";
+    var suffix="";
+
     if(room.status==="reveal"){
-      bg=i===q.correct?"#22c55e":(i===myAnswer&&i!==q.correct?"#ef4444":"rgba(255,255,255,.07)");
+      // Show correct/wrong after reveal
+      if(i===q.correct) bg="#22c55e";
+      else if(i===displayAnswer && i!==q.correct) bg="#ef4444";
+      else { bg="rgba(255,255,255,.07)"; opacity=0.45; }
+      suffix = i===q.correct?" ✓":(i===displayAnswer&&i!==q.correct?" ✗":"");
       shadow="none"; cursor="default";
-    }else if(myAnswer!==undefined){
-      if(i!==myAnswer){ bg="rgba(255,255,255,.07)"; opacity=0.45; }
-      shadow="none"; cursor="default";
+    } else if(i===pending){
+      // Currently selected — highlight but still clickable
+      shadow="0 0 0 3px rgba(255,255,255,.6), 0 4px 0 "+c.shadow;
     }
-    var suffix=room.status==="reveal"?(i===q.correct?" ✓":(i===myAnswer&&i!==q.correct?" ✗":"")):"";
-    var disabled=(myAnswer!==undefined||room.status==="reveal")?"disabled":"";
-    return '<button class="ans-btn" onclick="studentAnswer('+i+')" '+disabled+' style="background:'+bg+';opacity:'+opacity+';box-shadow:'+shadow+';cursor:'+cursor+'">'
+
+    var isDisabled = (room.status==="reveal") ? "disabled" : "";
+    return '<button class="ans-btn" onclick="studentAnswer('+i+')" '+isDisabled+' style="background:'+bg+';opacity:'+opacity+';box-shadow:'+shadow+';cursor:'+cursor+'">'
       +'<span class="ans-icon">'+c.icon+'</span>'
       +'<span style="flex:1">'+esc(opt)+suffix+'</span>'
+      +(i===pending&&room.status!=="reveal"?'<span style="font-size:.75rem;opacity:.8">✓</span>':"")
       +'</button>';
   }).join("");
 
   var fb=document.getElementById("g-feedback");
-  if(myAnswer!==undefined&&room.status==="question"){
-    fb.style.cssText="display:block;margin-top:12px;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)";
-    fb.innerHTML='<div style="font-family:\'Fredoka One\',cursive;color:#ffe066">✓ Submitted!</div><div class="muted" style="font-size:.82rem;margin-top:4px">Waiting for teacher to reveal the answer...</div>';
+  if(room.status==="question"){
+    if(pending!==undefined){
+      fb.style.cssText="display:block;margin-top:12px;padding:14px 18px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)";
+      fb.innerHTML='<div style="font-family:\'Fredoka One\',cursive;color:#ffe066;font-size:.95rem">✓ Selected — you can still change your answer!</div><div class="muted" style="font-size:.8rem;margin-top:3px">Tap another option to switch · waiting for teacher to reveal</div>';
+    }else{
+      fb.style.display="none";
+    }
   }else if(room.status==="reveal"){
-    var correct2=myAnswer===q.correct;
-    var noAns=myAnswer===undefined;
+    var correct2=displayAnswer===q.correct;
+    var noAns=displayAnswer===undefined;
     fb.style.cssText="display:block;margin-top:12px;padding:16px 18px;border-radius:16px;background:"+(correct2?"rgba(34,197,94,.1)":"rgba(239,68,68,.1)")+";border:1.5px solid "+(correct2?"rgba(34,197,94,.3)":"rgba(239,68,68,.3)");
-    fb.innerHTML='<div style="font-family:\'Fredoka One\',cursive;font-size:1.1rem;margin-bottom:4px">'+(noAns?"⏰ Time\'s up!":correct2?"🎉 Correct!":"❌ Wrong!")+'</div>'+(q.explanation?'<div class="muted" style="font-size:.85rem">'+esc(q.explanation)+'</div>':'')+'<div class="muted" style="font-size:.8rem;margin-top:6px">Waiting for next question...</div>';
+    fb.innerHTML='<div style="font-family:\'Fredoka One\',cursive;font-size:1.1rem;margin-bottom:4px">'+(noAns?"⏰ Time\'s up! No answer submitted.":correct2?"🎉 Correct!":"❌ Wrong!")+'</div>'+(q.explanation?'<div class="muted" style="font-size:.85rem">'+esc(q.explanation)+'</div>':'')+'<div class="muted" style="font-size:.8rem;margin-top:6px">Waiting for next question...</div>';
   }else{
     fb.style.display="none";
   }
@@ -1302,20 +1433,56 @@ function handleStudentUpdate(room){
 
 async function studentAnswer(choice){
   if(!STATE.roomCode) return;
-  var qi=(await fbGet("rooms/"+STATE.roomCode+"/currentQ"))||0;
-  if(STATE.answered.hasOwnProperty(qi)) return; // already answered
-  var room=await fbGet("rooms/"+STATE.roomCode);
-  if(!room||room.status!=="question") return;
-  STATE.answered[qi]=choice; // lock immediately
-  var q=room.quiz.questions[qi];
-  var elapsed=(Date.now()-room.questionStartTime)/1000;
-  var bonus=choice===q.correct?Math.round(Math.max(0,TIME_PER_Q-elapsed)*3):0;
-  var pts=choice===q.correct?100+bonus:0;
-  STATE.localScore+=pts;
+  // Get current question index
+  var qi = (await fbGet("rooms/"+STATE.roomCode+"/currentQ"))||0;
+  // Don't allow change after reveal/commit
+  if(STATE.answered.hasOwnProperty(qi)) return;
+  var room = await fbGet("rooms/"+STATE.roomCode);
+  if(!room || room.status!=="question") return;
+
+  // Record first-selection time (for score bonus) — don't reset on change
+  if(!STATE.answerFirstTime.hasOwnProperty(qi)){
+    STATE.answerFirstTime[qi] = Date.now();
+  }
+  // Update pending selection (changeable)
+  STATE.pendingAnswer[qi] = choice;
+
+  // Re-render buttons immediately without waiting for Firebase poll
+  var q = room.quiz.questions[qi];
+  if(!q) return;
+  document.getElementById("g-options").innerHTML = q.options.map(function(opt,i){
+    var c=COLORS[i];
+    var shadow = i===choice ? "0 0 0 3px rgba(255,255,255,.6), 0 4px 0 "+c.shadow : "0 4px 0 "+c.shadow;
+    return '<button class="ans-btn" onclick="studentAnswer('+i+')" style="background:'+c.bg+';box-shadow:'+shadow+';cursor:pointer">'
+      +'<span class="ans-icon">'+c.icon+'</span>'
+      +'<span style="flex:1">'+esc(opt)+'</span>'
+      +(i===choice?'<span style="font-size:.75rem;opacity:.8">✓</span>':"")
+      +'</button>';
+  }).join("");
+
+  var fb = document.getElementById("g-feedback");
+  fb.style.cssText="display:block;margin-top:12px;padding:14px 18px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)";
+  fb.innerHTML='<div style="font-family:\'Fredoka One\',cursive;color:#ffe066;font-size:.95rem">✓ Selected — you can still change your answer!</div><div class="muted" style="font-size:.8rem;margin-top:3px">Tap another option to switch · waiting for teacher to reveal</div>';
+}
+
+// Called when teacher reveals — commits the pending answer to Firebase
+async function commitAnswer(qi, choice, room){
+  if(STATE.answered.hasOwnProperty(qi)) return; // already committed
+  STATE.answered[qi] = choice; // lock immediately to prevent double-commit
+
+  var q = room.quiz.questions[qi];
+  var tPerQ = room.timePerQ || 30;
+  // Use first-selection time for bonus (rewards quick thinking)
+  var firstTime = STATE.answerFirstTime[qi] || Date.now();
+  var elapsed = (firstTime - room.questionStartTime) / 1000;
+  var bonus = choice===q.correct ? Math.round(Math.max(0, tPerQ - elapsed) * 3) : 0;
+  var pts = choice===q.correct ? 100 + bonus : 0;
+  STATE.localScore += pts;
+
   try{
-    await fbSet("rooms/"+STATE.roomCode+"/players/"+STATE.uid+"/answers/"+qi,{choice:choice,pts:pts});
-    await fbSet("rooms/"+STATE.roomCode+"/players/"+STATE.uid+"/score",STATE.localScore);
-  }catch(e){ console.error("Answer save error:",e); }
+    await fbSet("rooms/"+STATE.roomCode+"/players/"+STATE.uid+"/answers/"+qi, {choice:choice, pts:pts});
+    await fbSet("rooms/"+STATE.roomCode+"/players/"+STATE.uid+"/score", STATE.localScore);
+  }catch(e){ console.error("Commit answer error:",e); }
 }
 
 // ═══════════════════════════════════════════════════
