@@ -960,10 +960,13 @@ function setEditCorrect(qi,oi){
 
 function renderEditQs(){
   document.getElementById("edit-questions-list").innerHTML = editQs.map(function(q,qi){
-    return '<div class="card fade-in" style="margin-bottom:14px">'
-      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">'
+    return '<div class="card fade-in" id="edit-q-card-'+qi+'" style="margin-bottom:14px">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px">'
       +'<span class="h3 accent">Q'+(qi+1)+'</span>'
+      +'<div style="display:flex;gap:8px;align-items:center">'
+      +'<button id="regen-btn-'+qi+'" onclick="regenEditQ('+qi+')" style="background:linear-gradient(135deg,rgba(124,58,237,.25),rgba(91,33,182,.25));border:1.5px solid rgba(124,58,237,.45);border-radius:8px;color:#c4b5fd;padding:4px 12px;cursor:pointer;font-size:.8rem;font-family:\'Poppins\',sans-serif;font-weight:600;display:flex;align-items:center;gap:5px;transition:all .2s" onmouseover="this.style.background=\'linear-gradient(135deg,rgba(124,58,237,.45),rgba(91,33,182,.45))\'" onmouseout="this.style.background=\'linear-gradient(135deg,rgba(124,58,237,.25),rgba(91,33,182,.25))\'">🔄 Regenerate</button>'
       +(editQs.length>1?'<button onclick="removeEditQ('+qi+')" style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:8px;color:#fca5a5;padding:4px 10px;cursor:pointer;font-size:.8rem">✕ Remove</button>':"")
+      +'</div>'
       +'</div>'
       +'<div class="form-group"><label class="lbl">Question</label>'
       +'<textarea rows="2" oninput="editQs['+qi+'].question=this.value" style="resize:vertical">'+esc(q.question)+'</textarea></div>'
@@ -981,6 +984,69 @@ function renderEditQs(){
       +'<input type="text" value="'+esc(q.explanation||"")+'" oninput="editQs['+qi+'].explanation=this.value" placeholder="Why is this the correct answer?"/>'
       +'</div>';
   }).join("");
+}
+
+async function regenEditQ(qi){
+  var btn = document.getElementById("regen-btn-"+qi);
+  var card = document.getElementById("edit-q-card-"+qi);
+  if(!btn || !card) return;
+
+  // Show loading state on the card
+  btn.disabled = true;
+  btn.innerHTML = '<span style="display:inline-block;width:14px;height:14px;border:2px solid rgba(196,181,253,.3);border-top-color:#c4b5fd;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:4px"></span> Regenerating...';
+  card.style.opacity = "0.6";
+  card.style.pointerEvents = "none";
+
+  try {
+    var quizTitle = document.getElementById("edit-quiz-title").value.trim() || STATE.quiz.title || "General Knowledge";
+    var diff = STATE.quiz.difficulty || "Medium";
+    var seed = genSeed();
+    var angle = randomAngle();
+
+    // Build a list of existing questions to avoid duplication
+    var existingQs = editQs.map(function(q, i){ return i !== qi ? q.question : null; }).filter(Boolean);
+    var avoidList = existingQs.length
+      ? "\n\nIMPORTANT — do NOT repeat any of these existing questions:\n" + existingQs.map(function(q,i){ return (i+1)+". "+q; }).join("\n")
+      : "";
+
+    var prompt =
+      "You are an expert quiz creator for Malaysian school students.\n\n"
+      +"REQUEST ID: "+seed+" — generate a FRESH, UNIQUE question.\n\n"
+      +"Quiz topic: \""+quizTitle+"\"\n"
+      +"Difficulty: "+diff+"\n"
+      +"Variation focus: "+angle+avoidList+"\n\n"
+      +"Generate exactly ONE multiple-choice question on this topic.\n"
+      +"Return ONLY a raw JSON object. No markdown, no explanation:\n"
+      +'{"question":"...","options":["A","B","C","D"],"correct":0,"explanation":"Why this is correct."}\n'
+      +'"correct" = 0-based index (0, 1, 2, or 3). Every option must be plausible.';
+
+    var rawText = await callGemini(prompt, null);
+    var cleanText = rawText.replace(/```json\s*/g,"").replace(/```\s*/g,"").trim();
+    var os = cleanText.indexOf("{");
+    var oe = cleanText.lastIndexOf("}");
+    if(os===-1||oe===-1) throw new Error("AI returned unexpected format.");
+    var newQ = JSON.parse(cleanText.slice(os,oe+1));
+
+    if(!newQ.question || !Array.isArray(newQ.options) || newQ.options.length < 2){
+      throw new Error("AI returned an invalid question.");
+    }
+    // Ensure 4 options
+    while(newQ.options.length < 4) newQ.options.push("");
+    newQ.options = newQ.options.slice(0,4);
+    newQ.correct = Math.min(Math.max(parseInt(newQ.correct)||0, 0), 3);
+    newQ.explanation = newQ.explanation || "";
+
+    editQs[qi] = newQ;
+    renderEditQs();
+    toast("✨ Q"+(qi+1)+" regenerated!");
+  } catch(e) {
+    // Restore card state on error
+    card.style.opacity = "1";
+    card.style.pointerEvents = "auto";
+    btn.disabled = false;
+    btn.innerHTML = "🔄 Regenerate";
+    toast("❌ Regenerate failed: " + (e.message||"Unknown error"));
+  }
 }
 
 function saveEditedQuiz(){
