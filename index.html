@@ -361,6 +361,9 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
       <option value="180">3 minutes</option>
       <option value="240">4 minutes</option>
       <option value="300">5 minutes</option>
+      <option value="600">10 minutes</option>
+      <option value="900">15 minutes</option>
+      <option value="1200">20 minutes</option>
     </select>
   </div>
   <button class="btn btn-green btn-full" id="start-btn" onclick="startQuiz()" disabled style="font-size:1.15rem">Waiting for students...</button>
@@ -385,6 +388,10 @@ label.lbl{display:block;font-size:.76rem;font-weight:700;color:rgba(255,255,255,
   </div>
   <div class="ans-grid" id="ctrl-options" style="margin-bottom:14px"></div>
   <div id="ctrl-expl" style="background:rgba(34,197,94,.09);border:1px solid rgba(34,197,94,.22);border-radius:14px;padding:12px 16px;margin-bottom:14px;font-size:.88rem;color:#bbf7d0;display:none"></div>
+  <div id="ctrl-students-wrap" style="display:none;margin-bottom:14px">
+    <h3 class="h3" style="margin-bottom:10px;color:rgba(255,255,255,.85);font-family:'Fredoka One',cursive;font-size:1.1rem">👥 Student Answers</h3>
+    <div id="ctrl-students-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"></div>
+  </div>
   <div id="ctrl-lb-wrap" style="display:none;margin-bottom:14px">
     <h3 class="h3 accent" style="margin-bottom:12px">🏆 Standings</h3>
     <div id="ctrl-lb"></div>
@@ -1223,18 +1230,45 @@ function renderControl(room){
 
   var expl=document.getElementById("ctrl-expl");
   var lbWrap=document.getElementById("ctrl-lb-wrap");
+  var studentsWrap=document.getElementById("ctrl-students-wrap");
   var revBtn=document.getElementById("ctrl-reveal-btn");
   var nextBtn=document.getElementById("ctrl-next-btn");
 
   if(room.status==="reveal"){
     if(q.explanation){ expl.textContent="💡 "+q.explanation; expl.style.display="block"; }
     else{ expl.style.display="none"; }
+
+    // Student answer breakdown
+    studentsWrap.style.display="block";
+    var studentCards = pList.map(function(p){
+      var ans = p.answers && p.answers[qi] !== undefined ? p.answers[qi] : null;
+      var isCorrect = ans && ans.choice === q.correct;
+      var noAnswer = ans === null;
+      var chosenText = noAnswer ? "No answer" : esc(q.options[ans.choice]);
+      var bg = noAnswer
+        ? "rgba(255,255,255,.05)"
+        : isCorrect ? "rgba(34,197,94,.12)" : "rgba(239,68,68,.1)";
+      var border = noAnswer
+        ? "rgba(255,255,255,.1)"
+        : isCorrect ? "rgba(34,197,94,.35)" : "rgba(239,68,68,.35)";
+      var icon = noAnswer ? "⏰" : isCorrect ? "✅" : "❌";
+      var nameColor = noAnswer ? "rgba(255,255,255,.5)" : isCorrect ? "#86efac" : "#fca5a5";
+      return '<div style="background:'+bg+';border:1.5px solid '+border+';border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:4px">'
+        +'<div style="display:flex;align-items:center;gap:6px">'
+        +'<span style="font-size:1rem">'+icon+'</span>'
+        +'<span style="font-weight:700;font-size:.85rem;color:'+nameColor+';flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(p.name)+'</span>'
+        +'</div>'
+        +'<div style="font-size:.75rem;color:rgba(255,255,255,.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+chosenText+'</div>'
+        +'</div>';
+    }).join("");
+    document.getElementById("ctrl-students-list").innerHTML = studentCards || '<p class="muted" style="font-size:.82rem">No students answered.</p>';
+
     lbWrap.style.display="block";
     document.getElementById("ctrl-lb").innerHTML=renderLB(players,null);
     revBtn.style.display="none"; nextBtn.style.display="block";
     nextBtn.textContent=(qi+1>=STATE.quiz.questions.length)?"🏁 End Quiz & Show Results":"→ Next Question";
   }else{
-    expl.style.display="none"; lbWrap.style.display="none";
+    expl.style.display="none"; lbWrap.style.display="none"; studentsWrap.style.display="none";
     revBtn.style.display="block"; nextBtn.style.display="none";
   }
 }
